@@ -1,0 +1,116 @@
+{
+	"project": {
+		"name": "quartz",
+		"description": "An Integrated Development Environment for creating Battler-Based RPG and Dungeon Crawler games.",
+		"version": "1.2.1-alpha"
+	},
+	"commitMapping": [{
+			"group": "optimization",
+			"label": "Optimization",
+			"emojis": [
+				"art",
+				"zap",
+				"fire",
+				"truck",
+				"pencil2",
+				"recycle"
+			]
+		},
+		{
+			"group": "bugfixes",
+			"label": "Bug Fixes",
+			"emojis": [
+				"bug",
+				"ambulance"
+			]
+		},
+		{
+			"group": "visual",
+			"label": "Visual Changes",
+			"emojis": [
+				"lipstick",
+				"dizzy",
+				"iphone",
+				"children_crossing",
+				"speech_balloon",
+				"wheelchair",
+				"bento"
+			]
+		},
+		{
+			"group": "breaking",
+			"label": "Breaking and Major Changes",
+			"emojis": [
+				"boom",
+				"wastebasket",
+				"building_construction",
+				"tada",
+				"rocket"
+			]
+		},
+		{
+			"group": "issues",
+			"label": "Known Issues",
+			"emojis": [
+				"goal_net"
+
+			]
+		},
+		{
+			"group": "diagnostics",
+			"label": "Diagnostics",
+			"emojis": [
+				"test_tube",
+				"alembic",
+				"loud_sound",
+				"mute",
+				"chart_with_upwards_trend",
+				"lock",
+				"white_check_mark"
+			]
+		},
+		{
+			"group": "documentation",
+			"label": "Documentation",
+			"emojis": [
+				"bulb",
+				"memo",
+				"page_facing_up",
+				"globe_with_meridians"
+			]
+		},
+		{
+			"group": "dependencies",
+			"label": "Dependency Changes",
+			"emojis": [
+				"heavy_plus_sign",
+				"heavy_minus_sign",
+				"arrow_down",
+				"arrow_up",
+				"alien"
+			]
+		},
+		{
+			"group": "miscellaneous",
+			"label": "Miscellaneous",
+			"emojis": [
+				"triangular_flag_on_post",
+				"seedling",
+				"label",
+				"mag",
+				"camera_flash",
+				"see_no_evil",
+				"egg",
+				"clown_face",
+				"busts_in_silhouette",
+				"card_file_box",
+				"beers",
+				"package",
+				"poop",
+				"hammer",
+				"wrench",
+				"construction"
+			]
+		}
+	]
+}
