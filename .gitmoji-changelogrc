@@ -2,7 +2,7 @@
 	"project": {
 		"name": "quartz",
 		"description": "An Integrated Development Environment for creating Battler-Based RPG and Dungeon Crawler games.",
-		"version": "1.2.1-alpha"
+		"version": "1.0.0-alpha"
 	},
 	"commitMapping": [{
 			"group": "changed",
@@ -91,7 +91,7 @@
 			]
 		},
 		{
-			"group": "misc",
+			"group": "realmisc",
 			"label": "Miscellaneous",
 			"emojis": [
 				"triangular_flag_on_post",
@@ -109,7 +109,27 @@
 				"hammer",
 				"wrench"
 			]
-		},
+		},	
+		{
+			"group": "misc",
+			"label": "Remove",
+			"emojis": [
+				"triangular_flag_on_post",
+				"seedling",
+				"label",
+				"mag",
+				"camera_flash",
+				"see_no_evil",
+				"egg",
+				"clown_face",
+				"busts_in_silhouette",
+				"card_file_box",
+				"beers",
+				"poop",
+				"hammer",
+				"wrench"
+			]
+		},	
 		{
 			"group": "added",
 			"label": "Added",
@@ -133,7 +153,12 @@
 		{
 			"group": "useless",
 			"label": "Useless",
-			"emojis": []
+			"emojis": [
+			"package",
+			null,
+			"",
+			" "
+			]
 		}
 	]
 }
