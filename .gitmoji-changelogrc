@@ -5,7 +5,7 @@
 		"version": "1.2.1-alpha"
 	},
 	"commitMapping": [{
-			"group": "optimization",
+			"group": "changed",
 			"label": "Optimization",
 			"emojis": [
 				"art",
@@ -17,7 +17,7 @@
 			]
 		},
 		{
-			"group": "bugfixes",
+			"group": "fixed",
 			"label": "Bug Fixes",
 			"emojis": [
 				"bug",
@@ -38,7 +38,7 @@
 			]
 		},
 		{
-			"group": "breaking",
+			"group": "breaking_changes",
 			"label": "Breaking and Major Changes",
 			"emojis": [
 				"boom",
@@ -91,7 +91,7 @@
 			]
 		},
 		{
-			"group": "miscellaneous",
+			"group": "misc",
 			"label": "Miscellaneous",
 			"emojis": [
 				"triangular_flag_on_post",
@@ -111,6 +111,31 @@
 				"wrench",
 				"construction"
 			]
+		},
+		{
+			"group": "added",
+			"label": "Added",
+			"emojis": []
+		},
+		{
+			"group": "deprecated",
+			"label": "Deprecated",
+			"emojis": []
+		},
+		{
+			"group": "removed",
+			"label": "Removed",
+			"emojis": []
+		},
+		{
+			"group": "security",
+			"label": "Security",
+			"emojis": []
+		},
+		{
+			"group": "useless",
+			"label": "Useless",
+			"emojis": []
 		}
 	]
 }
