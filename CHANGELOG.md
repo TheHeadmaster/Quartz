@@ -3,6 +3,10 @@
 <a name="1.1.1-alpha"></a>
 ## 1.1.1-alpha (2020-09-18)
 
+### Optimization
+
+- ♻️ General cleanup and code standardization. [[00e353d](https://github.com/TheHeadmaster/Quartz/commit/00e353d6fd3b4e13d9f2732ce98d5046ea363395)]
+
 ### Breaking and Major Changes
 
 - 🏗️ Add Quartz.IDE Application [[7fc4c35](https://github.com/TheHeadmaster/Quartz/commit/7fc4c350a2404d6c3991858bed1aeb02de1cc0d1)]
@@ -10,12 +14,16 @@
 
 ### Visual Changes
 
-- 💄 Clean up UI for New Project window [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
+- 💄 Clean up UI for New Project window. [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
+
+### Dependency Changes
+
+- ➕ Add AvalonEdit UI Library [[6bdb796](https://github.com/TheHeadmaster/Quartz/commit/6bdb79699145e98c048df4b911aa3e777574a45d)]
 
 
-- ✨ Add a command to view the help window [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
-- ✨ Add a command to check for updates [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
-- ✨ Check for and download updates on startup [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
+- ✨ Add a command to view the help window. [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
+- ✨ Add a command to check for updates. [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
+- ✨ Check for and download updates on startup. [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
 
 
 <a name="1.0.0-alpha"></a>
