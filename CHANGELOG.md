@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add ReactiveUI WPF UI Library [[0b76683](https://github.com/TheHeadmaster/Quartz/commit/0b7668342c88846228bb0bf8331949a6335e5dc1)]
 - ➕ Add ReactiveUI UI Library [[8ef6919](https://github.com/TheHeadmaster/Quartz/commit/8ef691931c45849eb1f8e8413494ba744ef36581)]
 - ➕ Add PropertyChanged Intermediate Language Weaver [[86ebb44](https://github.com/TheHeadmaster/Quartz/commit/86ebb44cf4039a8b80e642268fbec2204fd178db)]
 - ➕ Add Newtonsoft.Json IO Library [[c95387c](https://github.com/TheHeadmaster/Quartz/commit/c95387cfce598426537fd284fb77a9a856b451ac)]
