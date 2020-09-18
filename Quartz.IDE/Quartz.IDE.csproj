@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.1.1.18</AssemblyVersion>
-    <FileVersion>1.1.1.18</FileVersion>
+    <AssemblyVersion>1.1.1.19</AssemblyVersion>
+    <FileVersion>1.1.1.19</FileVersion>
   </PropertyGroup>
 
 </Project>

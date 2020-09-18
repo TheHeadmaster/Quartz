@@ -8,6 +8,10 @@
 - 🏗️ Add Quartz.IDE Application [[7fc4c35](https://github.com/TheHeadmaster/Quartz/commit/7fc4c350a2404d6c3991858bed1aeb02de1cc0d1)]
 - 🏗️ Add Installer Project [[8a1fdce](https://github.com/TheHeadmaster/Quartz/commit/8a1fdce1e30be1b30f6aa1196f1a8cfd839b0b57)]
 
+### Visual Changes
+
+- 💄 Clean up UI for New Project window. [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
+
 
 
 
