@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add WPF Interactivity UI Library [[6329c32](https://github.com/TheHeadmaster/Quartz/commit/6329c322de8e8355e1446ec34f693961ef51fb2f)]
 - ➕ Add WindowsAPICodePack UI Library [[852b8bd](https://github.com/TheHeadmaster/Quartz/commit/852b8bd83958379a85d18b67c711148fcd1dfb77)]
 - ➕ Add MethodBoundaryAspect Intermediate Language Weaver [[27360ac](https://github.com/TheHeadmaster/Quartz/commit/27360ac8d2d07b9d3b6f7cccc91729a9a1730603)]
 - ➕ Add FontAwesome5 UI Library [[e56f479](https://github.com/TheHeadmaster/Quartz/commit/e56f4795920b13495d91f694c0ada430d3194503)]
