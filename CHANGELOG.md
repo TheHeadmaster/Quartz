@@ -5,7 +5,10 @@
 
 ### Breaking and Major Changes
 
+- 🏗️ Add Quartz.IDE Application [[7fc4c35](https://github.com/TheHeadmaster/Quartz/commit/7fc4c350a2404d6c3991858bed1aeb02de1cc0d1)]
 - 🏗️ Add Installer Project [[8a1fdce](https://github.com/TheHeadmaster/Quartz/commit/8a1fdce1e30be1b30f6aa1196f1a8cfd839b0b57)]
+
+
 
 
 <a name="1.0.0-alpha"></a>
