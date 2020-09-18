@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>1.1.1.23</AssemblyVersion>
-    <FileVersion>1.1.1.23</FileVersion>
+    <AssemblyVersion>1.1.1.24</AssemblyVersion>
+    <FileVersion>1.1.1.24</FileVersion>
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
