@@ -1,7 +1,15 @@
 # Changelog
 
 <a name="1.1.1-alpha"></a>
-## 1.1.1-alpha (2020-09-17)
+## 1.1.1-alpha (2020-09-18)
+
+### Breaking and Major Changes
+
+- 🏗️ Add Installer Project [[8a1fdce](https://github.com/TheHeadmaster/Quartz/commit/8a1fdce1e30be1b30f6aa1196f1a8cfd839b0b57)]
+
+
+<a name="1.0.0-alpha"></a>
+## 1.0.0-alpha (2020-09-17)
 
 ### Breaking and Major Changes
 
@@ -31,6 +39,5 @@
 
 - 🔧 Add Travis CI configuration file [[94a9104](https://github.com/TheHeadmaster/Quartz/commit/94a91047b2bba7201e2ab025733457f71e7e7cca)]
 - 🔧 Add Quartz solution file [[b5acbc7](https://github.com/TheHeadmaster/Quartz/commit/b5acbc71c6fc980fb4cbc78a8f74aae25fecf87f)]
-- 🔧 Add Quartz solution file [[c13f53b](https://github.com/TheHeadmaster/Quartz/commit/c13f53bdef173f605c4fdf2c39218ff5c3676992)]
 - 🔧 Add Gitmoji Changelog configuration file [[fed71e4](https://github.com/TheHeadmaster/Quartz/commit/fed71e4c80a7c68401061c246641903ec1bcbcde)]
 - 🔧 Add Visual Studio editor configuration file [[814e5c9](https://github.com/TheHeadmaster/Quartz/commit/814e5c91f7757b14c2a9625d3168efed9af43827)]
