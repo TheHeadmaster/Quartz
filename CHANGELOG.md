@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Fody Intermediate Language Weaver [[8333d6e](https://github.com/TheHeadmaster/Quartz/commit/8333d6edadc531d2f7c3128362e3776d05d68135)]
 - ➕ Add FluentValidation UI Library [[6041cf6](https://github.com/TheHeadmaster/Quartz/commit/6041cf6e3c514a8b7d629cf6a521fb1a2c8d71bf)]
 - ➕ Add Extended WPF Toolkit UI Library [[2682e60](https://github.com/TheHeadmaster/Quartz/commit/2682e604c06ce62b486aee1fe85512df1a6050c5)]
 - ➕ Add AvalonDock UI Library [[b8626e0](https://github.com/TheHeadmaster/Quartz/commit/b8626e04ae4e8f86cf0d4d80b68cbdae20a6f6a9)]
