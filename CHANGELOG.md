@@ -14,6 +14,7 @@
 
 ### Visual Changes
 
+- 💄 Hook up the About window to the main menu [[e3f4812](https://github.com/TheHeadmaster/Quartz/commit/e3f4812185c44c2baeca062d95681db23728d726)]
 - 💄 Clean up UI for New Project window. [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
 
 ### Dependency Changes
