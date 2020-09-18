@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add FontAwesome5 UI Library [[e56f479](https://github.com/TheHeadmaster/Quartz/commit/e56f4795920b13495d91f694c0ada430d3194503)]
 - ➕ Add Fody Intermediate Language Weaver [[8333d6e](https://github.com/TheHeadmaster/Quartz/commit/8333d6edadc531d2f7c3128362e3776d05d68135)]
 - ➕ Add FluentValidation UI Library [[6041cf6](https://github.com/TheHeadmaster/Quartz/commit/6041cf6e3c514a8b7d629cf6a521fb1a2c8d71bf)]
 - ➕ Add Extended WPF Toolkit UI Library [[2682e60](https://github.com/TheHeadmaster/Quartz/commit/2682e604c06ce62b486aee1fe85512df1a6050c5)]
