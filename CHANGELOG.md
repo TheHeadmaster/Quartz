@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add AvalonDock UI Library [[b8626e0](https://github.com/TheHeadmaster/Quartz/commit/b8626e04ae4e8f86cf0d4d80b68cbdae20a6f6a9)]
 - ➕ Add AvalonEdit UI Library [[6bdb796](https://github.com/TheHeadmaster/Quartz/commit/6bdb79699145e98c048df4b911aa3e777574a45d)]
 
 
