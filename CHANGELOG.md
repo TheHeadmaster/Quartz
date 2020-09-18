@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Librarium Code Library [[a7f5c73](https://github.com/TheHeadmaster/Quartz/commit/a7f5c7353f08da9188254eae50a9185e100d91b8)]
 - ➕ Add ReactiveUI WPF Events UI Library [[7d6243a](https://github.com/TheHeadmaster/Quartz/commit/7d6243a7d9909f16c8faa13ca831e8149e24c991)]
 - ➕ Add ReactiveUI Fody Intermediate Language Weaver [[e6a20c9](https://github.com/TheHeadmaster/Quartz/commit/e6a20c9f5675c0715b14bedf58e4ee3b3d92b786)]
 - ➕ Add ReactiveUI Validation UI Library [[91a5134](https://github.com/TheHeadmaster/Quartz/commit/91a513491bcd685ad9b2559a363bf9fb7338f63c)]
