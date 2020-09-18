@@ -19,6 +19,7 @@
 
 ### Dependency Changes
 
+- ➕ Add PropertyChanged Intermediate Language Weaver [[86ebb44](https://github.com/TheHeadmaster/Quartz/commit/86ebb44cf4039a8b80e642268fbec2204fd178db)]
 - ➕ Add Newtonsoft.Json IO Library [[c95387c](https://github.com/TheHeadmaster/Quartz/commit/c95387cfce598426537fd284fb77a9a856b451ac)]
 - ➕ Add WPF Interactivity UI Library [[6329c32](https://github.com/TheHeadmaster/Quartz/commit/6329c322de8e8355e1446ec34f693961ef51fb2f)]
 - ➕ Add WindowsAPICodePack UI Library [[852b8bd](https://github.com/TheHeadmaster/Quartz/commit/852b8bd83958379a85d18b67c711148fcd1dfb77)]
