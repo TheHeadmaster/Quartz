@@ -1,12 +1,16 @@
 # Changelog
 
-<a name="1.0.0-alpha"></a>
-## 1.0.0-alpha (2020-09-17)
+<a name="1.1.1-alpha"></a>
+## 1.1.1-alpha (2020-09-17)
 
 ### Breaking and Major Changes
 
 - 🏗️ Add Quartz.Core Library [[bee3bac](https://github.com/TheHeadmaster/Quartz/commit/bee3bac04683c103a4b22d2857299f7f7cc31bde)]
 - 🎉 Open Quartz repository [[ca1af7d](https://github.com/TheHeadmaster/Quartz/commit/ca1af7d308f9fd18e6d69e6d6be4778af03841bf)]
+
+### Visual Changes
+
+- 🍱 Add Quartz.png to solution [[cbd78ce](https://github.com/TheHeadmaster/Quartz/commit/cbd78cef1e93c6831accc45e534231ab03f4ecd3)]
 
 ### Diagnostics
 
@@ -14,6 +18,10 @@
 
 ### Documentation
 
+- 📝 Add Code Owners file [[aacae69](https://github.com/TheHeadmaster/Quartz/commit/aacae69c5a7efddb9189ef28f2a4760164fe6545)]
+- 📝 Add Code of Conduct file [[443265e](https://github.com/TheHeadmaster/Quartz/commit/443265ec4fe5bcff41c3ec807f6c75d61eaa3f62)]
+- 📝 Add badges and description for Readme file [[dcc084f](https://github.com/TheHeadmaster/Quartz/commit/dcc084fbac989a0e2daeca5da5334bb29bf683ad)]
+- 📝 Add README file [[081b185](https://github.com/TheHeadmaster/Quartz/commit/081b1856aeb687ff73ced92d868f47ebf154f4a2)]
 - 📝 Add Changelog file [[d5a6f07](https://github.com/TheHeadmaster/Quartz/commit/d5a6f07dbbec74de99b8c7201a9e889ae0acec8f)]
 - 📄 Add MIT license [[253567f](https://github.com/TheHeadmaster/Quartz/commit/253567fec2affb543cfa3d57a19fc8bba83f3e3d)]
 - 📝 Add Funding information [[f74e37c](https://github.com/TheHeadmaster/Quartz/commit/f74e37cbe317980e6ee54ffc4af92d234214b31a)]
@@ -21,6 +29,7 @@
 
 ### Miscellaneous
 
+- 🔧 Add Travis CI configuration file [[94a9104](https://github.com/TheHeadmaster/Quartz/commit/94a91047b2bba7201e2ab025733457f71e7e7cca)]
 - 🔧 Add Quartz solution file [[b5acbc7](https://github.com/TheHeadmaster/Quartz/commit/b5acbc71c6fc980fb4cbc78a8f74aae25fecf87f)]
 - 🔧 Add Quartz solution file [[c13f53b](https://github.com/TheHeadmaster/Quartz/commit/c13f53bdef173f605c4fdf2c39218ff5c3676992)]
 - 🔧 Add Gitmoji Changelog configuration file [[fed71e4](https://github.com/TheHeadmaster/Quartz/commit/fed71e4c80a7c68401061c246641903ec1bcbcde)]

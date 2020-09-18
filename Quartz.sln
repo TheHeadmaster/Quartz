@@ -7,22 +7,55 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quartz.Core", "Quartz.Core\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AE6B133-ADCF-429D-A298-483EA29803E4}"
 	ProjectSection(SolutionItems) = preProject
+		.gitmoji-changelogrc = .gitmoji-changelogrc
 		.travis.yml = .travis.yml
 		CHANGELOG.md = CHANGELOG.md
 		Quartz.png = Quartz.png
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Quartz.Installer", "Quartz.Installer\Quartz.Installer.wixproj", "{683537F5-C7AE-4592-A620-3C86382A604D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		DebugInInstallFolder|Any CPU = DebugInInstallFolder|Any CPU
+		DebugInInstallFolder|x86 = DebugInInstallFolder|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		ReleaseInstallFolder|Any CPU = ReleaseInstallFolder|Any CPU
+		ReleaseInstallFolder|x86 = ReleaseInstallFolder|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Debug|x86.Build.0 = Debug|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.DebugInInstallFolder|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.DebugInInstallFolder|Any CPU.Build.0 = Debug|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.DebugInInstallFolder|x86.ActiveCfg = Debug|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.DebugInInstallFolder|x86.Build.0 = Debug|Any CPU
 		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Release|x86.ActiveCfg = Release|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.Release|x86.Build.0 = Release|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.ReleaseInstallFolder|Any CPU.ActiveCfg = Release|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.ReleaseInstallFolder|Any CPU.Build.0 = Release|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.ReleaseInstallFolder|x86.ActiveCfg = Release|Any CPU
+		{C6EB9118-1468-4C74-8758-5FEB97D1E071}.ReleaseInstallFolder|x86.Build.0 = Release|Any CPU
+		{683537F5-C7AE-4592-A620-3C86382A604D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.Debug|x86.ActiveCfg = Debug|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.Debug|x86.Build.0 = Debug|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.DebugInInstallFolder|Any CPU.ActiveCfg = DebugInInstallFolder|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.DebugInInstallFolder|x86.ActiveCfg = DebugInInstallFolder|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.DebugInInstallFolder|x86.Build.0 = DebugInInstallFolder|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.Release|Any CPU.ActiveCfg = Release|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.Release|x86.ActiveCfg = Release|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.Release|x86.Build.0 = Release|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.ReleaseInstallFolder|Any CPU.ActiveCfg = ReleaseInstallFolder|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.ReleaseInstallFolder|x86.ActiveCfg = ReleaseInstallFolder|x86
+		{683537F5-C7AE-4592-A620-3C86382A604D}.ReleaseInstallFolder|x86.Build.0 = ReleaseInstallFolder|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
