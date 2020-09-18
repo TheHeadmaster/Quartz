@@ -13,6 +13,7 @@
 - 💄 Clean up UI for New Project window. [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
 
 
+- ✨ Add a command to view the help window. [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
 - ✨ Add a command to check for updates. [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
 - ✨ Check for and download updates on startup. [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
 
