@@ -4,7 +4,15 @@
 		"description": "An Integrated Development Environment for creating Battler-Based RPG and Dungeon Crawler games.",
 		"version": "1.1.1-alpha"
 	},
-	"commitMapping": [{
+	"commitMapping": [
+		{
+			"group": "features",
+			"label": "New Features",
+			"emojis": [
+				"sparkles"
+			]
+		},
+		{
 			"group": "changed",
 			"label": "Optimization",
 			"emojis": [
@@ -109,7 +117,7 @@
 				"hammer",
 				"wrench"
 			]
-		},	
+		},
 		{
 			"group": "misc",
 			"label": "Remove",
@@ -129,7 +137,7 @@
 				"hammer",
 				"wrench"
 			]
-		},	
+		},
 		{
 			"group": "added",
 			"label": "Added",
@@ -154,10 +162,10 @@
 			"group": "useless",
 			"label": "Useless",
 			"emojis": [
-			"package",
-			null,
-			"",
-			" "
+				"package",
+				null,
+				"",
+				" "
 			]
 		}
 	]

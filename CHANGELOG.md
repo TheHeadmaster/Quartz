@@ -12,6 +12,12 @@
 - 🏗️ Add Quartz.IDE Application [[7fc4c35](https://github.com/TheHeadmaster/Quartz/commit/7fc4c350a2404d6c3991858bed1aeb02de1cc0d1)]
 - 🏗️ Add Installer Project [[8a1fdce](https://github.com/TheHeadmaster/Quartz/commit/8a1fdce1e30be1b30f6aa1196f1a8cfd839b0b57)]
 
+### New Features
+
+- ✨ Add a command to view the help window. [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
+- ✨ Add a command to check for updates. [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
+- ✨ Check for and download updates on startup. [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
+
 ### Visual Changes
 
 - 💄 Hook up the About window to the main menu [[e3f4812](https://github.com/TheHeadmaster/Quartz/commit/e3f4812185c44c2baeca062d95681db23728d726)]
@@ -19,6 +25,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Librarium WPF UI Library [[8abff3d](https://github.com/TheHeadmaster/Quartz/commit/8abff3db119c209f3f774049866b96467cb88b49)]
 - ➕ Add Librarium Code Library [[a7f5c73](https://github.com/TheHeadmaster/Quartz/commit/a7f5c7353f08da9188254eae50a9185e100d91b8)]
 - ➕ Add ReactiveUI WPF Events UI Library [[7d6243a](https://github.com/TheHeadmaster/Quartz/commit/7d6243a7d9909f16c8faa13ca831e8149e24c991)]
 - ➕ Add ReactiveUI Fody Intermediate Language Weaver [[e6a20c9](https://github.com/TheHeadmaster/Quartz/commit/e6a20c9f5675c0715b14bedf58e4ee3b3d92b786)]
@@ -36,12 +43,6 @@
 - ➕ Add Extended WPF Toolkit UI Library [[2682e60](https://github.com/TheHeadmaster/Quartz/commit/2682e604c06ce62b486aee1fe85512df1a6050c5)]
 - ➕ Add AvalonDock UI Library [[b8626e0](https://github.com/TheHeadmaster/Quartz/commit/b8626e04ae4e8f86cf0d4d80b68cbdae20a6f6a9)]
 - ➕ Add AvalonEdit UI Library [[6bdb796](https://github.com/TheHeadmaster/Quartz/commit/6bdb79699145e98c048df4b911aa3e777574a45d)]
-
-
-- ✨ Add a command to view the help window. [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
-- ✨ Add a command to check for updates. [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
-- ✨ Check for and download updates on startup. [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
-
 
 <a name="1.0.0-alpha"></a>
 ## 1.0.0-alpha (2020-09-17)
