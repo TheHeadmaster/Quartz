@@ -1,5 +1,12 @@
 # Changelog
 
+<a name="1.1.2-alpha"></a>
+## 1.1.2-alpha (2020-09-19)
+
+### Bug Fixes
+
+- 🐛 Update Manager throws when checking for updates [[a52d98b](https://github.com/TheHeadmaster/Quartz/commit/a52d98b5d761e690862d711f287fdb349022b707)]
+
 <a name="1.1.1-alpha"></a>
 ## 1.1.1-alpha (2020-09-18)
 
