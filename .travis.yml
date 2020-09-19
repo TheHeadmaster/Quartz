@@ -1,6 +1,7 @@
 language: csharp
 os: windows
 solution: Quartz.sln
+mono: none
 dotnet: 3.1.402
 script:
  - dotnet restore
