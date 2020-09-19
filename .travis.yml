@@ -1,5 +1,9 @@
-language: csharp
 solution: Quartz.sln
-dotnet: 3.1.402
+os: windows
+language: csharp
+mono: none
+
 script:
- - dotnet restore
+- choco install dotnetcore-sdk
+- dotnet --version
+- dotnet restore
