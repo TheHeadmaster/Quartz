@@ -5,7 +5,10 @@
 
 ### New Features
 
+- ✨ Add an option in the Preferences menu to choose between Metric and Imperial measurement units [[ea95d36](https://github.com/TheHeadmaster/Quartz/commit/ea95d36fe433ee46d472d62e62d4ae89187f2131)]
 - ✨ Height and weight values now display the unit of measurement inside the inputs [[46b549b](https://github.com/TheHeadmaster/Quartz/commit/46b549be8e2dd20f4e92303445e1994220a40d58)]
+
+
 
 
 <a name="1.1.2-alpha"></a>
