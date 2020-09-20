@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.1.3-alpha"></a>
+## 1.1.3-alpha (2020-09-20)
+
+### New Features
+
+- ✨ Height and weight values now display the unit of measurement inside the inputs [[46b549b](https://github.com/TheHeadmaster/Quartz/commit/46b549be8e2dd20f4e92303445e1994220a40d58)]
+
+
 <a name="1.1.2-alpha"></a>
 ## 1.1.2-alpha (2020-09-19)
 
