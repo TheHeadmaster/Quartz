@@ -1,5 +1,16 @@
 # Changelog
 
+<a name="1.1.6-alpha"></a>
+## 1.1.6-alpha (2020-09-20)
+
+### Optimization
+
+- 🔥 Turns off Automatic Updating
+
+### Breaking and Major Changes
+
+- 📦 Final Release for 1.1 Alpha
+
 <a name="1.1.5-alpha"></a>
 ## 1.1.5-alpha (2020-09-20)
 
@@ -47,7 +58,7 @@
 
 ### Optimization
 
-- ♻️ General cleanup and code standardization. [[00e353d](https://github.com/TheHeadmaster/Quartz/commit/00e353d6fd3b4e13d9f2732ce98d5046ea363395)]
+- ♻️ General cleanup and code standardization [[00e353d](https://github.com/TheHeadmaster/Quartz/commit/00e353d6fd3b4e13d9f2732ce98d5046ea363395)]
 
 ### Breaking and Major Changes
 
@@ -56,14 +67,14 @@
 
 ### New Features
 
-- ✨ Add a command to view the help window. [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
-- ✨ Add a command to check for updates. [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
-- ✨ Check for and download updates on startup. [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
+- ✨ Add a command to view the help window [[0308f2d](https://github.com/TheHeadmaster/Quartz/commit/0308f2d4a2af1d32310dab0f5c97d71a7691df96)]
+- ✨ Add a command to check for updates [[c99efd9](https://github.com/TheHeadmaster/Quartz/commit/c99efd9006094e0849c0508f3e49af49b56fa52e)]
+- ✨ Check for and download updates on startup [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
 
 ### Visual Changes
 
 - 💄 Hook up the About window to the main menu [[e3f4812](https://github.com/TheHeadmaster/Quartz/commit/e3f4812185c44c2baeca062d95681db23728d726)]
-- 💄 Clean up UI for New Project window. [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
+- 💄 Clean up UI for New Project window [[33b8776](https://github.com/TheHeadmaster/Quartz/commit/33b87767c9744ed313bbb8b405f21a80fe4ed898)]
 
 ### Dependency Changes
 
@@ -85,6 +96,7 @@
 - ➕ Add Extended WPF Toolkit UI Library [[2682e60](https://github.com/TheHeadmaster/Quartz/commit/2682e604c06ce62b486aee1fe85512df1a6050c5)]
 - ➕ Add AvalonDock UI Library [[b8626e0](https://github.com/TheHeadmaster/Quartz/commit/b8626e04ae4e8f86cf0d4d80b68cbdae20a6f6a9)]
 - ➕ Add AvalonEdit UI Library [[6bdb796](https://github.com/TheHeadmaster/Quartz/commit/6bdb79699145e98c048df4b911aa3e777574a45d)]
+- ➕ Add Octokit.Reactive [[7a6804f](https://github.com/TheHeadmaster/Quartz/commit/7a6804f425f3e507e82cb7dc82c3fbd71007b53a)]
 
 <a name="1.0.0-alpha"></a>
 ## 1.0.0-alpha (2020-09-17)
