@@ -9,8 +9,8 @@
 
 ### Bug Fixes
 
+- 🐛 JFile objects throw an error on certain null values [[6a16211](https://github.com/TheHeadmaster/Quartz/commit/6a16211af140a32cb62dac6e52c9b4b31dda273a)]
 - 🐛 AvolonEdit chokes on an empty value [[b38355d](https://github.com/TheHeadmaster/Quartz/commit/b38355de9dcec81a4798701bed402fbc411bdbcb)]
-
 
 <a name="1.1.4-alpha"></a>
 ## 1.1.4-alpha (2020-09-20)
