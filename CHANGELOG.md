@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.1.5-alpha"></a>
+## 1.1.5-alpha (2020-09-20)
+
+### Optimization
+
+- ♻️ Refactor various switch case statements [[2289d1e](https://github.com/TheHeadmaster/Quartz/commit/2289d1e96455269e0773a1ce36ac68cecad4991e)]
+
+
 <a name="1.1.4-alpha"></a>
 ## 1.1.4-alpha (2020-09-20)
 
