@@ -1,5 +1,12 @@
 # Changelog
 
+<a name="1.1.4-alpha"></a>
+## 1.1.4-alpha (2020-09-20)
+
+### Diagnostics
+
+- ⚗️ Test automatic upgrading when new versions are released [[9f45723](https://github.com/TheHeadmaster/Quartz/commit/9f45723cbf3f55093bc6a7bf973964d30ea36867)]
+
 <a name="1.1.3-alpha"></a>
 ## 1.1.3-alpha (2020-09-20)
 
