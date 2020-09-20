@@ -3,9 +3,14 @@
 <a name="1.1.3-alpha"></a>
 ## 1.1.3-alpha (2020-09-20)
 
+### Bug Fixes
+
+- 🐛 Opening the Preferences window crashes Quartz [[91cf400](https://github.com/TheHeadmaster/Quartz/commit/91cf400f763aadb2d619f7bcfc686e37caadf464)]
+
 ### New Features
 
 - ✨ Add an option in the Preferences menu to choose between Metric and Imperial measurement units [[ea95d36](https://github.com/TheHeadmaster/Quartz/commit/ea95d36fe433ee46d472d62e62d4ae89187f2131)]
+- ✨ Add a &quot;Prefer Metric&quot; option in the Preferences menu [[99607ce](https://github.com/TheHeadmaster/Quartz/commit/99607ced1b520cbb1465a41d70d6965dd070694b)]
 - ✨ Height and weight values now display the unit of measurement inside the inputs [[46b549b](https://github.com/TheHeadmaster/Quartz/commit/46b549be8e2dd20f4e92303445e1994220a40d58)]
 
 
