@@ -3,10 +3,11 @@
 <a name="next"></a>
 ## next
 
-### Remove
+### Breaking and Major Changes
 
--  Update Changelog [[4d7b022](https://github.com/TheHeadmaster/Quartz/commit/4d7b022bdc2d2e0d8a9e392e1faac6cc351c473d)]
--  Update CHANGELOG.md [[4cd7985](https://github.com/TheHeadmaster/Quartz/commit/4cd7985eb2b8e7de118395fae022933e7758c2e5)]
+- 🚀 Change Quartz Editor to Quartz IDE [[fdfb673](https://github.com/TheHeadmaster/Quartz/commit/fdfb673aefe93252bb2d21b84cffbbd41840998f)]
+
+
 
 
 <a name="1.1.6-alpha"></a>
