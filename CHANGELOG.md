@@ -12,6 +12,10 @@
 
 - 🐛 Selecting No to opening a new project while an existing unsaved project was open still opened the project and didn&#x27;t save. Press F to pay respects [[46dba05](https://github.com/TheHeadmaster/Quartz/commit/46dba05e9d7c4a9bfc1c79ae66cf9dd5e307a3b2)]
 
+### Dependency Changes
+
+- ⬆️ Upgrade Librarium and Librarium.WPF to Nuget package [[4b82008](https://github.com/TheHeadmaster/Quartz/commit/4b82008d5f40c0ad3f0f74c9dc17846b17d42ffe)]
+
 
 
 
