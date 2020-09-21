@@ -16,6 +16,10 @@
 
 - ✨ Add backwards compatibility check for older projects, and versioning for projects moving forward [[03b4966](https://github.com/TheHeadmaster/Quartz/commit/03b4966b2d30ac6139d5602ac518228d2c222722)]
 
+### Diagnostics
+
+- ⚗️ Add method-level logging and error catching utilizing Serilog and MethodBoundaryAspect [[ab97e2f](https://github.com/TheHeadmaster/Quartz/commit/ab97e2fa8e178bd3f8e95c4ea2668948ebfdaf50)]
+
 ### Dependency Changes
 
 - ➕ Add Serilog Analyzers [[560d15c](https://github.com/TheHeadmaster/Quartz/commit/560d15c506ff41e7fe6e4a923c1be285010069e6)]
