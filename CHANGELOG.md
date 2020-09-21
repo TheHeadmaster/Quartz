@@ -18,6 +18,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Serilog Debug Sink Library [[49a95ba](https://github.com/TheHeadmaster/Quartz/commit/49a95ba462761db9ce5101b9426d4bd35fd659f3)]
 - ➕ Add Serilog Logging Library [[48b5bcf](https://github.com/TheHeadmaster/Quartz/commit/48b5bcf6780bd0d3c4f9e2c7c33f755765094e21)]
 - ⬆️ Upgrade Librarium and Librarium.WPF to Nuget package [[4b82008](https://github.com/TheHeadmaster/Quartz/commit/4b82008d5f40c0ad3f0f74c9dc17846b17d42ffe)]
 
