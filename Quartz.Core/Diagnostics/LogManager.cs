@@ -49,11 +49,11 @@ namespace Quartz.Core.Diagnostics
             {
                 DateTime dt = DateTime.UtcNow;
                 string filename = $"{dt.Month}-{dt.Day}-{dt.Year} {dt.Hour}-{dt.Minute}-{dt.Second}";
-                logPath = Path.Combine(AppMeta.AssemblyDirectory, "Logs", $"{filename}.json");
+                logPath = Path.Combine(AppMeta.AppDataDirectory, "Logs", $"{filename}.json");
             }
-            if (!Directory.Exists(Path.Combine(AppMeta.AssemblyDirectory, "Logs")))
+            if (!Directory.Exists(Path.Combine(AppMeta.AppDataDirectory, "Logs")))
             {
-                Directory.CreateDirectory(Path.Combine(AppMeta.AssemblyDirectory, "Logs"));
+                Directory.CreateDirectory(Path.Combine(AppMeta.AppDataDirectory, "Logs"));
             }
 
             Log.Logger = new LoggerConfiguration()
