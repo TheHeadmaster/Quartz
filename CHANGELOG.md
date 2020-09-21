@@ -1,12 +1,16 @@
 # Changelog
 
-<a name="next"></a>
-## next
+<a name="1.2.1-alpha"></a>
+## 1.2.1-alpha (2020-09-21)
 
 ### Breaking and Major Changes
 
 - 🏗️ Add Quartz.Engine Library [[e764051](https://github.com/TheHeadmaster/Quartz/commit/e764051cf313a714ae3cac8cbd2672f128e4cb04)]
 - 🚀 Change Quartz Editor to Quartz IDE [[fdfb673](https://github.com/TheHeadmaster/Quartz/commit/fdfb673aefe93252bb2d21b84cffbbd41840998f)]
+
+### Bug Fixes
+
+- 🐛 Selecting No to opening a new project while an existing unsaved project was open still opened the project and didn&#x27;t save. Press F to pay respects [[46dba05](https://github.com/TheHeadmaster/Quartz/commit/46dba05e9d7c4a9bfc1c79ae66cf9dd5e307a3b2)]
 
 
 
