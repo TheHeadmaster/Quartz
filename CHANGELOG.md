@@ -24,6 +24,11 @@
 
 ### Dependency Changes
 
+- ➕ Add FluentAssertions Testing Library [[f42ffa1](https://github.com/TheHeadmaster/Quartz/commit/f42ffa1550bf1ba14d7b1ac9ecfacba9a8ca3830)]
+- ➕ Add XBehave Testing Library [[6ca9c8b](https://github.com/TheHeadmaster/Quartz/commit/6ca9c8b305edfdb966823104807d9d540038e962)]
+- ⬆️ Update XUnit Visual Studio Runner 2.4.0 ➡️ 2.4.3 [[0506e07](https://github.com/TheHeadmaster/Quartz/commit/0506e0758e62a0abd8e43f323a664e340701e7e6)]
+- ⬆️ Update XUnit 2.4.0 ➡️ 2.4.1 [[a9826d3](https://github.com/TheHeadmaster/Quartz/commit/a9826d378a2ae457e815b44e6b972d584de1339d)]
+- ⬆️ Update .NET Test SDK 16.5.0 ➡️ 16.7.1 [[0d66e8d](https://github.com/TheHeadmaster/Quartz/commit/0d66e8dad08363e5c41107ac9d2f022f109a08d5)]
 - ⬆️ Update Coverlet.Collector 1.2.0 ➡️ 1.3.0 [[f6c6c0c](https://github.com/TheHeadmaster/Quartz/commit/f6c6c0caea858f679fe6aeee95334c65ec24954d)]
 - ➕ Add Serilog Analyzers [[560d15c](https://github.com/TheHeadmaster/Quartz/commit/560d15c506ff41e7fe6e4a923c1be285010069e6)]
 - ➕ Add Serilog Compact Formatting Logging Library [[4c036a9](https://github.com/TheHeadmaster/Quartz/commit/4c036a987785600d983c506644ba4ba0f520e127)]
