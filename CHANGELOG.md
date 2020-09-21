@@ -5,6 +5,7 @@
 
 ### Breaking and Major Changes
 
+- 🏗️ Add Quartz.Testing Unit Test Project [[7f867f4](https://github.com/TheHeadmaster/Quartz/commit/7f867f47734ee21e6db395c950ce515f0f5eff9e)]
 - 🏗️ Add Quartz.Engine Library [[e764051](https://github.com/TheHeadmaster/Quartz/commit/e764051cf313a714ae3cac8cbd2672f128e4cb04)]
 - 🚀 Change Quartz Editor to Quartz IDE [[fdfb673](https://github.com/TheHeadmaster/Quartz/commit/fdfb673aefe93252bb2d21b84cffbbd41840998f)]
 
