@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -66,11 +67,23 @@ namespace Quartz.IDE
 
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 
-            Metadata = JFile.Load<PreferencesFile>(Metadata.AppDataDirectory, "metadata.json").CreateModel();
-            Metadata.Save();
-            Preferences.Load();
-
             new MainWindow().Show();
+        }
+
+        /// <summary>
+        /// Loads the Preferences from disk or creates default preferences if none exists.
+        /// </summary>
+        [Log("Initializing Preferences...")]
+        private static void InitializePreferences()
+        {
+            if (!Directory.Exists(Path.Combine(AppMeta.AppDataDirectory, "metadata.json")))
+            {
+                Directory.CreateDirectory(Path.Combine(AppMeta.AppDataDirectory, "metadata.json"));
+            }
+
+            Preferences = JFile.Load<PreferencesFile>(Metadata.AppDataDirectory, "metadata.json").CreateModel();
+            Preferences.Save();
+            Preferences.Load();
         }
 
         /// <summary>
