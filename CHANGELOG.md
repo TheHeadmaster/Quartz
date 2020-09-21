@@ -3,6 +3,10 @@
 <a name="1.2.1-alpha"></a>
 ## 1.2.1-alpha (2020-09-21)
 
+### Optimization
+
+- ♻️ Common functionality between Quartz.IDE and Quartz.Engine moved to Quartz.Core [[be3afff](https://github.com/TheHeadmaster/Quartz/commit/be3afff9a840c2c8663ab2039691c4674fd83e95)]
+
 ### Breaking and Major Changes
 
 - 💥 Previous projects are now incompatible moving forward, starting with 1.2.1 [[6fafdf3](https://github.com/TheHeadmaster/Quartz/commit/6fafdf35d357ef65683dd6c16e97b9a1e112430d)]

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using Librarium.Core;
+using Librarium.Json;
 using Quartz.Core.Diagnostics;
+using ReactiveUI;
 using Serilog;
+using Splat;
 
 namespace Quartz.IDE
 {
@@ -59,21 +64,11 @@ namespace Quartz.IDE
         {
             UpdateManager.Initialize();
 
-            using (Stream s = App.GetResourceStream(new Uri("/Quartz;component/Resources/Poketext.xshd", UriKind.Relative)).Stream)
-            {
-                using (XmlTextReader reader = new XmlTextReader(s))
-                {
-                    HighlightingManager.Instance.RegisterHighlighting("Poketext", new string[0],
-                        HighlightingLoader.Load(reader,
-                        HighlightingManager.Instance));
-                }
-            }
-
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 
-            Metadata = JFile.Load<UserMetaFile>(AppMeta.AssemblyDirectory, "metadata.json").CreateModel();
+            Metadata = JFile.Load<PreferencesFile>(Metadata.AppDataDirectory, "metadata.json").CreateModel();
             Metadata.Save();
-            UserMeta.Load();
+            Preferences.Load();
 
             new MainWindow().Show();
         }

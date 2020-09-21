@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.1.22</AssemblyVersion>
-    <FileVersion>1.2.1.22</FileVersion>
+    <AssemblyVersion>1.2.1.23</AssemblyVersion>
+    <FileVersion>1.2.1.23</FileVersion>
 	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
@@ -24,7 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="FontAwesome5" Version="2.0.8" />
-    <PackageReference Include="Librarium" Version="1.0.2" />
+    <PackageReference Include="Librarium" Version="1.0.3" />
     <PackageReference Include="Librarium.WPF" Version="1.0.0" />
     <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
     <PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.4" />

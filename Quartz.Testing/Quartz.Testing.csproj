@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>1.2.1.5</AssemblyVersion>
+    <AssemblyVersion>1.2.1.6</AssemblyVersion>
 
-    <FileVersion>1.2.1.5</FileVersion>
+    <FileVersion>1.2.1.6</FileVersion>
 
     <NoWin32Manifest>true</NoWin32Manifest>
 	  <LangVersion>8.0</LangVersion>
@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="FluentValidation" Version="9.2.2" />
-    <PackageReference Include="Librarium" Version="1.0.2" />
+    <PackageReference Include="Librarium" Version="1.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit.Reactive" Version="0.47.0" />

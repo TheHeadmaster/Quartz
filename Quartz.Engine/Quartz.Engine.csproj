@@ -5,8 +5,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
-    <AssemblyVersion>1.2.1.5</AssemblyVersion>
-    <FileVersion>1.2.1.5</FileVersion>
+    <AssemblyVersion>1.2.1.6</AssemblyVersion>
+    <FileVersion>1.2.1.6</FileVersion>
     <ApplicationIcon>Quartz.ico</ApplicationIcon>
 	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
@@ -37,7 +37,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Librarium" Version="1.0.2" />
+    <PackageReference Include="Librarium" Version="1.0.3" />
     <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
     <PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.9" />
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.1" />

@@ -22,7 +22,7 @@ namespace Quartz.IDE
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }
