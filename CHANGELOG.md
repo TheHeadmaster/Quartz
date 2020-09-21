@@ -18,6 +18,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Serilog Compact Formatting Logging Library [[4c036a9](https://github.com/TheHeadmaster/Quartz/commit/4c036a987785600d983c506644ba4ba0f520e127)]
 - ➕ Add Serilog Exception Logging Library [[355b7ad](https://github.com/TheHeadmaster/Quartz/commit/355b7ad47ede98a1736197d57193db7b3d32d0cc)]
 - ➕ Add Serilog Seq Sink Library [[87a8b9f](https://github.com/TheHeadmaster/Quartz/commit/87a8b9fb8f50791b19b0f8fd160192c5e7e53137)]
 - ➕ Add Serilog File Sink Library [[c913daa](https://github.com/TheHeadmaster/Quartz/commit/c913daa61ce5eeb4bd126adfd2285980d0348c28)]
