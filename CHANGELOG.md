@@ -24,6 +24,7 @@
 
 ### Dependency Changes
 
+- ➕ Add PersistentEntity Database Library [[f16ceb7](https://github.com/TheHeadmaster/Quartz/commit/f16ceb7bde0954c33f627831c16f6c87ba151b88)]
 - ➕ Add FluentAssertions Testing Library [[f42ffa1](https://github.com/TheHeadmaster/Quartz/commit/f42ffa1550bf1ba14d7b1ac9ecfacba9a8ca3830)]
 - ➕ Add XBehave Testing Library [[6ca9c8b](https://github.com/TheHeadmaster/Quartz/commit/6ca9c8b305edfdb966823104807d9d540038e962)]
 - ⬆️ Update XUnit Visual Studio Runner 2.4.0 ➡️ 2.4.3 [[0506e07](https://github.com/TheHeadmaster/Quartz/commit/0506e0758e62a0abd8e43f323a664e340701e7e6)]
