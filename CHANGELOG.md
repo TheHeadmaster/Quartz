@@ -18,6 +18,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Serilog File Sink Library [[c913daa](https://github.com/TheHeadmaster/Quartz/commit/c913daa61ce5eeb4bd126adfd2285980d0348c28)]
 - ➕ Add Serilog Console Sink Library [[3edad91](https://github.com/TheHeadmaster/Quartz/commit/3edad910758b4cde528eda27a3e6abd50c863d05)]
 - ➕ Add Serilog Debug Sink Library [[49a95ba](https://github.com/TheHeadmaster/Quartz/commit/49a95ba462761db9ce5101b9426d4bd35fd659f3)]
 - ➕ Add Serilog Logging Library [[48b5bcf](https://github.com/TheHeadmaster/Quartz/commit/48b5bcf6780bd0d3c4f9e2c7c33f755765094e21)]
