@@ -5,8 +5,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
-    <AssemblyVersion>1.2.1.3</AssemblyVersion>
-    <FileVersion>1.2.1.3</FileVersion>
+    <AssemblyVersion>1.2.1.4</AssemblyVersion>
+    <FileVersion>1.2.1.4</FileVersion>
     <ApplicationIcon>Quartz.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -40,6 +40,7 @@
     <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
     <PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.9" />
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.1" />
+    <PackageReference Include="PersistentEntity" Version="1.0.0.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
