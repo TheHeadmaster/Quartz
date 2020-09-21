@@ -5,8 +5,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
-    <AssemblyVersion>1.0.0.26</AssemblyVersion>
-    <FileVersion>1.0.0.26</FileVersion>
+    <AssemblyVersion>1.0.0.27</AssemblyVersion>
+    <FileVersion>1.0.0.27</FileVersion>
     <ApplicationIcon>Quartz.ico</ApplicationIcon>
   </PropertyGroup>
 
