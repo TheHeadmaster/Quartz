@@ -32,6 +32,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Microsoft.DotNet.PlatformAbstractions Compiler Library [[6161fb5](https://github.com/TheHeadmaster/Quartz/commit/6161fb5ca76ff4427981196c17dbd2f61c62c85b)]
 - ➕ Add Microsoft.CodeAnalysis.Workspaces.MSBuild Compiler Library [[3d38157](https://github.com/TheHeadmaster/Quartz/commit/3d3815736752a74a9ebdbd698952fd54dbfb32f1)]
 - ➕ Add Microsoft.CodeAnalysis.CSharp.Workspaces Compiler Library [[31525e4](https://github.com/TheHeadmaster/Quartz/commit/31525e438f4983bae0eaefcfb5d6b385cd9ab32e)]
 - ➕ Add Microsoft.CodeAnalysis Compiler Library [[163612c](https://github.com/TheHeadmaster/Quartz/commit/163612c5a493c5ce9155937661140faa490f7cdd)]
