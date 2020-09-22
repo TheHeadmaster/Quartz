@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>1.2.1.19</AssemblyVersion>
+    <AssemblyVersion>1.2.1.20</AssemblyVersion>
 
-    <FileVersion>1.2.1.19</FileVersion>
+    <FileVersion>1.2.1.20</FileVersion>
 
     <NoWin32Manifest>true</NoWin32Manifest>
 	  <LangVersion>8.0</LangVersion>
