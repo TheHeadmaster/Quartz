@@ -4,13 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.1.27</AssemblyVersion>
-    <FileVersion>1.2.1.27</FileVersion>
+    <AssemblyVersion>1.2.1.29</AssemblyVersion>
+    <FileVersion>1.2.1.29</FileVersion>
 	  <LangVersion>8.0</LangVersion>
+	  <ApplicationIcon>Resources\Images\Quartz.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="FodyWeavers.xsd" />
+    <None Remove="Resources\Images\Quartz.ico" />
+    <None Remove="Resources\Images\Quartz.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +32,7 @@
     <PackageReference Include="Librarium.WPF" Version="1.0.0" />
     <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
     <PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.4" />
+    <PackageReference Include="Microsoft.Build" Version="16.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit.Reactive" Version="0.47.0" />
     <PackageReference Include="PersistentEntity" Version="1.0.0.1" />
@@ -50,6 +54,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Quartz.Core\Quartz.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Quartz.ico" />
+    <Resource Include="Resources\Images\Quartz.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Windows\" />
   </ItemGroup>
 
 </Project>

@@ -62,7 +62,7 @@ namespace Quartz.IDE
         /// <summary>
         /// Enters the program.
         /// </summary>
-        [Log("Starting...", "S")]
+        [Log("Starting...", "Quartz is now running.", "An unhandled exception has occurred.")]
         private static void EnterProgram()
         {
             UpdateManager.Initialize();
@@ -75,7 +75,7 @@ namespace Quartz.IDE
         /// <summary>
         /// Loads the Preferences from disk or creates default preferences if none exists.
         /// </summary>
-        [Log("Initializing Preferences...")]
+        [Log("Initializing Preferences...", "Preferences initialization complete.")]
         private static void InitializePreferences()
         {
             if (!Directory.Exists(Path.Combine(AppMeta.AppDataDirectory, "preferences.json")))

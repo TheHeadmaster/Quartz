@@ -7,6 +7,7 @@ using DynamicData;
 using System.Windows;
 using System.Linq;
 using Quartz.IDE.Json;
+using ReactiveUI.Fody.Helpers;
 
 namespace Quartz.IDE.ObjectModel
 {
@@ -40,11 +41,16 @@ namespace Quartz.IDE.ObjectModel
         /// Gets a list of most recently opened projects. The list will keep no more than 10
         /// recently opened projects.
         /// </summary>
-        public SourceCache<RecentItem, string> RecentlyOpenedProjects { get; } = new SourceCache<RecentItem, string>(x => x.Path);
+        [Reactive]
+        public SourceCache<RecentItem, string> RecentlyOpenedProjects { get; set; } = new SourceCache<RecentItem, string>(x => x.Path);
 
         public Preferences()
         {
-            this.RecentlyOpenedProjects.LimitSizeTo(10);
+            this.WhenAnyValue(x => x.RecentlyOpenedProjects)
+                .Subscribe(x =>
+                {
+                    this.RecentlyOpenedProjects.LimitSizeTo(10);
+                });
         }
 
         /// <summary>
