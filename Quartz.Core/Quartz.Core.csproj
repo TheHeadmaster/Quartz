@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>1.2.1.24</AssemblyVersion>
-    <FileVersion>1.2.1.24</FileVersion>
+    <AssemblyVersion>1.2.1.25</AssemblyVersion>
+    <FileVersion>1.2.1.25</FileVersion>
 	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
@@ -12,6 +12,7 @@
   </Target>
 
   <ItemGroup>
+    <PackageReference Include="DynamicData" Version="6.16.9" />
     <PackageReference Include="FluentValidation" Version="9.2.2" />
     <PackageReference Include="Fody" Version="6.2.6">
       <PrivateAssets>all</PrivateAssets>

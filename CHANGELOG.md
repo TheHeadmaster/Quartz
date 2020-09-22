@@ -5,6 +5,7 @@
 
 ### Optimization
 
+- ♻️ Preferences now save to the user&#x27;s AppData directory instead of directly inside the Program Files folder [[609d511](https://github.com/TheHeadmaster/Quartz/commit/609d511f626c70ab2d7946ff75e4dfb2961d09ca)]
 - ♻️ Move Logs output directory from Program Files to AppData [[7dc0c43](https://github.com/TheHeadmaster/Quartz/commit/7dc0c43e3ca19f4d4997224a42cef9cc6ac9c099)]
 - ♻️ Common functionality between Quartz.IDE and Quartz.Engine moved to Quartz.Core [[be3afff](https://github.com/TheHeadmaster/Quartz/commit/be3afff9a840c2c8663ab2039691c4674fd83e95)]
 

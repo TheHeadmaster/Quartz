@@ -5,15 +5,16 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>1.2.1.8</AssemblyVersion>
+    <AssemblyVersion>1.2.1.9</AssemblyVersion>
 
-    <FileVersion>1.2.1.8</FileVersion>
+    <FileVersion>1.2.1.9</FileVersion>
 
     <NoWin32Manifest>true</NoWin32Manifest>
 	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DynamicData" Version="6.16.9" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="FluentValidation" Version="9.2.2" />
     <PackageReference Include="Librarium" Version="1.0.3" />

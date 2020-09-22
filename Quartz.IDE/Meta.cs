@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using Librarium.Core;
+using Quartz.IDE.ObjectModel;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
