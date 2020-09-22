@@ -32,6 +32,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Microsoft.Build.Tasks.Core Compiler Library [[799113b](https://github.com/TheHeadmaster/Quartz/commit/799113b98be17deae5b2801aae314b317083593c)]
 - ➕ Add Microsoft.Build.Locator Compiler Library [[7a10c60](https://github.com/TheHeadmaster/Quartz/commit/7a10c608ced68ff2e40f6743ef19254807de8683)]
 - ➕ Add Microsoft.Build.Framework Compiler Library [[376c473](https://github.com/TheHeadmaster/Quartz/commit/376c4732c627cbcde6ed34c6957cdbca92411f49)]
 - ➕ Add Microsoft.Build.Runtime Compiler Library [[51efa89](https://github.com/TheHeadmaster/Quartz/commit/51efa8993dbe3b1bef5f22f96939f82c312956ba)]
