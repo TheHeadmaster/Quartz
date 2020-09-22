@@ -4,10 +4,11 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.1.29</AssemblyVersion>
-    <FileVersion>1.2.1.29</FileVersion>
+    <AssemblyVersion>1.2.1.61</AssemblyVersion>
+    <FileVersion>1.2.1.61</FileVersion>
 	  <LangVersion>8.0</LangVersion>
 	  <ApplicationIcon>Resources\Images\Quartz.ico</ApplicationIcon>
+	  <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,12 +33,23 @@
     <PackageReference Include="Librarium.WPF" Version="1.0.0" />
     <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
     <PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.4" />
-    <PackageReference Include="Microsoft.Build" Version="16.6.0" />
-    <PackageReference Include="Microsoft.Build.Runtime" Version="16.6.0" />
+		  <PackageReference Include="Microsoft.Build" Version="16.6.0" />
+		  <PackageReference Include="Microsoft.Build.Framework" Version="16.6.0" />
+		  <PackageReference Include="Microsoft.Build.Locator" Version="1.2.6" />
+		  <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.6.0" />
+		  <PackageReference Include="Microsoft.CodeAnalysis" Version="3.7.0" />
+		  <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.7.0" />
+		  <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.7.0" />
+		  <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
+		  <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.6" />
+		  <PackageReference Include="Microsoft.NET.HostModel" Version="3.1.6" />
+		  <PackageReference Include="NuGet.ProjectModel" Version="5.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit.Reactive" Version="0.47.0" />
     <PackageReference Include="PersistentEntity" Version="1.0.0.1" />
-    <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.9">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="ReactiveUI" Version="11.5.35" />
     <PackageReference Include="ReactiveUI.Events.WPF" Version="11.5.35" />
     <PackageReference Include="ReactiveUI.Fody" Version="11.5.35" />

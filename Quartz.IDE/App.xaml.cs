@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Librarium.Core;
 using Librarium.Json;
+using Microsoft.Build.Locator;
 using Quartz.Core.Diagnostics;
 using Quartz.IDE.Json;
 using Quartz.IDE.ObjectModel;
@@ -67,6 +68,8 @@ namespace Quartz.IDE
         {
             UpdateManager.Initialize();
 
+            MSBuildLocator.RegisterDefaults();
+
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 
             new MainWindow().Show();
@@ -106,10 +109,11 @@ namespace Quartz.IDE
         /// <summary>
         /// Defines the flag that determines whether or not the program is running in debug mode.
         /// </summary>
-        private static void DefineDebugFlag() =>
+        private static void DefineDebugFlag()
+        {
 #if DEBUG
             Metadata.IsDebug = true;
-
 #endif
+        }
     }
 }

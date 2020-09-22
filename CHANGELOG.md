@@ -32,6 +32,9 @@
 
 ### Dependency Changes
 
+- ➕ Add Microsoft.Build.Runtime Compiler Library [[51efa89](https://github.com/TheHeadmaster/Quartz/commit/51efa8993dbe3b1bef5f22f96939f82c312956ba)]
+- ➕ Add Microsoft.Build.Engine Compiler Library [[7c72459](https://github.com/TheHeadmaster/Quartz/commit/7c724592a0fe3cd0a6c886e1f125c7a4cefb1d56)]
+- ➕ Add Microsoft.Build Compiler Library [[29d06f6](https://github.com/TheHeadmaster/Quartz/commit/29d06f678ec5271a88c9d211a69012e517b58c76)]
 - ⬆️ Update Librarium 1.0.2 ➡️ 1.0.3 [[27e4ffc](https://github.com/TheHeadmaster/Quartz/commit/27e4ffcc71830e594aa5a2529ce5dd3dee1a12b6)]
 - ➕ Add PersistentEntity Database Library [[f16ceb7](https://github.com/TheHeadmaster/Quartz/commit/f16ceb7bde0954c33f627831c16f6c87ba151b88)]
 - ➕ Add FluentAssertions Testing Library [[f42ffa1](https://github.com/TheHeadmaster/Quartz/commit/f42ffa1550bf1ba14d7b1ac9ecfacba9a8ca3830)]
