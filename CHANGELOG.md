@@ -32,6 +32,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Microsoft.Build.Framework Compiler Library [[376c473](https://github.com/TheHeadmaster/Quartz/commit/376c4732c627cbcde6ed34c6957cdbca92411f49)]
 - ➕ Add Microsoft.Build.Runtime Compiler Library [[51efa89](https://github.com/TheHeadmaster/Quartz/commit/51efa8993dbe3b1bef5f22f96939f82c312956ba)]
 - ➕ Add Microsoft.Build.Engine Compiler Library [[7c72459](https://github.com/TheHeadmaster/Quartz/commit/7c724592a0fe3cd0a6c886e1f125c7a4cefb1d56)]
 - ➕ Add Microsoft.Build Compiler Library [[29d06f6](https://github.com/TheHeadmaster/Quartz/commit/29d06f678ec5271a88c9d211a69012e517b58c76)]
