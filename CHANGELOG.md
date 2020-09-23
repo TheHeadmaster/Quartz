@@ -34,6 +34,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Entity Framework Core Database Library [[061e05f](https://github.com/TheHeadmaster/Quartz/commit/061e05f58767b9fc545a9bb51b0c8cfcc9f39005)]
 - ➕ Add Microsoft.NET.HostModel Compiler Library [[b3f1780](https://github.com/TheHeadmaster/Quartz/commit/b3f1780691654be8e726010401b9e032a20ca65b)]
 - ➕ Add Microsoft.Extensions.DependencyModel Compiler Library [[c7cdb35](https://github.com/TheHeadmaster/Quartz/commit/c7cdb35f54fa4ff87d63b10cfa4a49487bee94d4)]
 - ➕ Add Microsoft.DotNet.PlatformAbstractions Compiler Library [[6161fb5](https://github.com/TheHeadmaster/Quartz/commit/6161fb5ca76ff4427981196c17dbd2f61c62c85b)]
