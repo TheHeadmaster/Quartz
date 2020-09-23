@@ -5,5 +5,12 @@
              Startup="AppStartup"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/UI/ColorDictionary.xaml" />
+                <ResourceDictionary Source="Resources/UI/AnimationDictionary.xaml" />
+                <ResourceDictionary Source="Resources/UI/ControlDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

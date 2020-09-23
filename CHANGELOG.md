@@ -12,6 +12,7 @@
 
 ### Breaking and Major Changes
 
+- 🏗️ Add ability to compile and run Mono projects [[87c4356](https://github.com/TheHeadmaster/Quartz/commit/87c43566024c793bd0dcaad57c748b49279e075a)]
 - 💥 Project files are now in Database format instead of Json file format [[764803c](https://github.com/TheHeadmaster/Quartz/commit/764803cd13508fdbf1c89a5ae1b9419eb5228a5c)]
 - 💥 Previous projects are now incompatible moving forward, starting with 1.2.1 [[6fafdf3](https://github.com/TheHeadmaster/Quartz/commit/6fafdf35d357ef65683dd6c16e97b9a1e112430d)]
 - 🏗️ Add Quartz.Testing Unit Test Project [[7f867f4](https://github.com/TheHeadmaster/Quartz/commit/7f867f47734ee21e6db395c950ce515f0f5eff9e)]

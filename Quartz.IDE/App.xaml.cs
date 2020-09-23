@@ -70,6 +70,8 @@ namespace Quartz.IDE
 
             MSBuildLocator.RegisterDefaults();
 
+            InitializePreferences();
+
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 
             new MainWindow().Show();

@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Quartz.Resources.ControlDefinitions">
+    <ControlTemplate x:Key="MagneticVerticalScrollBarTemplate"
+                 TargetType="{x:Type ScrollBar}">
+        <Grid HorizontalAlignment="Left" Margin="-1,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="18" />
+                <RowDefinition Height="0.00001*" />
+                <RowDefinition MaxHeight="18" />
+            </Grid.RowDefinitions>
+            <RepeatButton Grid.Row="0"
+                  Style="{DynamicResource ScrollBarLineButton}"
+                  Height="18"
+                  Command="ScrollBar.LineUpCommand"
+                  Content="M 0 4 L 8 4 L 4 0 Z" />
+            <Track x:Name="PART_Track"
+           Grid.Row="1"
+           IsDirectionReversed="true" Margin="0">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource ScrollBarPageButton}"
+                      Command="ScrollBar.PageUpCommand" Margin="0" />
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{DynamicResource ScrollBarThumb}"
+               Margin="1,0,1,0" BorderBrush="{DynamicResource BaseBorderColor}" Background="{DynamicResource AccentBackgroundColor}">
+                    </Thumb>
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource ScrollBarPageButton}"
+                      Command="ScrollBar.PageDownCommand" Margin="0" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <Polygon x:Name="MagneticPoly" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Bottom" Points="3,-18 3,-13 9,-13 9,-18" Fill="{DynamicResource AccentBackgroundColor}" StrokeThickness="1" Stroke="{DynamicResource BaseBorderColor}" Opacity="0" />
+            <RepeatButton Grid.Row="2" Margin="0"
+                  Style="{DynamicResource ScrollBarLineButton}"
+                  Height="18"
+                  Command="ScrollBar.LineDownCommand"
+                  Content="M 0 0 L 4 4 L 8 0 Z" />
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>
