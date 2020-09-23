@@ -7,12 +7,14 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using DynamicData;
 using Librarium.Core;
 using Librarium.Json;
 using Microsoft.Build.Locator;
 using Quartz.Core.Diagnostics;
 using Quartz.IDE.Json;
 using Quartz.IDE.ObjectModel;
+using Quartz.IDE.Windows;
 using ReactiveUI;
 using Serilog;
 using Splat;
@@ -83,9 +85,9 @@ namespace Quartz.IDE
         [Log("Initializing Preferences...", "Preferences initialization complete.")]
         private static void InitializePreferences()
         {
-            if (!Directory.Exists(Path.Combine(AppMeta.AppDataDirectory, "preferences.json")))
+            if (!Directory.Exists(Metadata.AppDataDirectory))
             {
-                Directory.CreateDirectory(Path.Combine(AppMeta.AppDataDirectory, "preferences.json"));
+                Directory.CreateDirectory(Metadata.AppDataDirectory);
             }
 
             Preferences = JFile.Load<PreferencesFile>(Metadata.AppDataDirectory, "preferences.json").CreateModel();

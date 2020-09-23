@@ -10,6 +10,11 @@ namespace Quartz.IDE
     public class RecentItem
     {
         /// <summary>
+        /// The display header for menu items.
+        /// </summary>
+        public string Header => $"\"{this.Name}\" {this.Path}";
+
+        /// <summary>
         /// The name of the project.
         /// </summary>
         public string Name { get; }

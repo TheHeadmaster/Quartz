@@ -18,13 +18,12 @@ namespace Quartz.Core.ObjectModel
         {
             modelBuilder.Entity<ElementMatchup>()
                 .HasOne(pt => pt.AttackingElement)
-                .WithMany(p => p.ElementMatchups)
-                .HasForeignKey(pt => pt.AttackingElementID);
+                .WithMany(p => p.ElementMatchups);
 
             modelBuilder.Entity<ElementMatchup>()
                 .HasOne(pt => pt.DefendingElement)
-                .WithMany(t => t.ElementMatchups)
-                .HasForeignKey(pt => pt.DefendingElementID);
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

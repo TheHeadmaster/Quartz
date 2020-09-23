@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.1.74</AssemblyVersion>
-    <FileVersion>1.2.1.74</FileVersion>
+    <AssemblyVersion>1.2.1.125</AssemblyVersion>
+    <FileVersion>1.2.1.125</FileVersion>
 	  <LangVersion>8.0</LangVersion>
 	  <ApplicationIcon>Resources\Images\Quartz.ico</ApplicationIcon>
 	  <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
@@ -15,6 +15,7 @@
     <None Remove="FodyWeavers.xsd" />
     <None Remove="Resources\Images\Quartz.ico" />
     <None Remove="Resources\Images\Quartz.png" />
+    <None Remove="Resources\Images\UI\New Project.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,6 +64,7 @@
     <PackageReference Include="ReactiveUI.Fody" Version="11.5.35" />
     <PackageReference Include="ReactiveUI.Testing" Version="11.5.35" />
     <PackageReference Include="ReactiveUI.Validation" Version="1.5.5" />
+    <PackageReference Include="ReactiveUI.WPF" Version="11.5.35" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Exceptions" Version="5.6.0" />
     <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
@@ -80,6 +82,7 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Quartz.ico" />
     <Resource Include="Resources\Images\Quartz.png" />
+    <Resource Include="Resources\Images\UI\New Project.png" />
   </ItemGroup>
 
 </Project>

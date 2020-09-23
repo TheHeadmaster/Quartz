@@ -6,17 +6,18 @@
         xmlns:local="clr-namespace:Quartz.IDE"
         xmlns:l="clr-namespace:Librarium.WPF.Windows;assembly=Librarium.WPF"
         xmlns:commands="clr-namespace:Quartz.IDE.Commands"
-        xmlns:controls="clr-namespace:Quartz.IDE.Controls"
         xmlns:vm="clr-namespace:Quartz.IDE.ViewModels"
         mc:Ignorable="d" Height="768" Width="1366" WindowStartupLocation="CenterScreen" Background="{DynamicResource BaseBackgroundColor}" Style="{DynamicResource MainWindowStyle}">
     <Window.InputBindings>
         <KeyBinding Key="F4" Modifiers="Alt" Command="commands:CloseCommand.Instance" />
+        <!--
         <KeyBinding Key="N" Modifiers="Ctrl+Shift" Command="commands:NewProjectCommand.Instance" />
         <KeyBinding Key="O" Modifiers="Ctrl+Shift" Command="commands:OpenProjectCommand.Instance" />
         <KeyBinding Key="S" Modifiers="Ctrl" Command="commands:SaveCommand.Instance" />
         <KeyBinding Key="S" Modifiers="Ctrl+Shift" Command="commands:SaveAllCommand.Instance" />
         <KeyBinding Key="P" Modifiers="Alt" Command="commands:OpenPreferencesCommand.Instance" />
         <KeyBinding Key="F1" Modifiers="Ctrl" Command="commands:OpenHelpCommand.Instance" />
+        -->
     </Window.InputBindings>
     <Border x:Name="WindowBorder" Background="{DynamicResource BaseBackgroundColor}" BorderBrush="{DynamicResource BaseBorderColor}" BorderThickness="2">
         <Grid>

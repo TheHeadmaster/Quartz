@@ -15,9 +15,9 @@ namespace Quartz.IDE.ViewModels
 
         public MainWindowViewModel()
         {
-            App.Metadata.WhenAnyValue(x => x.CurrentProject, x => x.CurrentProject.IsSaved, (x, y) => x)
-                .Select(x => x is null ? "Quartz IDE" : $"Quartz IDE - {x.Name}{(!x.IsSaved ? "*" : null)}")
-                .ToPropertyEx(this, x => x.Title, "Quartz IDE");
+            // App.Metadata.WhenAnyValue(x => x.CurrentProject, x => x.CurrentProject.IsSaved, (x,
+            // y) => x) .Select(x => x is null ? "Quartz IDE" : $"Quartz IDE - {x.Name}{(!x.IsSaved
+            // ? "*" : null)}") .ToPropertyEx(this, x => x.Title, "Quartz IDE");
         }
     }
 }
