@@ -4,7 +4,9 @@ using System.IO;
 using System.Text;
 using Librarium.Core;
 using Librarium.Json;
+using Quartz.Core.Diagnostics;
 using Quartz.IDE.Json;
+using Serilog;
 
 namespace Quartz.IDE.ObjectModel
 {
@@ -29,18 +31,24 @@ namespace Quartz.IDE.ObjectModel
         /// <summary>
         /// Gets all templates defined in the user's AppData directory.
         /// </summary>
-        /// <returns>
-        /// </returns>
+        [Log("Getting templates from disk...")]
         public static List<Template> GetTemplates()
         {
             Directory.CreateDirectory(TemplateDirectory);
             List<Template> templates = new List<Template> { BlankTemplate };
             foreach (string directory in Directory.GetDirectories(TemplateDirectory))
             {
+                Log.Information("Template found: {Directory}. Loading...", Path.GetDirectoryName(directory));
                 string templateFile = Path.Combine(directory, "template.json");
-                if (!File.Exists(templateFile)) { continue; }
+                if (!File.Exists(templateFile))
+                {
+                    Log.Warning("{Directory} Template could not be loaded. template.json file is invalid or missing.", Path.GetDirectoryName(directory));
+                    continue;
+                }
                 templates.Add(JFile.Load<TemplateFile>(templateFile).CreateModel());
+                Log.Information("Load template {Directory} was successful.", Path.GetDirectoryName(directory));
             }
+            Log.Information("Total templates loaded: {Templates}", templates.Count);
             return templates;
         }
     }

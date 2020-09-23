@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.1.125</AssemblyVersion>
-    <FileVersion>1.2.1.125</FileVersion>
+    <AssemblyVersion>1.2.1.127</AssemblyVersion>
+    <FileVersion>1.2.1.127</FileVersion>
 	  <LangVersion>8.0</LangVersion>
 	  <ApplicationIcon>Resources\Images\Quartz.ico</ApplicationIcon>
 	  <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
@@ -55,7 +55,7 @@
 		  <PackageReference Include="NuGet.ProjectModel" Version="5.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit.Reactive" Version="0.47.0" />
-    <PackageReference Include="PersistentEntity" Version="1.0.0.1" />
+    <PackageReference Include="PersistentEntity" Version="1.0.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

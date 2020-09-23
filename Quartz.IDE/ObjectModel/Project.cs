@@ -8,18 +8,8 @@ namespace Quartz.IDE.ObjectModel
     /// <summary>
     /// Represents a Quartz project.
     /// </summary>
-    public class Project : IModelToFile
+    public class Project : JFileDocumentControl
     {
-        /// <summary>
-        /// The filename of the project file on disk.
-        /// </summary>
-        public string FileName { get; set; }
-
-        /// <summary>
-        /// The path to the project file on disk.
-        /// </summary>
-        public string FilePath { get; set; }
-
         /// <summary>
         /// The name of the project.
         /// </summary>
