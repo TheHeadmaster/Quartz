@@ -34,6 +34,7 @@
 
 ### Dependency Changes
 
+- ➕ Add Entity Framework Core Abstractions Database Library [[09eece9](https://github.com/TheHeadmaster/Quartz/commit/09eece987a7a104966101c1e05fdc1ae1b9fe1a1)]
 - ➕ Add Entity Framework Core Relational Database Library [[50dd33d](https://github.com/TheHeadmaster/Quartz/commit/50dd33dd54a80d285005ecc8cd3e221c4299a7f6)]
 - ➕ Add Entity Framework Core Tools Database Library [[5fff933](https://github.com/TheHeadmaster/Quartz/commit/5fff93334a827dccf4533a8da99431f3c5fd1605)]
 - ➕ Add Entity Framework Core Database Library [[061e05f](https://github.com/TheHeadmaster/Quartz/commit/061e05f58767b9fc545a9bb51b0c8cfcc9f39005)]
