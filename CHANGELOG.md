@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.1-alpha"></a>
-## 1.2.1-alpha (2020-09-22)
+## 1.2.1-alpha (2020-09-23)
 
 ### Optimization
 
@@ -25,6 +25,7 @@
 
 ### New Features
 
+- ✨ Add elements and definable strengths, weaknesses, and immunities [[5e5bcd2](https://github.com/TheHeadmaster/Quartz/commit/5e5bcd27d40b1b867e7b939d331c18cd6e25bc5b)]
 - ✨ Add backwards compatibility check for older projects, and versioning for projects moving forward [[03b4966](https://github.com/TheHeadmaster/Quartz/commit/03b4966b2d30ac6139d5602ac518228d2c222722)]
 
 ### Diagnostics
