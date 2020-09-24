@@ -7,11 +7,13 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using DynamicData;
 using Librarium.Core;
 using Librarium.Json;
 using Microsoft.Build.Locator;
 using Quartz.Core.Diagnostics;
+using Quartz.IDE.Converters;
 using Quartz.IDE.Json;
 using Quartz.IDE.ObjectModel;
 using Quartz.IDE.Windows;
@@ -75,6 +77,9 @@ namespace Quartz.IDE
             InitializePreferences();
 
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
+
+            Locator.CurrentMutable.RegisterConstant(new TextToFlowDocumentConverter(),
+                typeof(IBindingTypeConverter));
 
             new MainWindow().Show();
         }

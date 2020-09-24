@@ -18,12 +18,18 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
+            <MenuItem Header="Open..." Style="{DynamicResource BlackMenuItem}">
+                <MenuItem Header="Project" InputGestureText="Ctrl+Shift+O" Command="commands:OpenProjectCommand.Instance" Style="{DynamicResource BlackMenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/UI/Open Project.png" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
             <Separator />
             <MenuItem x:Name="RecentlyOpenedProjectsMenuItem" Style="{DynamicResource BlackMenuItem}" Header="Recent Projects...">
                 <MenuItem.ItemTemplate>
                     <DataTemplate>
-                        <MenuItem Style="{DynamicResource BlackMenuItem}" Header="{Binding Header}" />
-                        <!--  Command="commands:OpenProjectCommand.Instance"  CommandParameter="{Binding Path}" -->
+                        <MenuItem Command="commands:OpenProjectCommand.Instance"  CommandParameter="{Binding Path}" Style="{DynamicResource BlackMenuItem}" Header="{Binding Header}" />
                     </DataTemplate>
                 </MenuItem.ItemTemplate>
             </MenuItem>
@@ -31,13 +37,6 @@
         <!--
         <MenuItem Header="File" Style="{DynamicResource BlackMenuItem}">
 
-            <MenuItem Header="Open..." Style="{DynamicResource BlackMenuItem}">
-                <MenuItem Header="Project" InputGestureText="Ctrl+Shift+O" Command="commands:OpenProjectCommand.Instance" Style="{DynamicResource BlackMenuItem}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/Open Project.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
             <MenuItem Header="Close Project" Command="commands:CloseProjectCommand.Instance" Style="{DynamicResource BlackMenuItem}" />
             <Separator />
             <MenuItem x:Name="SaveMenuItem" Command="commands:SaveCommand.Instance" InputGestureText="Ctrl+S" Style="{DynamicResource BlackMenuItem}">
@@ -102,7 +101,9 @@
         <MenuItem Header="Window" IsEnabled="False" Style="{DynamicResource BlackMenuItem}">
             <MenuItem />
         </MenuItem>
+        -->
         <MenuItem Header="Help" Style="{DynamicResource BlackMenuItem}">
+            <!--
             <MenuItem Header="View Help" Style="{DynamicResource BlackMenuItem}" InputGestureText="Ctrl+F1" Command="commands:OpenHelpCommand.Instance">
                 <MenuItem.Icon>
                     <Image Source="/Resources/Help.png" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
@@ -114,12 +115,12 @@
                 </MenuItem.Icon>
             </MenuItem>
             <Separator />
+            -->
             <MenuItem Header="About Quartz Editor" Style="{DynamicResource BlackMenuItem}" Command="commands:OpenAboutWindowCommand.Instance">
                 <MenuItem.Icon>
-                    <Image Source="/Resources/Info.png" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <Image Source="/Resources/Images/UI/Info.png" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
                 </MenuItem.Icon>
             </MenuItem>
         </MenuItem>
-        -->
     </Menu>
 </rui:ReactiveUserControl>

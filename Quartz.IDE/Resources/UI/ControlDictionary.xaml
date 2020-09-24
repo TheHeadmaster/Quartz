@@ -43,4 +43,8 @@
     <Style TargetType="xctk:PropertyGrid">
         <Setter Property="HideInheritedProperties" Value="True" />
     </Style>
+
+    <Style TargetType="FlowDocument" BasedOn="{StaticResource {x:Type FlowDocument}}">
+        <Setter Property="Background" Value="{StaticResource BaseHighlightColor}" />
+    </Style>
 </ResourceDictionary>

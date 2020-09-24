@@ -52,15 +52,9 @@ namespace Quartz.IDE.Commands
 
             public LoggerVerbosity Verbosity { get; set; }
 
-            private void EventSource_ErrorRaised(object sender, BuildErrorEventArgs e)
-            {
-                Log.Error(e.Message);
-            }
+            private void EventSource_ErrorRaised(object sender, BuildErrorEventArgs args) => Log.Error("{Message}", args.Message);
 
-            private void EventSource_MessageRaised(object sender, BuildMessageEventArgs e)
-            {
-                Log.Information(e.Message);
-            }
+            private void EventSource_MessageRaised(object sender, BuildMessageEventArgs args) => Log.Information("{Message}", args.Message);
 
             public void Initialize(IEventSource eventSource)
             {

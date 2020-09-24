@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.1.127</AssemblyVersion>
-    <FileVersion>1.2.1.127</FileVersion>
+    <AssemblyVersion>1.2.1.176</AssemblyVersion>
+    <FileVersion>1.2.1.176</FileVersion>
 	  <LangVersion>8.0</LangVersion>
 	  <ApplicationIcon>Resources\Images\Quartz.ico</ApplicationIcon>
 	  <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
@@ -13,9 +13,12 @@
 
   <ItemGroup>
     <None Remove="FodyWeavers.xsd" />
+    <None Remove="Resources\Documents\CHANGELOG.md" />
     <None Remove="Resources\Images\Quartz.ico" />
     <None Remove="Resources\Images\Quartz.png" />
+    <None Remove="Resources\Images\UI\Info.png" />
     <None Remove="Resources\Images\UI\New Project.png" />
+    <None Remove="Resources\Images\UI\Open Project.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -80,9 +83,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Documents\CHANGELOG.md" />
     <Resource Include="Resources\Images\Quartz.ico" />
     <Resource Include="Resources\Images\Quartz.png" />
+    <Resource Include="Resources\Images\UI\Info.png" />
     <Resource Include="Resources\Images\UI\New Project.png" />
+    <Resource Include="Resources\Images\UI\Open Project.png" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy &quot;$(SolutionDir)CHANGELOG.md&quot; /b &quot;$(SolutionDir)Quartz.IDE\Resources\Documents\CHANGELOG.md&quot; /y" />
+  </Target>
 
 </Project>

@@ -39,10 +39,10 @@ namespace Quartz.IDE.ObjectModel
             foreach (string directory in Directory.GetDirectories(TemplateDirectory))
             {
                 Log.Information("Template found: {Directory}. Loading...", Path.GetDirectoryName(directory));
-                string templateFile = Path.Combine(directory, "template.json");
+                string templateFile = Path.Combine(directory, "Template.json");
                 if (!File.Exists(templateFile))
                 {
-                    Log.Warning("{Directory} Template could not be loaded. template.json file is invalid or missing.", Path.GetDirectoryName(directory));
+                    Log.Warning("{Directory} Template could not be loaded. Template.json file is invalid or missing.", Path.GetDirectoryName(directory));
                     continue;
                 }
                 templates.Add(JFile.Load<TemplateFile>(templateFile).CreateModel());

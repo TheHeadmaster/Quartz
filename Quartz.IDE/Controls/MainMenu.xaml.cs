@@ -24,7 +24,6 @@ namespace Quartz.IDE.Controls
     {
         public MainMenu()
         {
-
             this.ViewModel = new MainMenuViewModel();
 
             this.InitializeComponent();
