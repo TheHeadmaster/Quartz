@@ -27,7 +27,15 @@ namespace Quartz.IDE.Windows
         {
             this.InitializeComponent();
 
-            this.ViewModel = new NewProjectWindowViewModel();
+            this.ViewModel = new NewProjectWindowViewModel()
+            {
+                Parent = this,
+                ProjectName = "My Project",
+                ProjectPath = @"C:\"
+            };
+
+            this.ProjectNameTextBox.Watermark = "My Project";
+            this.ProjectPathTextBox.Watermark = @"C:\";
 
             this.WhenActivated(dispose =>
             {
@@ -125,12 +133,48 @@ namespace Quartz.IDE.Windows
                     vm => vm.SelectedPackTemplate.Pack.Description,
                     view => view.PackTemplateDescription.Text)
                 .DisposeWith(dispose);
-            });
-        }
 
-        private void OnFinish(object sender, Xceed.Wpf.Toolkit.Core.CancelRoutedEventArgs args)
-        {
-            // Create a project from templates
+                this.Bind(this.ViewModel,
+                    vm => vm.ProjectName,
+                    view => view.ProjectNameTextBox.Text)
+                .DisposeWith(dispose);
+
+                this.OneWayBind(this.ViewModel,
+                    vm => vm.ProjectNameValidationText,
+                    view => view.ProjectNameValidation.Text)
+                .DisposeWith(dispose);
+
+                this.Bind(this.ViewModel,
+                    vm => vm.ProjectPath,
+                    view => view.ProjectPathTextBox.Text)
+                .DisposeWith(dispose);
+
+                this.OneWayBind(this.ViewModel,
+                    vm => vm.ProjectPathValidationText,
+                    view => view.ProjectPathValidation.Text)
+                .DisposeWith(dispose);
+
+                this.BindCommand(this.ViewModel,
+                    vm => vm.CreateProject,
+                    view => view.TemplateWizard,
+                    nameof(this.TemplateWizard.Finish))
+                .DisposeWith(dispose);
+
+                this.BindCommand(this.ViewModel,
+                    vm => vm.BrowseFolder,
+                    view => view.BrowseButton)
+                .DisposeWith(dispose);
+
+                this.OneWayBind(this.ViewModel,
+                    vm => vm.IsCoreValid,
+                    view => view.CorePage.CanSelectNextPage)
+                .DisposeWith(dispose);
+
+                this.OneWayBind(this.ViewModel,
+                    vm => vm.IsUIValid,
+                    view => view.UIPage.CanSelectNextPage)
+                .DisposeWith(dispose);
+            });
         }
     }
 }

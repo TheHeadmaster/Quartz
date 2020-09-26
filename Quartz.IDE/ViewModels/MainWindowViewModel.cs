@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
+using System.Windows;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -12,6 +14,9 @@ namespace Quartz.IDE.ViewModels
     /// </summary>
     public class MainWindowViewModel : ReactiveObject
     {
+        public ReactiveCommand<Unit, Unit> Close { get; } = ReactiveCommand.Create(() =>
+        Application.Current.Shutdown());
+
         public string Title { [ObservableAsProperty] get; }
 
         public MainWindowViewModel()

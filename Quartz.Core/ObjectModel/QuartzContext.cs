@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using PersistentEntity;
+using ReactiveUI;
 
 namespace Quartz.Core.ObjectModel
 {
@@ -24,6 +25,10 @@ namespace Quartz.Core.ObjectModel
                 .HasOne(pt => pt.DefendingElement)
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ReactiveObject>().Ignore(c => c.Changed);
+            modelBuilder.Entity<ReactiveObject>().Ignore(c => c.Changing);
+            modelBuilder.Entity<ReactiveObject>().Ignore(c => c.ThrownExceptions);
         }
     }
 }

@@ -5,8 +5,7 @@ using Quartz.IDE.ObjectModel;
 
 namespace Quartz.IDE.ViewModels
 {
-    public class UITemplateViewModel : DocumentControlViewModel<UITemplate>
+    public class UITemplateViewModel : PageViewModel
     {
-        public override UITemplate Model { get; set; }
     }
 }

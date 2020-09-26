@@ -5,8 +5,7 @@ using Quartz.IDE.ObjectModel;
 
 namespace Quartz.IDE.ViewModels
 {
-    public class ProjectViewModel : DocumentControlViewModel<Project>
+    public class ProjectViewModel : PageViewModel
     {
-        public override Project Model { get; set; }
     }
 }

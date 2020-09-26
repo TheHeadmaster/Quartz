@@ -7,6 +7,5 @@ namespace Quartz.IDE.ObjectModel
 {
     public class CoreTemplate : Template
     {
-        public override DocumentControlViewModel CreateViewModel() => new CoreTemplateViewModel { Model = this };
     }
 }

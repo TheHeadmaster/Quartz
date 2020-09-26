@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Windows.Media;
 using Librarium.Core;
 using Quartz.IDE.ObjectModel;
+using Quartz.IDE.UI;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -35,6 +37,24 @@ namespace Quartz.IDE
         /// Gets whether the program is running in debug mode or not.
         /// </summary>
         public bool IsDebug { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets whether a debugger instance is currently running or not.
+        /// </summary>
+        [Reactive]
+        public bool IsRunning { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets the color of the status bar.
+        /// </summary>
+        [Reactive]
+        public StatusBarColor StatusBarColor { get; set; } = StatusBarColor.Idle;
+
+        /// <summary>
+        /// Gets or sets the message displayed in the status bar.
+        /// </summary>
+        [Reactive]
+        public string StatusBarMessage { get; set; } = "Ready";
 
         /// <summary>
         /// Gets the assembly version of the entry assembly.

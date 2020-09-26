@@ -10,8 +10,8 @@
         xmlns:vm="clr-namespace:Quartz.IDE.ViewModels"
         mc:Ignorable="d"
         Title="New Project..." Height="650" Width="800" Background="{StaticResource BaseBackgroundColor}" WindowStartupLocation="CenterScreen" Style="{StaticResource PopupWindowStyle}" Icon="/Resources/Images/Quartz.ico">
-    <xctk:Wizard FinishButtonClosesWindow="True" BorderBrush="{StaticResource AccentBackgroundColor}" Background="{StaticResource BaseBackgroundColor}" Foreground="{StaticResource BaseFontColor}" CanCancel="True" HelpButtonVisibility="Collapsed" Finish="OnFinish">
-        <xctk:WizardPage x:Name="IntroPage" PageType="Interior" Title="Game Template" Description="Please select a game template." BackButtonVisibility="Collapsed" HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
+    <xctk:Wizard x:Name="TemplateWizard" FinishButtonClosesWindow="True" BorderBrush="{StaticResource AccentBackgroundColor}" Background="{StaticResource BaseBackgroundColor}" Foreground="{StaticResource BaseFontColor}" CanCancel="True" HelpButtonVisibility="Collapsed">
+        <xctk:WizardPage x:Name="CorePage" PageType="Interior" Title="Game Template" Description="Please select a game template." BackButtonVisibility="Collapsed" HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
@@ -42,7 +42,7 @@
                 </StackPanel>
             </Grid>
         </xctk:WizardPage>
-        <xctk:WizardPage x:Name="Page1" PageType="Interior" Title="UI Theme" Description="Please select a theme for the User Interface." HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
+        <xctk:WizardPage x:Name="UIPage" PageType="Interior" Title="UI Theme" Description="Please select a theme for the User Interface." HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
@@ -73,7 +73,7 @@
                 </StackPanel>
             </Grid>
         </xctk:WizardPage>
-        <xctk:WizardPage x:Name="Page2" PageType="Interior" Title="Packs" Description="Please select the packs to include in your project." HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
+        <xctk:WizardPage x:Name="PackPage" PageType="Interior" Title="Packs" Description="Please select the packs to include in your project." HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
@@ -107,7 +107,35 @@
                 </StackPanel>
             </Grid>
         </xctk:WizardPage>
-        <xctk:WizardPage x:Name="Page3" PageType="Interior" Title="Finalize" CanFinish="True" Description="Choose a name and location for the new project, then press Finish." NextButtonVisibility="Collapsed" HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
+        <xctk:WizardPage x:Name="FinalizePage" PageType="Interior" Title="Finalize" CanFinish="True" Description="Choose a name and location for the new project, then press Finish." NextButtonVisibility="Collapsed" HeaderBackground="{StaticResource BaseHighlightColor}"  ExteriorPanelBackground="{StaticResource BaseBackgroundColor}" Background="{StaticResource BaseBackgroundColor}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="24" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock VerticalAlignment="Center" Foreground="{StaticResource BaseFontColor}" Margin="12,0,12,4">Project Name</TextBlock>
+                    <xctk:WatermarkTextBox x:Name="ProjectNameTextBox" Foreground="{StaticResource BaseFontColor}" Background="{StaticResource BaseHighlightColor}" Margin="12,0,0,4" HorizontalAlignment="Left" Width="450" />
+                    <TextBlock x:Name="ProjectNameValidation" Margin="12,0,12,0" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Red" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,0,12">
+                    <TextBlock VerticalAlignment="Center" Foreground="{StaticResource BaseFontColor}" Margin="12,0,12,4">Project Path</TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="12,0,0,4">
+                        <xctk:WatermarkTextBox Foreground="{StaticResource BaseFontColor}" Background="{StaticResource BaseHighlightColor}" x:Name="ProjectPathTextBox" Width="450" />
+                        <Button x:Name="BrowseButton" Foreground="{StaticResource BaseFontColor}" Background="{StaticResource BaseHighlightColor}" BorderBrush="{StaticResource BaseBorderColor}" BorderThickness="1" Height="24" Padding="4,0,4,0" Margin="18,0,0,0" Content="Browse..." />
+                    </StackPanel>
+                    <TextBlock x:Name="ProjectPathValidation" Margin="12,0,12,0" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Red" />
+                </StackPanel>
+            </Grid>
         </xctk:WizardPage>
     </xctk:Wizard>
 </rui:BorderlessReactiveWindow>

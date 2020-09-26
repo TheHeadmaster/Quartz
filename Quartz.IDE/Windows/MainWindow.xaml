@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:Quartz.IDE"
         xmlns:l="clr-namespace:Librarium.WPF.Windows;assembly=Librarium.WPF"
         xmlns:commands="clr-namespace:Quartz.IDE.Commands"
+        xmlns:controls="clr-namespace:Quartz.IDE.Controls"
         xmlns:vm="clr-namespace:Quartz.IDE.ViewModels"
-        mc:Ignorable="d" Height="768" Width="1366" WindowStartupLocation="CenterScreen" Background="{DynamicResource BaseBackgroundColor}" Style="{DynamicResource MainWindowStyle}">
+        mc:Ignorable="d" Height="768" Width="1366" Closed="WindowClosed" WindowStartupLocation="CenterScreen" Background="{DynamicResource BaseBackgroundColor}" Style="{DynamicResource MainWindowStyle}">
     <Window.InputBindings>
-        <KeyBinding Key="F4" Modifiers="Alt" Command="commands:CloseCommand.Instance" />
-        <!--
         <KeyBinding Key="N" Modifiers="Ctrl+Shift" Command="commands:NewProjectCommand.Instance" />
         <KeyBinding Key="O" Modifiers="Ctrl+Shift" Command="commands:OpenProjectCommand.Instance" />
+        <!--
+
         <KeyBinding Key="S" Modifiers="Ctrl" Command="commands:SaveCommand.Instance" />
         <KeyBinding Key="S" Modifiers="Ctrl+Shift" Command="commands:SaveAllCommand.Instance" />
         <KeyBinding Key="P" Modifiers="Alt" Command="commands:OpenPreferencesCommand.Instance" />
@@ -24,9 +25,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <!--<controls:MainToolbar Grid.Row="0" />
             <controls:Workspace Grid.Row="1" />-->
+            <controls:MainStatusBar Grid.Row="2" />
         </Grid>
     </Border>
 </l:BorderlessReactiveWindow>

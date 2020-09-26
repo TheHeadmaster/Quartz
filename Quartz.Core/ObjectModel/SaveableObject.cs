@@ -6,25 +6,20 @@ using System.Reactive.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows;
-using Quartz.IDE.ObjectModel.Attributes;
+using Quartz.Core.ObjectModel.Attributes;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace Quartz.IDE.ObjectModel
+namespace Quartz.Core.ObjectModel
 {
-    public abstract class ObservableObject : ReactiveObject
+    public abstract class SaveableObject : ReactiveObject
     {
-        public Visibility DocumentAsteriskVisibility { [ObservableAsProperty] get; }
-
         [Reactive]
         public bool IsSaved { get; set; } = true;
 
-        public ObservableObject()
+        public SaveableObject()
         {
             this.PropertyChanged += this.ObservableObjectPropertyChanged;
-            this.WhenAnyValue(x => x.IsSaved)
-                .Select(x => x ? Visibility.Collapsed : Visibility.Visible)
-                .ToPropertyEx(this, x => x.DocumentAsteriskVisibility);
         }
 
         private void EvaluateSavableChanges(string propertyName)

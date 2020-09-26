@@ -278,46 +278,46 @@ namespace Quartz.IDE.Parsing
 
         public Style Heading2Style
         {
-            get { return (Style)GetValue(Heading2StyleProperty); }
-            set { SetValue(Heading2StyleProperty, value); }
+            get => (Style)this.GetValue(Heading2StyleProperty);
+            set => this.SetValue(Heading2StyleProperty, value);
         }
 
         public Style Heading3Style
         {
-            get { return (Style)GetValue(Heading3StyleProperty); }
-            set { SetValue(Heading3StyleProperty, value); }
+            get => (Style)this.GetValue(Heading3StyleProperty);
+            set => this.SetValue(Heading3StyleProperty, value);
         }
 
         public Style Heading4Style
         {
-            get { return (Style)GetValue(Heading4StyleProperty); }
-            set { SetValue(Heading4StyleProperty, value); }
+            get => (Style)this.GetValue(Heading4StyleProperty);
+            set => this.SetValue(Heading4StyleProperty, value);
         }
 
         public ICommand HyperlinkCommand { get; set; }
 
         public Style ImageStyle
         {
-            get { return (Style)GetValue(ImageStyleProperty); }
-            set { SetValue(ImageStyleProperty, value); }
+            get => (Style)this.GetValue(ImageStyleProperty);
+            set => this.SetValue(ImageStyleProperty, value);
         }
 
         public Style LinkStyle
         {
-            get { return (Style)GetValue(LinkStyleProperty); }
-            set { SetValue(LinkStyleProperty, value); }
+            get => (Style)this.GetValue(LinkStyleProperty);
+            set => this.SetValue(LinkStyleProperty, value);
         }
 
         public Style NormalParagraphStyle
         {
-            get { return (Style)GetValue(NormalParagraphStyleProperty); }
-            set { SetValue(NormalParagraphStyleProperty, value); }
+            get => (Style)this.GetValue(NormalParagraphStyleProperty);
+            set => this.SetValue(NormalParagraphStyleProperty, value);
         }
 
         public Style SeparatorStyle
         {
-            get { return (Style)GetValue(SeparatorStyleProperty); }
-            set { SetValue(SeparatorStyleProperty, value); }
+            get => (Style)this.GetValue(SeparatorStyleProperty);
+            set => this.SetValue(SeparatorStyleProperty, value);
         }
 
         /// <summary>
@@ -328,25 +328,25 @@ namespace Quartz.IDE.Parsing
 
         public Style TableBodyStyle
         {
-            get { return (Style)GetValue(TableBodyStyleProperty); }
-            set { SetValue(TableBodyStyleProperty, value); }
+            get => (Style)this.GetValue(TableBodyStyleProperty);
+            set => this.SetValue(TableBodyStyleProperty, value);
         }
 
         public Style TableHeaderStyle
         {
-            get { return (Style)GetValue(TableHeaderStyleProperty); }
-            set { SetValue(TableHeaderStyleProperty, value); }
+            get => (Style)this.GetValue(TableHeaderStyleProperty);
+            set => this.SetValue(TableHeaderStyleProperty, value);
         }
 
         public Style TableStyle
         {
-            get { return (Style)GetValue(TableStyleProperty); }
-            set { SetValue(TableStyleProperty, value); }
+            get => (Style)this.GetValue(TableStyleProperty);
+            set => this.SetValue(TableStyleProperty, value);
         }
 
         public Markdown()
         {
-            HyperlinkCommand = NavigationCommands.GoToPage;
+            this.HyperlinkCommand = NavigationCommands.GoToPage;
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Quartz.IDE.Parsing
 
             string header = match.Groups[2].Value;
             int level = match.Groups[1].Value.Length;
-            return this.CreateHeader(level, RunSpanGamut(header));
+            return this.CreateHeader(level, this.RunSpanGamut(header));
         }
 
         private Inline BoldEvaluator(Match match, int contentGroup)
@@ -485,8 +485,8 @@ namespace Quartz.IDE.Parsing
                 throw new ArgumentNullException(nameof(match));
             }
 
-            var content = match.Groups[contentGroup].Value;
-            return Create<Bold, Inline>(RunSpanGamut(content));
+            string content = match.Groups[contentGroup].Value;
+            return this.Create<Bold, Inline>(this.RunSpanGamut(content));
         }
 
         private Inline CodeSpanEvaluator(Match match)
@@ -500,10 +500,10 @@ namespace Quartz.IDE.Parsing
             span = Regex.Replace(span, @"^[ ]*", ""); // leading whitespace
             span = Regex.Replace(span, @"[ ]*$", ""); // trailing whitespace
 
-            var result = new Run(span);
-            if (CodeStyle != null)
+            Run result = new Run(span);
+            if (this.CodeStyle != null)
             {
-                result.Style = CodeStyle;
+                result.Style = this.CodeStyle;
             }
 
             return result;
@@ -512,8 +512,8 @@ namespace Quartz.IDE.Parsing
         private TResult Create<TResult, TContent>(IEnumerable<TContent> content)
             where TResult : IAddChild, new()
         {
-            var result = new TResult();
-            foreach (var c in content)
+            TResult result = new TResult();
+            foreach (TContent c in content)
             {
                 result.AddChild(c);
             }
@@ -523,15 +523,15 @@ namespace Quartz.IDE.Parsing
 
         private TableRow CreateTableRow(string[] txts, List<TextAlignment?> aligns)
         {
-            var tableRow = new TableRow();
+            TableRow tableRow = new TableRow();
 
-            foreach (var idx in Enumerable.Range(0, txts.Length))
+            foreach (int idx in Enumerable.Range(0, txts.Length))
             {
-                var txt = txts[idx];
-                var align = aligns[idx];
+                string txt = txts[idx];
+                TextAlignment? align = aligns[idx];
 
-                var paragraph = Create<Paragraph, Inline>(RunSpanGamut(txt));
-                var cell = new TableCell(paragraph);
+                Paragraph paragraph = this.Create<Paragraph, Inline>(this.RunSpanGamut(txt));
+                TableCell cell = new TableCell(paragraph);
 
                 if (align.HasValue)
                 {
@@ -600,7 +600,7 @@ namespace Quartz.IDE.Parsing
             // <code>`bar`</code>
             // ...
 
-            return Evaluate(text, codeSpan, CodeSpanEvaluator, defaultHandler);
+            return this.Evaluate(text, codeSpan, this.CodeSpanEvaluator, defaultHandler);
         }
 
         /// <summary>
@@ -620,8 +620,8 @@ namespace Quartz.IDE.Parsing
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return Evaluate<Block>(text, headerSetext, m => SetextHeaderEvaluator(m),
-                s => Evaluate<Block>(s, headerAtx, m => AtxHeaderEvaluator(m), defaultHandler));
+            return this.Evaluate(text, headerSetext, m => this.SetextHeaderEvaluator(m),
+                s => this.Evaluate(s, headerAtx, m => this.AtxHeaderEvaluator(m), defaultHandler));
         }
 
         /// <summary>
@@ -639,7 +639,7 @@ namespace Quartz.IDE.Parsing
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return Evaluate(text, horizontalRules, RuleEvaluator, defaultHandler);
+            return this.Evaluate(text, horizontalRules, this.RuleEvaluator, defaultHandler);
         }
 
         /// <summary>
@@ -655,7 +655,7 @@ namespace Quartz.IDE.Parsing
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return Evaluate(text, imageInline, ImageInlineEvaluator, defaultHandler);
+            return this.Evaluate(text, imageInline, this.ImageInlineEvaluator, defaultHandler);
         }
 
         /// <summary>
@@ -708,7 +708,7 @@ namespace Quartz.IDE.Parsing
             {
                 if (m.Index > index)
                 {
-                    string prefix = text.Substring(index, m.Index - index);
+                    string prefix = text[index..m.Index];
                     foreach (T t in rest(prefix))
                     {
                         yield return t;
@@ -722,7 +722,7 @@ namespace Quartz.IDE.Parsing
 
             if (index < text.Length)
             {
-                string suffix = text.Substring(index, text.Length - index);
+                string suffix = text[index..];
                 foreach (T t in rest(suffix))
                 {
                     yield return t;
@@ -743,7 +743,7 @@ namespace Quartz.IDE.Parsing
             // split on two or more newlines
             string[] grafs = newlinesMultiple.Split(newlinesLeadingTrailing.Replace(text, ""));
 
-            foreach (var g in grafs)
+            foreach (string g in grafs)
             {
                 Paragraph block = this.Create<Paragraph, Inline>(this.RunSpanGamut(g));
                 block.Style = this.NormalParagraphStyle;
@@ -1116,12 +1116,12 @@ namespace Quartz.IDE.Parsing
             string style = match.Groups[4].Value.Trim();
             string row = match.Groups[6].Value.Trim();
 
-            string[] styles = style.Substring(1, style.Length - 2).Split('|');
-            string[] headers = header.Substring(1, header.Length - 2).Split('|');
+            string[] styles = style[1..^1].Split('|');
+            string[] headers = header[1..^1].Split('|');
             List<string[]> rowList = row.Split('\n').Select(ritm =>
             {
                 string trimRitm = ritm.Trim();
-                return trimRitm.Substring(1, trimRitm.Length - 2).Split('|');
+                return trimRitm[1..^1].Split('|');
             }).ToList();
 
             int maxColCount =

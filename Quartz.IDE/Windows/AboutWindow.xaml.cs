@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Librarium.WPF.Windows;
 using Quartz.IDE.Converters;
+using Quartz.IDE.UI;
 using Quartz.IDE.ViewModels;
 using ReactiveUI;
 
@@ -45,6 +46,16 @@ namespace Quartz.IDE.Windows
                     vmToViewConverterOverride: new TextToFlowDocumentConverter())
                 .DisposeWith(dispose);
             });
+
+            this.Closed += this.AboutWindow_Closed;
+            App.Metadata.StatusBarColor = StatusBarColor.Processing;
+            App.Metadata.StatusBarMessage = "Window Modal";
+        }
+
+        private void AboutWindow_Closed(object sender, EventArgs args)
+        {
+            App.Metadata.StatusBarColor = StatusBarColor.Idle;
+            App.Metadata.StatusBarMessage = "Ready";
         }
     }
 }

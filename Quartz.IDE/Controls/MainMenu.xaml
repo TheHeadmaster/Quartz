@@ -34,6 +34,9 @@
                 </MenuItem.ItemTemplate>
             </MenuItem>
         </MenuItem>
+        <MenuItem Header="Debug" Style="{DynamicResource BlackMenuItem}">
+            <MenuItem Header="Start Debugging" InputGestureText="F5" Style="{DynamicResource BlackMenuItem}" />
+        </MenuItem>
         <!--
         <MenuItem Header="File" Style="{DynamicResource BlackMenuItem}">
 
@@ -89,9 +92,7 @@
         <MenuItem Header="Build" IsEnabled="False" Style="{DynamicResource BlackMenuItem}">
             <MenuItem />
         </MenuItem>
-        <MenuItem Header="Debug" IsEnabled="False" Style="{DynamicResource BlackMenuItem}">
-            <MenuItem />
-        </MenuItem>
+
         <MenuItem Header="Analyze" IsEnabled="False" Style="{DynamicResource BlackMenuItem}">
             <MenuItem />
         </MenuItem>

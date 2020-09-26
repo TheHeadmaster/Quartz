@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Librarium.Json;
+using Quartz.Core.ObjectModel;
 using Quartz.IDE.Json;
 using Quartz.IDE.ViewModels;
 
@@ -13,7 +14,7 @@ namespace Quartz.IDE.ObjectModel
     /// <summary>
     /// Represents a Quartz template.
     /// </summary>
-    public abstract class Template : JFileDocumentControl
+    public abstract class Template : SaveableObject, IModelToFile
     {
         private static List<Type> subclasses;
 
@@ -44,7 +45,9 @@ namespace Quartz.IDE.ObjectModel
         /// </summary>
         public string Description { get; set; }
 
-        public override string Header => this.Name;
+        public string FileName { get; set; }
+
+        public string FilePath { get; set; }
 
         /// <summary>
         /// The name of the template.
@@ -65,7 +68,7 @@ namespace Quartz.IDE.ObjectModel
         /// <summary>
         /// Creates a new json data model, populates it with this project's data, and saves it to disk.
         /// </summary>
-        public override void Save()
+        public void Save()
         {
             TemplateFile file = new TemplateFile();
             file.PopulateFile(this);

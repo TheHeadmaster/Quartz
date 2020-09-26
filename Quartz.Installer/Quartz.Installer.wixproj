@@ -69,7 +69,8 @@
     <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>xcopy "$(SolutionDir)bin\Release\netcoreapp3.1\publish" "$(SolutionDir)Quartz.Installer\Source\" /e /i /y</PreBuildEvent>
+    <PreBuildEvent>xcopy "$(SolutionDir)Quartz.IDE\bin\Release\netcoreapp3.1\publish" "$(SolutionDir)Quartz.Installer\Source\" /e /i /y
+xcopy "$(SolutionDir)Quartz.Engine" "$(SolutionDir)Quartz.Installer\Source\Blank Template" /e /i /y</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

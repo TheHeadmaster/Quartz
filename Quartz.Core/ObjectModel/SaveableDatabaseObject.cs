@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using PersistentEntity;
 
-namespace Quartz.IDE.ObjectModel
+namespace Quartz.Core.ObjectModel
 {
-    public abstract class DatabaseDocumentControl : DocumentControl, IDatabaseObject
+    public class SaveableDatabaseObject : SaveableObject, IDatabaseObject
     {
         public int ID { get; set; }
 

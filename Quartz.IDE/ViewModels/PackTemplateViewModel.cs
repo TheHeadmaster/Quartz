@@ -5,8 +5,7 @@ using Quartz.IDE.ObjectModel;
 
 namespace Quartz.IDE.ViewModels
 {
-    public class PackTemplateViewModel : DocumentControlViewModel<PackTemplate>
+    public class PackTemplateViewModel : PageViewModel
     {
-        public override PackTemplate Model { get; set; }
     }
 }

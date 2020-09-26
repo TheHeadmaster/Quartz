@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Quartz.IDE.Windows"
         xmlns:l="clr-namespace:Librarium.WPF.Windows;assembly=Librarium.WPF"
         mc:Ignorable="d"
-        Title="About Quartz IDE" Height="450" Width="800" Icon="/Resources/Images/Quartz.ico" Style="{StaticResource PopupWindowStyle}" Background="{StaticResource BaseBackgroundColor}" Foreground="{StaticResource BaseFontColor}">
+        Title="About Quartz IDE" Height="450" Width="800" Icon="/Resources/Images/Quartz.ico" Style="{StaticResource PopupWindowStyle}"  Background="{StaticResource BaseBackgroundColor}" Foreground="{StaticResource BaseFontColor}" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24" />
