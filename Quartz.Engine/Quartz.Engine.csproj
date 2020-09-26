@@ -51,7 +51,7 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NuGet.Frameworks" Version="5.7.0" />
-    <PackageReference Include="PersistentEntity" Version="1.0.1" />
+    <PackageReference Include="PersistentEntity" Version="1.0.2" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

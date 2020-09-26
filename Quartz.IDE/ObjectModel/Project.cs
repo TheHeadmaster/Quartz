@@ -22,6 +22,7 @@ namespace Quartz.IDE.ObjectModel
                     .AllowMARS()
                     .UseWindowsAuthentication()
                     .AttachDbFilename(Path.Combine(this.FileName, "Data.mdf"))
+                    .UseSqlExpress()
                     .Build();
 
         public string FileName { get; set; }
