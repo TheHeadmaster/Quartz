@@ -35,7 +35,7 @@
     <PackageReference Include="FontAwesome5" Version="2.0.8" />
     <PackageReference Include="Librarium" Version="1.0.3" />
     <PackageReference Include="Librarium.WPF" Version="1.0.0" />
-    <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
+    <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.123" />
     <PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.4" />
 		  <PackageReference Include="Microsoft.Build" Version="16.6.0" />
 		  <PackageReference Include="Microsoft.Build.Framework" Version="16.6.0" />

@@ -38,7 +38,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Librarium" Version="1.0.3" />
-    <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.122" />
+    <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.123" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.1.8" />
