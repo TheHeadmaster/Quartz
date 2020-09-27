@@ -10,8 +10,8 @@ using Quartz.Core.ObjectModel;
 namespace Quartz.Core.Migrations
 {
     [DbContext(typeof(QuartzContext))]
-    [Migration("20200923013607_Initial")]
-    partial class Initial
+    [Migration("20200926185759_ElementMatchup")]
+    partial class ElementMatchup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,7 +68,7 @@ namespace Quartz.Core.Migrations
 
                     b.HasIndex("DefendingElementID");
 
-                    b.ToTable("ElementMatchup");
+                    b.ToTable("ElementMatchups");
                 });
 
             modelBuilder.Entity("Quartz.Core.ObjectModel.ElementMatchup", b =>

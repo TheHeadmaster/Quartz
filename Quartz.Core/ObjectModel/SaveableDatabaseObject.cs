@@ -12,5 +12,14 @@ namespace Quartz.Core.ObjectModel
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
+
+        public override void Save(Connection connection)
+        {
+            using (DatabaseTransaction<QuartzContext> transaction = new DatabaseTransaction<QuartzContext>(connection))
+            {
+                transaction.AddOrUpdate(this);
+                transaction.SaveChanges();
+            }
+        }
     }
 }

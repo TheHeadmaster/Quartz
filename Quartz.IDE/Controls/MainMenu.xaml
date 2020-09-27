@@ -34,6 +34,9 @@
                 </MenuItem.ItemTemplate>
             </MenuItem>
         </MenuItem>
+        <MenuItem Header="Project" Style="{DynamicResource BlackMenuItem}">
+            <MenuItem x:Name="OpenElementsPage" Header="Elements..." Style="{DynamicResource BlackMenuItem}" />
+        </MenuItem>
         <MenuItem Header="Debug" Style="{DynamicResource BlackMenuItem}">
             <MenuItem Header="Start Debugging" InputGestureText="F5" Style="{DynamicResource BlackMenuItem}" />
         </MenuItem>

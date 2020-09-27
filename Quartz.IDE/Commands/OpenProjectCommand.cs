@@ -69,7 +69,7 @@ namespace Quartz.IDE.Commands
         private int PrepareProject(string path, bool? saveBeforeClosing = true)
         {
             if (path is null) { return 1; }
-            ProjectFile file = JFile.Load<ProjectFile>(Path.GetDirectoryName(path), "Project.json");
+            ProjectFile file = JFile.Load<ProjectFile>(path, "Project.json");
             if (file is null) { return 1; }
             if (file.Version is null)
             {

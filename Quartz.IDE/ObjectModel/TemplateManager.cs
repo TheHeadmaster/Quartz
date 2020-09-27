@@ -23,7 +23,7 @@ namespace Quartz.IDE.ObjectModel
             Version = App.Metadata.Version,
             Description = "A completely blank slate to create a from-scratch project. Recommended for advanced users only.",
             FileName = "Template.json",
-            FilePath = AppMeta.AssemblyDirectory
+            FilePath = Path.Combine(AppMeta.AssemblyDirectory, "Blank Template")
         };
 
         private static UITemplate DefaultUITemplate => new UITemplate

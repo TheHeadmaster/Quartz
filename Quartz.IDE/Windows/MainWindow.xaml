@@ -27,8 +27,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <!--<controls:MainToolbar Grid.Row="0" />
-            <controls:Workspace Grid.Row="1" />-->
+            <!--<controls:MainToolbar Grid.Row="0" />-->
+            <controls:Workspace Grid.Row="1" />
             <controls:MainStatusBar Grid.Row="2" />
         </Grid>
     </Border>

@@ -9,6 +9,8 @@ namespace Quartz.Core.ObjectModel
 {
     public class QuartzContext : DatabaseContext
     {
+        public DbSet<ElementMatchup> ElementMatchups { get; set; }
+
         public DbSet<Element> Elements { get; set; }
 
         public QuartzContext(Connection connection) : base(connection) { }
@@ -25,10 +27,6 @@ namespace Quartz.Core.ObjectModel
                 .HasOne(pt => pt.DefendingElement)
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<ReactiveObject>().Ignore(c => c.Changed);
-            modelBuilder.Entity<ReactiveObject>().Ignore(c => c.Changing);
-            modelBuilder.Entity<ReactiveObject>().Ignore(c => c.ThrownExceptions);
         }
     }
 }

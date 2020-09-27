@@ -5,14 +5,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
-    <AssemblyVersion>1.2.1.30</AssemblyVersion>
-    <FileVersion>1.2.1.30</FileVersion>
+    <AssemblyVersion>1.2.1.33</AssemblyVersion>
+    <FileVersion>1.2.1.33</FileVersion>
     <ApplicationIcon>Quartz.ico</ApplicationIcon>
 	  <LangVersion>8.0</LangVersion>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;NU1701</NoWarn>
+    <DocumentationFile>C:\Users\david\Dropbox\Development\Visual Studio\Quartz\Quartz.Engine\Quartz.Engine.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -51,7 +53,7 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NuGet.Frameworks" Version="5.7.0" />
-    <PackageReference Include="PersistentEntity" Version="1.0.2" />
+    <PackageReference Include="PersistentEntity" Version="1.0.3" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

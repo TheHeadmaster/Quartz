@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Quartz.Core.ObjectModel;
 
 namespace Quartz.Core.Migrations
 {
     [DbContext(typeof(QuartzContext))]
-    partial class QuartzContextModelSnapshot : ModelSnapshot
+    [Migration("20200926063719_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +68,7 @@ namespace Quartz.Core.Migrations
 
                     b.HasIndex("DefendingElementID");
 
-                    b.ToTable("ElementMatchups");
+                    b.ToTable("ElementMatchup");
                 });
 
             modelBuilder.Entity("Quartz.Core.ObjectModel.ElementMatchup", b =>

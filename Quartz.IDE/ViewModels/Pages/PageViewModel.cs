@@ -6,7 +6,7 @@ using Quartz.IDE.ObjectModel;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace Quartz.IDE.ViewModels
+namespace Quartz.IDE.ViewModels.Pages
 {
     /// <summary>
     /// Represents a ViewModel for a page.
@@ -14,5 +14,7 @@ namespace Quartz.IDE.ViewModels
     public abstract class PageViewModel : ReactiveObject
     {
         public string Header { [ObservableAsProperty]get; }
+
+        public string Identifier { [ObservableAsProperty]get; }
     }
 }

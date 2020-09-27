@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Media;
+using DynamicData;
+using DynamicData.Binding;
 using Librarium.Core;
 using Quartz.IDE.ObjectModel;
 using Quartz.IDE.UI;
+using Quartz.IDE.ViewModels;
+using Quartz.IDE.ViewModels.Pages;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -45,6 +51,17 @@ namespace Quartz.IDE
         public bool IsRunning { get; set; } = false;
 
         /// <summary>
+        /// Gets or sets the open pages in the workspace.
+        /// </summary>
+        public ObservableCollectionExtended<PageViewModel> Pages { get; } = new ObservableCollectionExtended<PageViewModel>();
+
+        /// <summary>
+        /// Gets or sets the selected open page in the workspace.
+        /// </summary>
+        [Reactive]
+        public PageViewModel SelectedPage { get; set; }
+
+        /// <summary>
         /// Gets or sets the color of the status bar.
         /// </summary>
         [Reactive]
@@ -60,5 +77,25 @@ namespace Quartz.IDE
         /// Gets the assembly version of the entry assembly.
         /// </summary>
         public Version Version => Assembly.GetEntryAssembly().GetName().Version;
+
+        /// <summary>
+        /// Opens the specified page.
+        /// </summary>
+        /// <param name="page">
+        /// The page to open.
+        /// </param>
+        public Task OpenPageAsync(PageViewModel page)
+        {
+            PageViewModel newViewModel = this.Pages.FirstOrDefault(x => x.Identifier == page.Identifier);
+            if (newViewModel is null)
+            {
+                newViewModel = page;
+
+                this.Pages.Add(newViewModel);
+            }
+
+            this.SelectedPage = newViewModel;
+            return Task.CompletedTask;
+        }
     }
 }

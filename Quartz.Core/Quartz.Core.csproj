@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>1.2.1.50</AssemblyVersion>
-    <FileVersion>1.2.1.50</FileVersion>
+    <AssemblyVersion>1.2.1.60</AssemblyVersion>
+    <FileVersion>1.2.1.60</FileVersion>
 	  <LangVersion>8.0</LangVersion>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\david\Dropbox\Development\Visual Studio\Quartz\Quartz.Core\Quartz.Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
@@ -29,7 +34,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="PersistentEntity" Version="1.0.2" />
+    <PackageReference Include="PersistentEntity" Version="1.0.3" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.9">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

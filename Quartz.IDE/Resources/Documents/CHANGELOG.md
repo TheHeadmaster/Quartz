@@ -1,10 +1,11 @@
 # Changelog
 
 <a name="1.2.1-alpha"></a>
-## 1.2.1-alpha (2020-09-24)
+## 1.2.1-alpha (2020-09-26)
 
 ### Optimization
 
+- ♻️ Change synchronous RelayCommands to asynchronous ReactiveCommands [[f69858d](https://github.com/TheHeadmaster/Quartz/commit/f69858dddda73b01796c0fe04a49a44dcf68b15e)]
 - ♻️ Remove and refactor a metric shit-ton of boilerplate code [[69f7e03](https://github.com/TheHeadmaster/Quartz/commit/69f7e031df2d2e90c584ce510abbbd96549cc7f2)]
 - ♻️ Preferences now save to the user&#x27;s AppData directory instead of directly inside the Program Files folder [[609d511](https://github.com/TheHeadmaster/Quartz/commit/609d511f626c70ab2d7946ff75e4dfb2961d09ca)]
 - ♻️ Move Logs output directory from Program Files to AppData [[7dc0c43](https://github.com/TheHeadmaster/Quartz/commit/7dc0c43e3ca19f4d4997224a42cef9cc6ac9c099)]
@@ -36,6 +37,8 @@
 
 ### Dependency Changes
 
+- ⬆️ Update MethodBoundaryAspect 2.0.122 ➡️ 2.0.123 [[6a8ffae](https://github.com/TheHeadmaster/Quartz/commit/6a8ffaec813749a9a1d2214bcb442425f3e81c3f)]
+- ⬆️ Update PersistentEntity 1.0.1 ➡️ 1.0.2 [[2481663](https://github.com/TheHeadmaster/Quartz/commit/2481663e3397574b48c17964a27b9350e77b30c8)]
 - ⬆️ Update ReactiveProperty 7.4.1 ➡️ 7.4.1 [[927872d](https://github.com/TheHeadmaster/Quartz/commit/927872dfa0cd8eb6528ab37aabe21036faa1784b)]
 - ⬆️ Update PersistentEntity 1.0.0 ➡️ 1.0.1 [[9b7930b](https://github.com/TheHeadmaster/Quartz/commit/9b7930bab856504779dbe6c7828f5b9854fcb01d)]
 - ➕ Add Entity Framework Core Analyzers [[606a95a](https://github.com/TheHeadmaster/Quartz/commit/606a95afb01bb253807a1fc6f5d27722e144df3d)]

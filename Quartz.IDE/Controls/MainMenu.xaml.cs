@@ -1,4 +1,5 @@
 ﻿using Quartz.IDE.ViewModels;
+using Quartz.IDE.ViewModels.Pages;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,12 @@ namespace Quartz.IDE.Controls
                 this.OneWayBind(this.ViewModel,
                     vm => vm.RecentlyOpenedProjects,
                     view => view.RecentlyOpenedProjectsMenuItem.ItemsSource)
+                .DisposeWith(dispose);
+
+                this.BindCommand(this.ViewModel,
+                    vm => vm.OpenPage,
+                    view => view.OpenElementsPage,
+                    vm => vm.NewElementsPage)
                 .DisposeWith(dispose);
             });
         }
