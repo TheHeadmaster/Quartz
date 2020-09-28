@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.1-alpha"></a>
-## 1.2.1-alpha (2020-09-27)
+## 1.2.1-alpha (2020-09-28)
 
 ### Optimization
 
@@ -27,6 +27,7 @@
 
 ### New Features
 
+- ✨ Add Element configuration feature [[a73bf94](https://github.com/TheHeadmaster/Quartz/commit/a73bf94d86ed8e503072bf79bb338fbdeb51f896)]
 - ✨ Add the Changelog to the About window [[9b8d52c](https://github.com/TheHeadmaster/Quartz/commit/9b8d52ce89fcb393b3f17dca50b1b57b996f0a21)]
 - ✨ Add elements and definable strengths, weaknesses, and immunities [[5e5bcd2](https://github.com/TheHeadmaster/Quartz/commit/5e5bcd27d40b1b867e7b939d331c18cd6e25bc5b)]
 - ✨ Add backwards compatibility check for older projects, and versioning for projects moving forward [[03b4966](https://github.com/TheHeadmaster/Quartz/commit/03b4966b2d30ac6139d5602ac518228d2c222722)]
@@ -77,20 +78,7 @@
 - ➕ Add Serilog Logging Library [[48b5bcf](https://github.com/TheHeadmaster/Quartz/commit/48b5bcf6780bd0d3c4f9e2c7c33f755765094e21)]
 - ⬆️ Upgrade Librarium and Librarium.WPF to Nuget package [[4b82008](https://github.com/TheHeadmaster/Quartz/commit/4b82008d5f40c0ad3f0f74c9dc17846b17d42ffe)]
 
-### Remove
 
--  Merge branch &#x27;1.2.1-alpha&#x27; of https://github.com/TheHeadmaster/Quartz into 1.2.1-alpha [[f760e2c](https://github.com/TheHeadmaster/Quartz/commit/f760e2c1aa9c13f8300c085736a1889a3a937ad8)]
--  :heavy_construction: Add ability to compile and run Mono projects [[bc6b76b](https://github.com/TheHeadmaster/Quartz/commit/bc6b76b3336c4d92693111dc39964839d9651f31)]
--  Merge conflicts [[3083aca](https://github.com/TheHeadmaster/Quartz/commit/3083acaa3378a8f8cfe6419de939ea74d67372ae)]
--  Revert add Microsoft.Build.Engine Compiler Library [[918f368](https://github.com/TheHeadmaster/Quartz/commit/918f3686fdfb87e4e97e19cf554b030f2acfd1a4)]
--  Merge branch &#x27;1.2.1-alpha&#x27; of https://github.com/TheHeadmaster/Quartz into 1.2.1-alpha [[00726b1](https://github.com/TheHeadmaster/Quartz/commit/00726b1020a38c4bc6d9f8a56edc9efda402058c)]
--  :refactor: Move Logs output directory from Program Files to AppData [[e85e3f8](https://github.com/TheHeadmaster/Quartz/commit/e85e3f8ae401c829ceffe325f5a45e20ee4f6da3)]
--  :refactor: Preferences now save to the user&#x27;s AppData directory instead of directly inside the Program Files folder [[8468903](https://github.com/TheHeadmaster/Quartz/commit/84689031040eb0f2505aa73df434ae6846bb0518)]
--  General inconsequential edits [[7f64589](https://github.com/TheHeadmaster/Quartz/commit/7f6458957193fcf13db252d4efe391c3ad756ef6)]
--  Merge conflicts [[7e472cb](https://github.com/TheHeadmaster/Quartz/commit/7e472cb03a0719a503f83573ab1c026edbcd782a)]
--  :test_tube: Add method-level logging and error catching utilizing Serilog and MethodBoundaryAspect [[263f52a](https://github.com/TheHeadmaster/Quartz/commit/263f52a1ca2b85f86c873e43fcbe16544722f635)]
--  Update Changelog [[4d7b022](https://github.com/TheHeadmaster/Quartz/commit/4d7b022bdc2d2e0d8a9e392e1faac6cc351c473d)]
--  Update CHANGELOG.md [[4cd7985](https://github.com/TheHeadmaster/Quartz/commit/4cd7985eb2b8e7de118395fae022933e7758c2e5)]
 
 
 <a name="1.1.6-alpha"></a>
