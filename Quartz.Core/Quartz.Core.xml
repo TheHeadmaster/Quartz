@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Quartz.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Quartz.Core.Diagnostics.LogAttribute">
+            <summary>
+            Logs a message to the sink pool before and/or after a method call.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.Diagnostics.LogAttribute.EntryMessage">
+            <summary>
+            The message to log before the method is called.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.Diagnostics.LogAttribute.ExceptionMessage">
+            <summary>
+            The message to log if the method throws an exception.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.Diagnostics.LogAttribute.ExitMessage">
+            <summary>
+            The message to log after a method is called.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.Diagnostics.LogAttribute.IsExceptionFatal">
+            <summary>
+            Determines whether the thrown exception should be considered a fatal exception.
+            </summary>
+        </member>
+        <member name="M:Quartz.Core.Diagnostics.LogAttribute.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Logs a message to the sink pool before and/or after a method call.
+            </summary>
+            <param name="entryMessage">
+            The message to log before the method is called.
+            </param>
+            <param name="exitMessage">
+            The message to log after a method is completed.
+            </param>
+            <param name="exceptionMessage">
+            The message to log in the event that the method throws an exception.
+            </param>
+            <param name="IsExceptionFatal">
+            Tells the logger that any exception thrown in this method is considered a fatal
+            exception, and should be logged as such.
+            </param>
+        </member>
+        <member name="T:Quartz.Core.Diagnostics.LogManager">
+            <summary>
+            Manages logging setup and functions.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.Diagnostics.LogManager.QuartzTheme">
+            <summary>
+            Sets up the color theme for ESDashboard.
+            </summary>
+        </member>
+        <member name="M:Quartz.Core.Diagnostics.LogManager.Initialize">
+            <summary>
+            Initializes the log manager. Logging sinks are set up here.
+            </summary>
+        </member>
+        <member name="T:Quartz.Core.ObjectModel.Attributes.MementoAttribute">
+            <summary>
+            Signifies that a property, when changed, marks the object as unsaved.
+            </summary>
+        </member>
+        <member name="T:Quartz.Core.ObjectModel.Element">
+            <summary>
+            Represents an elemental type.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.Element.ElementMatchups">
+            <summary>
+            The list of damage matchups defined for this element.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.Element.Name">
+            <summary>
+            The name of the element.
+            </summary>
+        </member>
+        <member name="T:Quartz.Core.ObjectModel.ElementMatchup">
+            <summary>
+            Represents the efficacy of one element against another.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.ElementMatchup.AttackingElement">
+            <summary>
+            The attacking element.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.ElementMatchup.AttackingElementID">
+            <summary>
+            The ID of the attacking element.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.ElementMatchup.DefendingElement">
+            <summary>
+            The defending element.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.ElementMatchup.DefendingElementID">
+            <summary>
+            The ID of the defending element.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.ElementMatchup.Multiplier">
+            <summary>
+            Represents the damage multiplier for the matchup. 0.0 means immune, and 1.0 is normal damage.
+            </summary>
+        </member>
+        <member name="T:Quartz.Core.ObjectModel.SaveableDatabaseObject">
+            <summary>
+            An <see cref="T:PersistentEntity.IDatabaseObject"/> that also tracks relevant saveable changes.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.SaveableDatabaseObject.ID">
+            <summary>
+            The unique identifier for the database object.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.SaveableDatabaseObject.RowVersion">
+            <summary>
+            Used for concurrency checks involving simultaneous connections to the database.
+            </summary>
+        </member>
+        <member name="M:Quartz.Core.ObjectModel.SaveableDatabaseObject.SaveAsync(PersistentEntity.Connection)">
+            <summary>
+            Saves asynchronously to the database.
+            </summary>
+            <param name="connection">
+            The database connection to use.
+            </param>
+        </member>
+        <member name="T:Quartz.Core.ObjectModel.SaveableObject">
+            <summary>
+            A <see cref="T:ReactiveUI.ReactiveObject"/> that tracks relevant saveable changes.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.SaveableObject.SaveableObjects">
+            <summary>
+            Gets a list of all <see cref="T:Quartz.Core.ObjectModel.SaveableObject"/> s.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.SaveableObject.IsSaved">
+            <summary>
+            Gets or sets whether or not this object matches the saved data model on disk.
+            </summary>
+        </member>
+        <member name="M:Quartz.Core.ObjectModel.SaveableObject.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.Core.ObjectModel.SaveableObject"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.Core.ObjectModel.SaveableObject.SaveAllAsync(PersistentEntity.Connection)">
+            <summary>
+            Saves all unsaved objects asynchronously, then marks them as saved.
+            </summary>
+            <param name="connection">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Quartz.Core.ObjectModel.SaveableObject.Remove">
+            <summary>
+            Removes this <see cref="T:Quartz.Core.ObjectModel.SaveableObject"/> from the list of tracked <see
+            cref="T:Quartz.Core.ObjectModel.SaveableObject"/> s.
+            </summary>
+        </member>
+        <member name="M:Quartz.Core.ObjectModel.SaveableObject.SaveAsync(PersistentEntity.Connection)">
+            <summary>
+            Saves the object asynchronously, and marks it as saved.
+            </summary>
+            <param name="connection">
+            An optional connection to pass in.
+            </param>
+        </member>
+    </members>
+</doc>

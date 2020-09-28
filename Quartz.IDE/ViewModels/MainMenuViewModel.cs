@@ -10,6 +10,7 @@ using System.Windows;
 using AvalonDock.Layout;
 using DynamicData;
 using DynamicData.Binding;
+using Quartz.IDE.Controls;
 using Quartz.IDE.ViewModels.Pages;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -17,18 +18,31 @@ using Serilog;
 
 namespace Quartz.IDE.ViewModels
 {
+    /// <summary>
+    /// The ViewModel for the <see cref="MainMenu"/> control.
+    /// </summary>
     public class MainMenuViewModel : ReactiveObject
     {
         private readonly ReadOnlyObservableCollection<RecentItem> recentlyOpenedProjects;
 
+        /// <summary>
+        /// Closes the program.
+        /// </summary>
         public ReactiveCommand<Unit, Unit> Close { get; } = ReactiveCommand.Create(() => Application.Current.Shutdown());
 
-        public ElementsViewModel NewElementsPage => new ElementsViewModel();
+        /// <summary>
+        /// Opens the elements page.
+        /// </summary>
+        public ReactiveCommand<Unit, Unit> OpenElementsPage { get; }
 
-        public ReactiveCommand<PageViewModel, Unit> OpenPage { get; }
-
+        /// <summary>
+        /// Gets a list of recently opened projects.
+        /// </summary>
         public ReadOnlyObservableCollection<RecentItem> RecentlyOpenedProjects => this.recentlyOpenedProjects;
 
+        /// <summary>
+        /// Creates a new <see cref="MainMenuViewModel"/>.
+        /// </summary>
         public MainMenuViewModel()
         {
             App.Preferences.RecentlyOpenedProjects
@@ -47,8 +61,7 @@ namespace Quartz.IDE.ViewModels
                     return !isRunning && App.Metadata.CurrentProject is { };
                 });
 
-            this.OpenPage = ReactiveCommand.CreateFromTask<PageViewModel>(
-                pageViewModel => App.Metadata.OpenPageAsync(pageViewModel),
+            this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)),
                 canOpenPage);
         }
     }

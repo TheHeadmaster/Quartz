@@ -6,20 +6,53 @@ using System.Windows.Controls;
 
 namespace Quartz.IDE.ViewModels.Pages
 {
+    /// <summary>
+    /// Selects the <see cref="DataTemplate"/> for a page.
+    /// </summary>
     public class PageTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate CoreTemplatePage { get; set; }
+        /// <summary>
+        /// The <see cref="DataTemplate"/> for a <see cref="CoreTemplateViewModel"/>.
+        /// </summary>
+        public DataTemplate CoreTemplatePage { get; set; } = null!;
 
-        public DataTemplate ElementsPage { get; set; }
+        /// <summary>
+        /// The <see cref="DataTemplate"/> for an <see cref="ElementsViewModel"/>.
+        /// </summary>
+        public DataTemplate ElementsPage { get; set; } = null!;
 
-        public DataTemplate PackTemplatePage { get; set; }
+        /// <summary>
+        /// The <see cref="DataTemplate"/> for a <see cref="PackTemplateViewModel"/>.
+        /// </summary>
+        public DataTemplate PackTemplatePage { get; set; } = null!;
 
-        public DataTemplate ProjectPage { get; set; }
+        /// <summary>
+        /// The <see cref="DataTemplate"/> for a <see cref="ProjectViewModel"/>.
+        /// </summary>
+        public DataTemplate ProjectPage { get; set; } = null!;
 
-        public DataTemplate UITemplatePage { get; set; }
+        /// <summary>
+        /// The <see cref="DataTemplate"/> for a <see cref="UITemplateViewModel"/>.
+        /// </summary>
+        public DataTemplate UITemplatePage { get; set; } = null!;
 
+        /// <summary>
+        /// Creates a new <see cref="PageTemplateSelector"/>.
+        /// </summary>
         public PageTemplateSelector() { }
 
+        /// <summary>
+        /// Returns a <see cref="DataTemplate"/> based on the type of the object passed in.
+        /// </summary>
+        /// <param name="item">
+        /// The item to switch against.
+        /// </param>
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        /// <returns>
+        /// A <see cref="DataTemplate"/>.
+        /// </returns>
         public override DataTemplate SelectTemplate(object item, DependencyObject container) => item switch
         {
             ElementsViewModel _ => this.ElementsPage,

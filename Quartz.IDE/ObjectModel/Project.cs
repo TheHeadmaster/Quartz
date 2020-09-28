@@ -15,6 +15,7 @@ using ReactiveUI;
 using System.Reactive.Linq;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Quartz.IDE.ObjectModel
 {
@@ -23,8 +24,14 @@ namespace Quartz.IDE.ObjectModel
     /// </summary>
     public class Project : SaveableObject, IModelToFile
     {
+        /// <summary>
+        /// Gets whether all project items are saved.
+        /// </summary>
         public bool AreItemsSaved { [ObservableAsProperty]get; }
 
+        /// <summary>
+        /// Represents a connection to this project's database.
+        /// </summary>
         public Connection Connection => Connection.Create()
                             .AllowMARS()
                     .UseWindowsAuthentication()
@@ -33,32 +40,47 @@ namespace Quartz.IDE.ObjectModel
                     .UseLocalDB()
                     .Build();
 
+        /// <summary>
+        /// A list of all <see cref="ElementMatchup"/> s in the database.
+        /// </summary>
+        [Reactive]
+        [Memento]
         public SourceCache<ElementMatchup, int> ElementMatchups { get; set; } = new SourceCache<ElementMatchup, int>(x => x.ID);
 
+        /// <summary>
+        /// A list of all <see cref="Element"/> s in the database.
+        /// </summary>
         [Reactive]
         [Memento]
         public SourceCache<Element, int> Elements { get; set; } = new SourceCache<Element, int>(x => x.ID);
 
-        public string FileName { get; set; }
+        /// <summary>
+        /// The name of the <see cref="JFile"/> on disk.
+        /// </summary>
+        public string FileName { get; set; } = "";
 
-        public string FilePath { get; set; }
+        /// <summary>
+        /// The path to the <see cref="JFile"/> on disk.
+        /// </summary>
+        public string FilePath { get; set; } = "";
 
         /// <summary>
         /// The name of the project.
         /// </summary>
         [Reactive]
         [Memento]
-        public string Name { get; set; }
-
-        public SourceList<SaveableObject> SaveableObjects { get; } = new SourceList<SaveableObject>();
+        public string? Name { get; set; } = "";
 
         /// <summary>
         /// The version of Quartz that the project was made with.
         /// </summary>
         [Reactive]
         [Memento]
-        public Version Version { get; set; }
+        public Version? Version { get; set; }
 
+        /// <summary>
+        /// Creates a new <see cref="Project"/>.
+        /// </summary>
         public Project()
         {
             this.Elements.Connect()
@@ -70,21 +92,25 @@ namespace Quartz.IDE.ObjectModel
                 .ToPropertyEx(this, x => x.AreItemsSaved);
         }
 
-        public void Close(bool saveBeforeClosing)
+        /// <summary>
+        /// Closes the project with an option to save before closing.
+        /// </summary>
+        /// <param name="saveBeforeClosing">
+        /// Saves before closing if <see langword="true"/>.
+        /// </param>
+        public async Task Close(bool saveBeforeClosing)
         {
             if (saveBeforeClosing)
             {
-                ProjectFile file = new ProjectFile
-                {
-                    FileName = "Project.json",
-                    FilePath = this.FilePath
-                };
-                file.PopulateFile(this);
-                file.Save();
+                await this.SaveAllAsync();
             }
+            SaveableObjects.Clear();
             App.Metadata.CurrentProject = null;
         }
 
+        /// <summary>
+        /// Loads the project and all of its associated data objects.
+        /// </summary>
         public void Load()
         {
             using (DatabaseTransaction<QuartzContext> transaction = new DatabaseTransaction<QuartzContext>(this.Connection))
@@ -93,38 +119,34 @@ namespace Quartz.IDE.ObjectModel
                 this.ElementMatchups.AddOrUpdate(transaction.GetAll<ElementMatchup>());
             }
             Directory.CreateDirectory(Path.Combine(this.FilePath, "Images"));
-            App.Preferences.RecentlyOpenedProjects.AddOrUpdate(new RecentItem(this.Name, this.FilePath, DateTime.Now));
+            App.Preferences.RecentlyOpenedProjects.AddOrUpdate(new RecentItem(this.Name ?? "", this.FilePath, DateTime.Now));
             App.Preferences.Save();
             this.IsSaved = true;
         }
 
         /// <summary>
-        /// Saves the project and all of its associated data objects.
+        /// Saves the <see cref="JFile"/> to disk.
         /// </summary>
-        public override void Save()
+        public void Save()
         {
-            IEnumerable<IDatabaseObject> dbObjects = this.SaveableObjects.Items.Where(x => x is IDatabaseObject).Cast<IDatabaseObject>();
-
-            using (DatabaseTransaction<QuartzContext> transaction = new DatabaseTransaction<QuartzContext>(this.Connection))
-            {
-                foreach (IDatabaseObject dbObject in dbObjects)
-                {
-                    transaction.AddOrUpdate(dbObject);
-                }
-                transaction.SaveChanges();
-            }
-            dbObjects.Cast<SaveableObject>().ToList().ForEach(x => { x.IsSaved = true; this.SaveableObjects.Remove(x); });
-            foreach (SaveableObject nonDbObject in this.SaveableObjects.Items)
-            {
-                nonDbObject.Save();
-                nonDbObject.IsSaved = true;
-            }
-            this.SaveableObjects.Clear();
-
             ProjectFile file = new ProjectFile();
             file.PopulateFile(this);
             file.Save();
+        }
+
+        /// <summary>
+        /// Saves the project and all of its associated data objects.
+        /// </summary>
+        public async Task SaveAllAsync() => await SaveableObject.SaveAllAsync(this.Connection);
+
+        /// <summary>
+        /// Saves the <see cref="JFile"/> to disk.
+        /// </summary>
+        public override Task SaveAsync(Connection? connection = null)
+        {
+            this.Save();
             this.IsSaved = true;
+            return Task.CompletedTask;
         }
     }
 }

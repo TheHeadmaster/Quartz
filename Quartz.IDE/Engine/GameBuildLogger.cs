@@ -8,9 +8,9 @@ namespace Quartz.IDE.Engine
 {
     public class GameBuildLogger : Microsoft.Build.Framework.ILogger
     {
-        public string Parameters { get; set; }
+        public string Parameters { get; set; } = null!;
 
-        public LoggerVerbosity Verbosity { get; set; }
+        public LoggerVerbosity Verbosity { get; set; } = default;
 
         private void EventSource_ErrorRaised(object sender, BuildErrorEventArgs args) => Log.Error("{Message}", args.Message);
 

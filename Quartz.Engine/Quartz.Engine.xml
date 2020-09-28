@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Quartz.Engine</name>
+    </assembly>
+    <members>
+        <member name="T:Quartz.Engine.GameCore">
+            <summary>
+            This is the main type for your game.
+            </summary>
+        </member>
+        <member name="M:Quartz.Engine.GameCore.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.Engine.GameCore"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.Engine.GameCore.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            This is called when the game should draw itself.
+            </summary>
+            <param name="gameTime">
+            Provides a snapshot of timing values.
+            </param>
+        </member>
+        <member name="M:Quartz.Engine.GameCore.Initialize">
+            <summary>
+            Allows the game to perform any initialization it needs to before starting to run. This
+            is where it can query for any required services and load any non-graphic related
+            content. Calling base.Initialize will enumerate through any components and initialize
+            them as well.
+            </summary>
+        </member>
+        <member name="M:Quartz.Engine.GameCore.LoadContent">
+            <summary>
+            LoadContent will be called once per game and is the place to load all of your content.
+            </summary>
+        </member>
+        <member name="M:Quartz.Engine.GameCore.UnloadContent">
+            <summary>
+            UnloadContent will be called once per game and is the place to unload game-specific content.
+            </summary>
+        </member>
+        <member name="M:Quartz.Engine.GameCore.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the game to run logic such as updating the world, checking for collisions,
+            gathering input, and playing audio.
+            </summary>
+            <param name="gameTime">
+            Provides a snapshot of timing values.
+            </param>
+        </member>
+        <member name="T:Quartz.Engine.Program">
+            <summary>
+            The main class.
+            </summary>
+        </member>
+        <member name="M:Quartz.Engine.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

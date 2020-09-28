@@ -5,6 +5,9 @@ using Quartz.IDE.ViewModels;
 
 namespace Quartz.IDE.ObjectModel
 {
+    /// <summary>
+    /// Represents an asset pack for Quartz.
+    /// </summary>
     public class PackTemplate : Template
     { }
 }

@@ -24,48 +24,93 @@ namespace Quartz.IDE.ViewModels
 
         private readonly ReadOnlyObservableCollection<UITemplate> uiTemplates;
 
-        private ValidationResult ValidationResult { [ObservableAsProperty] get; }
+        private ValidationResult ValidationResult { [ObservableAsProperty] get; } = null!;
 
+        /// <summary>
+        /// Opens a folder browse dialog.
+        /// </summary>
         public ReactiveCommand<Unit, Unit> BrowseFolder { get; }
 
+        /// <summary>
+        /// Gets the list of available core templates.
+        /// </summary>
         public ReadOnlyObservableCollection<CoreTemplate> CoreTemplates => this.coreTemplates;
 
+        /// <summary>
+        /// Creates a new project.
+        /// </summary>
         public ReactiveCommand<Unit, Unit> CreateProject { get; }
 
+        /// <summary>
+        /// Gets whether a core template was properly selected.
+        /// </summary>
         public bool IsCoreValid { [ObservableAsProperty]get; }
 
+        /// <summary>
+        /// Gets whether a ui template was properly selected.
+        /// </summary>
         public bool IsUIValid { [ObservableAsProperty]get; }
 
+        /// <summary>
+        /// Gets whether all finalize selections are valid.
+        /// </summary>
         public bool IsValid { [ObservableAsProperty] get; }
 
         [Reactive]
         public ObservableCollectionExtended<PackSelection> PackTemplates { get; set; }
 
-        public Window Parent { get; set; }
+        /// <summary>
+        /// The parent window.
+        /// </summary>
+        public Window? Parent { get; set; }
 
         [Reactive]
         public string ProjectName { get; set; } = "";
 
-        public string ProjectNameValidationText { [ObservableAsProperty] get; }
+        /// <summary>
+        /// The validation text for the project name input.
+        /// </summary>
+        public string ProjectNameValidationText { [ObservableAsProperty] get; } = null!;
 
+        /// <summary>
+        /// The path to the new project.
+        /// </summary>
         [Reactive]
         public string ProjectPath { get; set; } = "";
 
-        public string ProjectPathValidationText { [ObservableAsProperty] get; }
+        public string ProjectPathValidationText { [ObservableAsProperty] get; } = null!;
 
+        /// <summary>
+        /// The selected core template.
+        /// </summary>
         [Reactive]
-        public CoreTemplate SelectedCoreTemplate { get; set; }
+        public CoreTemplate? SelectedCoreTemplate { get; set; }
 
+        /// <summary>
+        /// The selected pack template.
+        /// </summary>
         [Reactive]
-        public PackSelection SelectedPackTemplate { get; set; }
+        public PackSelection? SelectedPackTemplate { get; set; }
 
+        /// <summary>
+        /// The selected UI template.
+        /// </summary>
         [Reactive]
-        public UITemplate SelectedUITemplate { get; set; }
+        public UITemplate? SelectedUITemplate { get; set; }
 
+        /// <summary>
+        /// Gets the list of available templates.
+        /// </summary>
         public SourceList<Template> Templates { get; } = new SourceList<Template>();
 
+        /// <summary>
+        /// Gets the list of available UI templates.
+        /// </summary>
         public ReadOnlyObservableCollection<UITemplate> UITemplates => this.uiTemplates;
 
+        /// <summary>
+        /// Gets the validation context.
+        /// </summary>
         public NewProjectWindowValidation ValidationContext { get; } = new NewProjectWindowValidation();
 
         public NewProjectWindowViewModel()
@@ -121,7 +166,7 @@ namespace Quartz.IDE.ViewModels
 
             this.PackTemplates = new ObservableCollectionExtended<PackSelection>(this.Templates.Items
                 .Where(x => x is PackTemplate)
-                .Select(x => new PackSelection { Pack = (PackTemplate)x, IsSelected = false })
+                .Select(x => new PackSelection((PackTemplate)x, false))
                 .OrderBy(x => x.Pack.Name));
 
             this.WhenAnyValue(x => x.SelectedCoreTemplate)
@@ -164,7 +209,7 @@ namespace Quartz.IDE.ViewModels
             List<PackTemplate> packTemplates = this.PackTemplates.Where(x => x.IsSelected).Select(x => x.Pack).ToList();
 
             Project project = TemplateManager.CreateFromTemplates(
-                this.SelectedCoreTemplate, this.SelectedUITemplate, packTemplates, this.ProjectPath, this.ProjectName);
+                this.SelectedCoreTemplate!, this.SelectedUITemplate!, packTemplates, this.ProjectPath, this.ProjectName);
             project.Load();
             project.Save();
             App.Metadata.CurrentProject = project;

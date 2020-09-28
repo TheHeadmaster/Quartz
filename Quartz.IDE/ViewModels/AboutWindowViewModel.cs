@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Librarium.Core;
+using Quartz.IDE.Windows;
 using ReactiveUI;
 
 namespace Quartz.IDE.ViewModels
@@ -16,6 +17,9 @@ namespace Quartz.IDE.ViewModels
     /// </summary>
     public class AboutWindowViewModel : ReactiveObject
     {
+        /// <summary>
+        /// Gets the changelog parsed as a string.
+        /// </summary>
         public string Changelog
         {
             get

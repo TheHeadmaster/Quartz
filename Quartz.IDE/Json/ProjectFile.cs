@@ -11,13 +11,13 @@ namespace Quartz.IDE.Json
     /// </summary>
     public class ProjectFile : JFile, IFileToModel<Project>
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public string Version { get; set; }
+        public string? Version { get; set; }
 
         public Project CreateModel()
         {
-            System.Version.TryParse(this.Version, out Version version);
+            System.Version.TryParse(this.Version, out Version? version);
             Project project = new Project()
             {
                 Name = this.Name,

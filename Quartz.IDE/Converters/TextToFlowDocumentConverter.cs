@@ -27,7 +27,22 @@ namespace Quartz.IDE.Converters
                 ? 10
                 : fromType == typeof(FlowDocument) && toType == typeof(string) ? 10 : 0;
 
-        public bool TryConvert(object from, Type toType, object conversionHint, out object result)
+        /// <summary>
+        /// Tries to convert the text to a <see cref="FlowDocument"/>.
+        /// </summary>
+        /// <param name="from">
+        /// The text to convert from.
+        /// </param>
+        /// <param name="toType">
+        /// The type to convert to.
+        /// </param>
+        /// <param name="conversionHint">
+        /// The conversion hint.
+        /// </param>
+        /// <param name="result">
+        /// The result to out.
+        /// </param>
+        public bool TryConvert(object? from, Type toType, object? conversionHint, out object? result)
         {
             if (from is null)
             {

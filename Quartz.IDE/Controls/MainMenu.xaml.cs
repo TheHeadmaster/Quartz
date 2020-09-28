@@ -1,4 +1,6 @@
-﻿using Quartz.IDE.ViewModels;
+﻿#nullable disable
+
+using Quartz.IDE.ViewModels;
 using Quartz.IDE.ViewModels.Pages;
 using ReactiveUI;
 using System;
@@ -23,6 +25,9 @@ namespace Quartz.IDE.Controls
     /// </summary>
     public partial class MainMenu : ReactiveUserControl<MainMenuViewModel>
     {
+        /// <summary>
+        /// Creates a new <see cref="MainMenu"/>.
+        /// </summary>
         public MainMenu()
         {
             this.ViewModel = new MainMenuViewModel();
@@ -36,9 +41,8 @@ namespace Quartz.IDE.Controls
                 .DisposeWith(dispose);
 
                 this.BindCommand(this.ViewModel,
-                    vm => vm.OpenPage,
-                    view => view.OpenElementsPage,
-                    vm => vm.NewElementsPage)
+                    vm => vm.OpenElementsPage,
+                    view => view.OpenElementsPage)
                 .DisposeWith(dispose);
             });
         }

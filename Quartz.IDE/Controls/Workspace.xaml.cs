@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable disable
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
@@ -26,6 +28,9 @@ namespace Quartz.IDE.Controls
     /// </summary>
     public partial class Workspace : ReactiveUserControl<WorkspaceViewModel>
     {
+        /// <summary>
+        /// Creates a new <see cref="Workspace"/>.
+        /// </summary>
         public Workspace()
         {
             this.InitializeComponent();
@@ -51,6 +56,12 @@ namespace Quartz.IDE.Controls
             App.Metadata.Pages.Remove(pageVM);
         }
 
+        /// <summary>
+        /// Changes the currently focused page to the page provided.
+        /// </summary>
+        /// <param name="page">
+        /// The page to change focus to.
+        /// </param>
         public void ChangeActivePage(PageViewModel page)
         {
             LayoutContent content = this.DocumentTabControl.Children.FirstOrDefault(x => x.Content == page);

@@ -8,7 +8,5 @@ namespace Quartz.Core.ObjectModel.Attributes
     /// Signifies that a property, when changed, marks the object as unsaved.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-    public class MementoAttribute : Attribute
-    {
-    }
+    public class MementoAttribute : Attribute { }
 }

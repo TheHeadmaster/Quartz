@@ -35,7 +35,7 @@ namespace Quartz.IDE
         /// <summary>
         /// The Github client that connects to the repository.
         /// </summary>
-        private static GitHubClient Client { get; set; }
+        private static GitHubClient Client { get; set; } = null!;
 
         /// <summary>
         /// The url that points to the most recent release version in the Github repository.

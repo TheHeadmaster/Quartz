@@ -36,13 +36,13 @@ namespace Quartz.IDE
         /// <summary>
         /// Gets the currently loaded preferences for the user.
         /// </summary>
-        public static Preferences Preferences { get; set; }
+        public static Preferences Preferences { get; set; } = null!;
 
         /// <summary>
         /// When the application ends from anywhere, the log needs to be closed and flushed.
         /// </summary>
         [Log("Quartz will now flush the logger and shut down.")]
-        private static void OnExit(object sender, EventArgs args) => Log.CloseAndFlush();
+        private static void OnExit(object? sender, EventArgs args) => Log.CloseAndFlush();
 
         /// <summary>
         /// Serves as the application entry point.
@@ -53,7 +53,7 @@ namespace Quartz.IDE
         /// <param name="args">
         /// Contains the arguments pertaining to the application startup event.
         /// </param>
-        private void AppStartup(object sender, StartupEventArgs args)
+        private void AppStartup(object? sender, StartupEventArgs args)
         {
             DefineDebugFlag();
 

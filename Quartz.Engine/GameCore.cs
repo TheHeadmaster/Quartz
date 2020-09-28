@@ -9,10 +9,13 @@ namespace Quartz.Engine
     /// </summary>
     public class GameCore : Game
     {
-        private GraphicsDeviceManager graphics;
+        private readonly GraphicsDeviceManager graphics;
 
-        private SpriteBatch spriteBatch;
+        private SpriteBatch? spriteBatch;
 
+        /// <summary>
+        /// Creates a new <see cref="GameCore"/>.
+        /// </summary>
         public GameCore()
         {
             this.graphics = new GraphicsDeviceManager(this);

@@ -19,12 +19,12 @@ namespace Quartz.IDE.ObjectModel
         /// <summary>
         /// Gets or sets the name of the json file saved to disk.
         /// </summary>
-        public string FileName { get; set; }
+        public string FileName { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the path of the json file saved to disk.
         /// </summary>
-        public string FilePath { get; set; }
+        public string FilePath { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets whether to automatically open the most recently opened project when the

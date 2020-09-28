@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 1591
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -182,11 +184,11 @@ namespace Quartz.IDE.Parsing
               )
             )", string.Format(CultureInfo.InvariantCulture, "(?:{0}|{1})", markerUL, markerOL), tabWidth - 1);
 
-        private static string nestedBracketsPattern;
+        private static string nestedBracketsPattern = null!;
 
-        private static string nestedParensPattern;
+        private static string nestedParensPattern = null!;
 
-        private static string nestedParensPatternWithWhiteSpace;
+        private static string nestedParensPatternWithWhiteSpace = null!;
 
         private int listLevel;
 
@@ -704,8 +706,9 @@ namespace Quartz.IDE.Parsing
 
             MatchCollection matches = expression.Matches(text);
             int index = 0;
-            foreach (Match m in matches)
+            foreach (Match? m in matches)
             {
+                if (m is null) { continue; }
                 if (m.Index > index)
                 {
                     string prefix = text[index..m.Index];
@@ -760,7 +763,7 @@ namespace Quartz.IDE.Parsing
 
             string linkText = match.Groups[2].Value;
             string url = match.Groups[3].Value;
-            BitmapImage imgSource = null;
+            BitmapImage? imgSource = null;
             try
             {
                 if (!Uri.IsWellFormedUriString(url, UriKind.Absolute) && !System.IO.Path.IsPathRooted(url))
@@ -803,7 +806,7 @@ namespace Quartz.IDE.Parsing
 
                 BindingExpressionBase bindingExpression = BindingOperations.SetBinding(image, Image.WidthProperty, binding);
 
-                void downloadCompletedHandler(object sender, EventArgs e)
+                void downloadCompletedHandler(object? sender, EventArgs args)
                 {
                     imgSource.DownloadCompleted -= downloadCompletedHandler;
                     bindingExpression.UpdateTarget();
@@ -997,9 +1000,12 @@ namespace Quartz.IDE.Parsing
 
                 Regex regex = new Regex(pattern, RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
                 MatchCollection matches = regex.Matches(list);
-                foreach (Match m in matches)
+                foreach (Match? m in matches)
                 {
-                    yield return this.ListItemEvaluator(m);
+                    if (m is { })
+                    {
+                        yield return this.ListItemEvaluator(m);
+                    }
                 }
             }
             finally
@@ -1307,3 +1313,5 @@ namespace Quartz.IDE.Parsing
         }
     }
 }
+
+#pragma warning restore 1591

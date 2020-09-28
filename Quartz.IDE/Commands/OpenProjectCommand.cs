@@ -20,7 +20,7 @@ namespace Quartz.IDE.Commands
     {
         public static ICommand Instance { get; } = new OpenProjectCommand();
 
-        private string CommonFileDialog()
+        private string? CommonFileDialog()
         {
             CommonOpenFileDialog dlg = new CommonOpenFileDialog
             {
@@ -43,7 +43,11 @@ namespace Quartz.IDE.Commands
             return dlg.ShowDialog() == CommonFileDialogResult.Ok ? dlg.FileName : null;
         }
 
-        private int OpenFromDialog() => this.OpenFromPath(this.CommonFileDialog());
+        private int OpenFromDialog()
+        {
+            string? path = this.CommonFileDialog();
+            return path.IsNullOrWhiteSpace() ? 1 : this.OpenFromPath(path!);
+        }
 
         private int OpenFromPath(string path)
         {
@@ -76,11 +80,11 @@ namespace Quartz.IDE.Commands
                 Xceed.Wpf.Toolkit.MessageBox.Show($"This project file was made using 1.1, and is not compatible with the current release ({AppMeta.CurrentVersion}). Your project will not be harmed, but if you want to open it, you will have to revert back to 1.1.", "Incompatible Project", MessageBoxButton.OK);
                 return 1;
             }
-            if (App.Metadata.CurrentProject is { }) { App.Metadata.CurrentProject.Close(saveBeforeClosing ?? true); }
+            if (App.Metadata.CurrentProject is { }) { App.Metadata.CurrentProject.Close(saveBeforeClosing ?? true).Wait(); }
             App.Metadata.CurrentProject = file.CreateModel();
             App.Preferences.RecentlyOpenedProjects.AddOrUpdate(
                 new RecentItem(
-                    App.Metadata.CurrentProject.Name,
+                    App.Metadata.CurrentProject.Name ?? "",
                     App.Metadata.CurrentProject.FilePath,
                     DateTime.Now));
             App.Metadata.CurrentProject.Load();
@@ -103,7 +107,7 @@ namespace Quartz.IDE.Commands
             }
             if (success == 0)
             {
-                App.Metadata.CurrentProject.IsSaved = true;
+                App.Metadata.CurrentProject!.IsSaved = true;
             }
         }
     }

@@ -16,16 +16,29 @@ using ReactiveUI.Fody.Helpers;
 
 namespace Quartz.Core.ObjectModel
 {
+    /// <summary>
+    /// A <see cref="ReactiveObject"/> that tracks relevant saveable changes.
+    /// </summary>
     public abstract class SaveableObject : ReactiveObject
     {
-        private static SourceList<SaveableObject> SaveableObjects { get; } = new SourceList<SaveableObject>();
+        /// <summary>
+        /// Gets a list of all <see cref="SaveableObject"/> s.
+        /// </summary>
+        public static SourceList<SaveableObject> SaveableObjects { get; } = new SourceList<SaveableObject>();
 
+        /// <summary>
+        /// Gets or sets whether or not this object matches the saved data model on disk.
+        /// </summary>
         [Reactive]
         [NotMapped]
         public bool IsSaved { get; set; } = true;
 
+        /// <summary>
+        /// Creates a new <see cref="SaveableObject"/>.
+        /// </summary>
         public SaveableObject()
         {
+            SaveableObjects.Add(this);
             this.PropertyChanged += this.ObservableObjectPropertyChanged;
         }
 
@@ -40,7 +53,14 @@ namespace Quartz.Core.ObjectModel
 
         private void ObservableObjectPropertyChanged(object sender, PropertyChangedEventArgs args) => this.EvaluateSavableChanges(args.PropertyName);
 
-        public static async Task SaveAll(Connection connection)
+        /// <summary>
+        /// Saves all unsaved objects asynchronously, then marks them as saved.
+        /// </summary>
+        /// <param name="connection">
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public static async Task SaveAllAsync(Connection connection)
         {
             IEnumerable<SaveableObject> unsavedFileObjects = SaveableObjects.Items.Where(x => !x.IsSaved && !(x is IDatabaseObject));
             IEnumerable<IDatabaseObject> unsavedDbObjects = SaveableObjects.Items.Where(x => !x.IsSaved && x is IDatabaseObject).Cast<IDatabaseObject>();
@@ -58,9 +78,25 @@ namespace Quartz.Core.ObjectModel
                     }
                     await transaction.SaveChangesAsync();
                 }
+                foreach (SaveableObject unsavedDbObject in SaveableObjects.Items.Where(x => !x.IsSaved && x is IDatabaseObject))
+                {
+                    unsavedDbObject.IsSaved = true;
+                }
             }
         }
 
-        public abstract Task SaveAsync(Connection connection);
+        /// <summary>
+        /// Removes this <see cref="SaveableObject"/> from the list of tracked <see
+        /// cref="SaveableObject"/> s.
+        /// </summary>
+        public void Remove() => SaveableObjects.Remove(this);
+
+        /// <summary>
+        /// Saves the object asynchronously, and marks it as saved.
+        /// </summary>
+        /// <param name="connection">
+        /// An optional connection to pass in.
+        /// </param>
+        public abstract Task SaveAsync(Connection? connection = null);
     }
 }

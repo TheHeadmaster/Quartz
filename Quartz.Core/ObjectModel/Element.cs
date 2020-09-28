@@ -15,12 +15,12 @@ namespace Quartz.Core.ObjectModel
         /// The list of damage matchups defined for this element.
         /// </summary>
         [Memento]
-        public List<ElementMatchup> ElementMatchups { get; set; }
+        public List<ElementMatchup>? ElementMatchups { get; set; }
 
         /// <summary>
         /// The name of the element.
         /// </summary>
         [Memento]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

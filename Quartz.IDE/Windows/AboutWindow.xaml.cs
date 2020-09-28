@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable disable
+
+using System;
 using System.Collections.Generic;
 using System.Reactive.Disposables;
 using System.Text;
@@ -24,6 +26,9 @@ namespace Quartz.IDE.Windows
     /// </summary>
     public partial class AboutWindow : BorderlessReactiveWindow<AboutWindowViewModel>
     {
+        /// <summary>
+        /// Creates a ne <see cref="AboutWindow"/>.
+        /// </summary>
         public AboutWindow()
         {
             this.InitializeComponent();

@@ -37,7 +37,7 @@ namespace Quartz.IDE
         /// Gets or sets the current project.
         /// </summary>
         [Reactive]
-        public Project CurrentProject { get; set; }
+        public Project? CurrentProject { get; set; }
 
         /// <summary>
         /// Gets whether the program is running in debug mode or not.
@@ -59,7 +59,7 @@ namespace Quartz.IDE
         /// Gets or sets the selected open page in the workspace.
         /// </summary>
         [Reactive]
-        public PageViewModel SelectedPage { get; set; }
+        public PageViewModel? SelectedPage { get; set; }
 
         /// <summary>
         /// Gets or sets the color of the status bar.
@@ -76,21 +76,21 @@ namespace Quartz.IDE
         /// <summary>
         /// Gets the assembly version of the entry assembly.
         /// </summary>
-        public Version Version => Assembly.GetEntryAssembly().GetName().Version;
+        public Version Version => Assembly.GetEntryAssembly()!.GetName()!.Version!;
 
         /// <summary>
         /// Opens the specified page.
         /// </summary>
-        /// <param name="page">
+        /// <param name="type">
         /// The page to open.
         /// </param>
-        public Task OpenPageAsync(PageViewModel page)
+        public Task OpenPageAsync(Type type)
         {
-            PageViewModel newViewModel = this.Pages.FirstOrDefault(x => x.Identifier == page.Identifier);
+            PageViewModel? newViewModel = this.Pages.FirstOrDefault(x => x.GetType() == type);
             if (newViewModel is null)
             {
-                newViewModel = page;
-
+                newViewModel = (PageViewModel?)Activator.CreateInstance(type);
+                if (newViewModel is null) { return Task.CompletedTask; }
                 this.Pages.Add(newViewModel);
             }
 

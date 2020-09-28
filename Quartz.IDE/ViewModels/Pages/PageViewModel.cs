@@ -13,8 +13,14 @@ namespace Quartz.IDE.ViewModels.Pages
     /// </summary>
     public abstract class PageViewModel : ReactiveObject
     {
-        public string Header { [ObservableAsProperty]get; }
+        /// <summary>
+        /// Determines whats displayed in the <see cref="PageViewModel"/>'s tab header.
+        /// </summary>
+        public string Header { [ObservableAsProperty]get; } = "";
 
-        public string Identifier { [ObservableAsProperty]get; }
+        /// <summary>
+        /// A unique identifier which distinguishes it from other <see cref="PageViewModel"/> s.
+        /// </summary>
+        public string Identifier { [ObservableAsProperty]get; } = "";
     }
 }
