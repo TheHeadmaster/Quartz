@@ -1,5 +1,83 @@
 # Changelog
 
+<a name="1.2.1-alpha"></a>
+## 1.2.1-alpha (2020-09-28)
+
+### Optimization
+
+- ♻️ Change synchronous RelayCommands to asynchronous ReactiveCommands [[f69858d](https://github.com/TheHeadmaster/Quartz/commit/f69858dddda73b01796c0fe04a49a44dcf68b15e)]
+- ♻️ Remove and refactor a metric shit-ton of boilerplate code [[69f7e03](https://github.com/TheHeadmaster/Quartz/commit/69f7e031df2d2e90c584ce510abbbd96549cc7f2)]
+- ♻️ Preferences now save to the user&#x27;s AppData directory instead of directly inside the Program Files folder [[609d511](https://github.com/TheHeadmaster/Quartz/commit/609d511f626c70ab2d7946ff75e4dfb2961d09ca)]
+- ♻️ Move Logs output directory from Program Files to AppData [[7dc0c43](https://github.com/TheHeadmaster/Quartz/commit/7dc0c43e3ca19f4d4997224a42cef9cc6ac9c099)]
+- ♻️ Common functionality between Quartz.IDE and Quartz.Engine moved to Quartz.Core [[be3afff](https://github.com/TheHeadmaster/Quartz/commit/be3afff9a840c2c8663ab2039691c4674fd83e95)]
+
+### Breaking and Major Changes
+
+- 🏗️ Templates are finally here. Now you can create and use Core, UI, and Pack templates to build a project from so you don&#x27;t have to start from scratch. [[f7075f7](https://github.com/TheHeadmaster/Quartz/commit/f7075f7dc2219f3ded8b4b35f26fe17120fff284)]
+- 🏗️ Add ability to compile and run Mono projects [[87c4356](https://github.com/TheHeadmaster/Quartz/commit/87c43566024c793bd0dcaad57c748b49279e075a)]
+- 💥 Project files are now in Database format instead of Json file format [[764803c](https://github.com/TheHeadmaster/Quartz/commit/764803cd13508fdbf1c89a5ae1b9419eb5228a5c)]
+- 💥 Previous projects are now incompatible moving forward, starting with 1.2.1 [[6fafdf3](https://github.com/TheHeadmaster/Quartz/commit/6fafdf35d357ef65683dd6c16e97b9a1e112430d)]
+- 🏗️ Add Quartz.Testing Unit Test Project [[7f867f4](https://github.com/TheHeadmaster/Quartz/commit/7f867f47734ee21e6db395c950ce515f0f5eff9e)]
+- 🏗️ Add Quartz.Engine Library [[e764051](https://github.com/TheHeadmaster/Quartz/commit/e764051cf313a714ae3cac8cbd2672f128e4cb04)]
+- 🚀 Change Quartz Editor to Quartz IDE [[fdfb673](https://github.com/TheHeadmaster/Quartz/commit/fdfb673aefe93252bb2d21b84cffbbd41840998f)]
+
+### Bug Fixes
+
+- 🐛 Selecting No to opening a new project while an existing unsaved project was open still opened the project and didn&#x27;t save. Press F to pay respects [[46dba05](https://github.com/TheHeadmaster/Quartz/commit/46dba05e9d7c4a9bfc1c79ae66cf9dd5e307a3b2)]
+
+### New Features
+
+- ✨ Add calculated Element offensive and defensive ratings [[a73bf94](https://github.com/TheHeadmaster/Quartz/commit/a73bf94d86ed8e503072bf79bb338fbdeb51f896)]
+- ✨ Add the Changelog to the About window [[9b8d52c](https://github.com/TheHeadmaster/Quartz/commit/9b8d52ce89fcb393b3f17dca50b1b57b996f0a21)]
+- ✨ Add elements and definable strengths, weaknesses, and immunities [[5e5bcd2](https://github.com/TheHeadmaster/Quartz/commit/5e5bcd27d40b1b867e7b939d331c18cd6e25bc5b)]
+- ✨ Add backwards compatibility check for older projects, and versioning for projects moving forward [[03b4966](https://github.com/TheHeadmaster/Quartz/commit/03b4966b2d30ac6139d5602ac518228d2c222722)]
+
+### Diagnostics
+
+- ⚗️ Add method-level logging and error catching utilizing Serilog and MethodBoundaryAspect [[ab97e2f](https://github.com/TheHeadmaster/Quartz/commit/ab97e2fa8e178bd3f8e95c4ea2668948ebfdaf50)]
+
+### Dependency Changes
+
+- ⬆️ Update PersistentEntity 1.0.2 ➡️ 1.0.3 [[22f5c18](https://github.com/TheHeadmaster/Quartz/commit/22f5c183d9a0ca7f4d5c34e24701eb6e3c8a5967)]
+- ⬆️ Update MethodBoundaryAspect 2.0.122 ➡️ 2.0.123 [[6a8ffae](https://github.com/TheHeadmaster/Quartz/commit/6a8ffaec813749a9a1d2214bcb442425f3e81c3f)]
+- ⬆️ Update PersistentEntity 1.0.1 ➡️ 1.0.2 [[2481663](https://github.com/TheHeadmaster/Quartz/commit/2481663e3397574b48c17964a27b9350e77b30c8)]
+- ⬆️ Update ReactiveProperty 7.4.1 ➡️ 7.4.1 [[927872d](https://github.com/TheHeadmaster/Quartz/commit/927872dfa0cd8eb6528ab37aabe21036faa1784b)]
+- ⬆️ Update PersistentEntity 1.0.0 ➡️ 1.0.1 [[9b7930b](https://github.com/TheHeadmaster/Quartz/commit/9b7930bab856504779dbe6c7828f5b9854fcb01d)]
+- ➕ Add Entity Framework Core Analyzers [[606a95a](https://github.com/TheHeadmaster/Quartz/commit/606a95afb01bb253807a1fc6f5d27722e144df3d)]
+- ➕ Add Entity Framework Core Abstractions Database Library [[09eece9](https://github.com/TheHeadmaster/Quartz/commit/09eece987a7a104966101c1e05fdc1ae1b9fe1a1)]
+- ➕ Add Entity Framework Core Relational Database Library [[50dd33d](https://github.com/TheHeadmaster/Quartz/commit/50dd33dd54a80d285005ecc8cd3e221c4299a7f6)]
+- ➕ Add Entity Framework Core Tools Database Library [[5fff933](https://github.com/TheHeadmaster/Quartz/commit/5fff93334a827dccf4533a8da99431f3c5fd1605)]
+- ➕ Add Entity Framework Core Database Library [[061e05f](https://github.com/TheHeadmaster/Quartz/commit/061e05f58767b9fc545a9bb51b0c8cfcc9f39005)]
+- ➕ Add Microsoft.NET.HostModel Compiler Library [[b3f1780](https://github.com/TheHeadmaster/Quartz/commit/b3f1780691654be8e726010401b9e032a20ca65b)]
+- ➕ Add Microsoft.Extensions.DependencyModel Compiler Library [[c7cdb35](https://github.com/TheHeadmaster/Quartz/commit/c7cdb35f54fa4ff87d63b10cfa4a49487bee94d4)]
+- ➕ Add Microsoft.DotNet.PlatformAbstractions Compiler Library [[6161fb5](https://github.com/TheHeadmaster/Quartz/commit/6161fb5ca76ff4427981196c17dbd2f61c62c85b)]
+- ➕ Add Microsoft.CodeAnalysis.Workspaces.MSBuild Compiler Library [[3d38157](https://github.com/TheHeadmaster/Quartz/commit/3d3815736752a74a9ebdbd698952fd54dbfb32f1)]
+- ➕ Add Microsoft.CodeAnalysis.CSharp.Workspaces Compiler Library [[31525e4](https://github.com/TheHeadmaster/Quartz/commit/31525e438f4983bae0eaefcfb5d6b385cd9ab32e)]
+- ➕ Add Microsoft.CodeAnalysis Compiler Library [[163612c](https://github.com/TheHeadmaster/Quartz/commit/163612c5a493c5ce9155937661140faa490f7cdd)]
+- ➕ Add Microsoft.Build.Tasks.Core Compiler Library [[799113b](https://github.com/TheHeadmaster/Quartz/commit/799113b98be17deae5b2801aae314b317083593c)]
+- ➕ Add Microsoft.Build.Locator Compiler Library [[7a10c60](https://github.com/TheHeadmaster/Quartz/commit/7a10c608ced68ff2e40f6743ef19254807de8683)]
+- ➕ Add Microsoft.Build.Framework Compiler Library [[376c473](https://github.com/TheHeadmaster/Quartz/commit/376c4732c627cbcde6ed34c6957cdbca92411f49)]
+- ➕ Add Microsoft.Build.Runtime Compiler Library [[51efa89](https://github.com/TheHeadmaster/Quartz/commit/51efa8993dbe3b1bef5f22f96939f82c312956ba)]
+- ➕ Add Microsoft.Build.Engine Compiler Library [[7c72459](https://github.com/TheHeadmaster/Quartz/commit/7c724592a0fe3cd0a6c886e1f125c7a4cefb1d56)]
+- ➕ Add Microsoft.Build Compiler Library [[29d06f6](https://github.com/TheHeadmaster/Quartz/commit/29d06f678ec5271a88c9d211a69012e517b58c76)]
+- ⬆️ Update Librarium 1.0.2 ➡️ 1.0.3 [[27e4ffc](https://github.com/TheHeadmaster/Quartz/commit/27e4ffcc71830e594aa5a2529ce5dd3dee1a12b6)]
+- ➕ Add PersistentEntity Database Library [[f16ceb7](https://github.com/TheHeadmaster/Quartz/commit/f16ceb7bde0954c33f627831c16f6c87ba151b88)]
+- ➕ Add FluentAssertions Testing Library [[f42ffa1](https://github.com/TheHeadmaster/Quartz/commit/f42ffa1550bf1ba14d7b1ac9ecfacba9a8ca3830)]
+- ➕ Add XBehave Testing Library [[6ca9c8b](https://github.com/TheHeadmaster/Quartz/commit/6ca9c8b305edfdb966823104807d9d540038e962)]
+- ⬆️ Update XUnit Visual Studio Runner 2.4.0 ➡️ 2.4.3 [[0506e07](https://github.com/TheHeadmaster/Quartz/commit/0506e0758e62a0abd8e43f323a664e340701e7e6)]
+- ⬆️ Update XUnit 2.4.0 ➡️ 2.4.1 [[a9826d3](https://github.com/TheHeadmaster/Quartz/commit/a9826d378a2ae457e815b44e6b972d584de1339d)]
+- ⬆️ Update .NET Test SDK 16.5.0 ➡️ 16.7.1 [[0d66e8d](https://github.com/TheHeadmaster/Quartz/commit/0d66e8dad08363e5c41107ac9d2f022f109a08d5)]
+- ⬆️ Update Coverlet.Collector 1.2.0 ➡️ 1.3.0 [[f6c6c0c](https://github.com/TheHeadmaster/Quartz/commit/f6c6c0caea858f679fe6aeee95334c65ec24954d)]
+- ➕ Add Serilog Analyzers [[560d15c](https://github.com/TheHeadmaster/Quartz/commit/560d15c506ff41e7fe6e4a923c1be285010069e6)]
+- ➕ Add Serilog Compact Formatting Logging Library [[4c036a9](https://github.com/TheHeadmaster/Quartz/commit/4c036a987785600d983c506644ba4ba0f520e127)]
+- ➕ Add Serilog Exception Logging Library [[355b7ad](https://github.com/TheHeadmaster/Quartz/commit/355b7ad47ede98a1736197d57193db7b3d32d0cc)]
+- ➕ Add Serilog Seq Sink Library [[87a8b9f](https://github.com/TheHeadmaster/Quartz/commit/87a8b9fb8f50791b19b0f8fd160192c5e7e53137)]
+- ➕ Add Serilog File Sink Library [[c913daa](https://github.com/TheHeadmaster/Quartz/commit/c913daa61ce5eeb4bd126adfd2285980d0348c28)]
+- ➕ Add Serilog Console Sink Library [[3edad91](https://github.com/TheHeadmaster/Quartz/commit/3edad910758b4cde528eda27a3e6abd50c863d05)]
+- ➕ Add Serilog Debug Sink Library [[49a95ba](https://github.com/TheHeadmaster/Quartz/commit/49a95ba462761db9ce5101b9426d4bd35fd659f3)]
+- ➕ Add Serilog Logging Library [[48b5bcf](https://github.com/TheHeadmaster/Quartz/commit/48b5bcf6780bd0d3c4f9e2c7c33f755765094e21)]
+- ⬆️ Upgrade Librarium and Librarium.WPF to Nuget package [[4b82008](https://github.com/TheHeadmaster/Quartz/commit/4b82008d5f40c0ad3f0f74c9dc17846b17d42ffe)]
+
 <a name="1.1.6-alpha"></a>
 ## 1.1.6-alpha (2020-09-20)
 

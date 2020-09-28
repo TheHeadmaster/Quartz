@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="Shark">#2A2A2D</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="Bright Red">#AA0000</Color>
+    <Color x:Key="Malibu">#7AC1FF</Color>
+    <Color x:Key="Abbey">#4A4A4D</Color>
+    <Color x:Key="Burnt Orange">#C95100</Color>
+
+    <!-- Pokemon Elemental Type Colors -->
+    <Color x:Key="Pokemon Normal">#A8A878</Color>
+    <Color x:Key="Pokemon Fighting">#C03028</Color>
+    <Color x:Key="Pokemon Flying">#A890F0</Color>
+    <Color x:Key="Pokemon Poison">#A040A0</Color>
+    <Color x:Key="Pokemon Ground">#E0C068</Color>
+    <Color x:Key="Pokemon Rock">#B8A038</Color>
+    <Color x:Key="Pokemon Bug">#A8B820</Color>
+    <Color x:Key="Pokemon Ghost">#705898</Color>
+    <Color x:Key="Pokemon Steel">#B8B8D0</Color>
+    <Color x:Key="Pokemon Fire">#F08030</Color>
+    <Color x:Key="Pokemon Water">#6890F0</Color>
+    <Color x:Key="Pokemon Grass">#78C850</Color>
+    <Color x:Key="Pokemon Electric">#F8D030</Color>
+    <Color x:Key="Pokemon Psychic">#F85888</Color>
+    <Color x:Key="Pokemon Ice">#98D8D8</Color>
+    <Color x:Key="Pokemon Dragon">#7038F8</Color>
+    <Color x:Key="Pokemon Dark">#705848</Color>
+    <Color x:Key="Pokemon Fairy">#EE99AC</Color>
+    <Color x:Key="Pokemon None">#DDDDDD</Color>
+
+    <!-- Pokemon Base Stat Colors -->
+    <Color x:Key="Pokemon HP Stat">#FF0000</Color>
+    <Color x:Key="Pokemon Atk Stat">#F08030</Color>
+    <Color x:Key="Pokemon Def Stat">#F8D030</Color>
+    <Color x:Key="Pokemon SpAtk Stat">#6890F0</Color>
+    <Color x:Key="Pokemon SpDef Stat">#78C850</Color>
+    <Color x:Key="Pokemon Speed Stat">#F85888</Color>
+
+    <SolidColorBrush x:Key="BaseBackgroundColor" Color="{StaticResource Shark}" />
+    <SolidColorBrush x:Key="AccentBackgroundColor" Color="{StaticResource Bright Red}" />
+    <SolidColorBrush x:Key="BaseBorderColor" Color="{StaticResource Black}" />
+    <SolidColorBrush x:Key="BaseHighlightColor" Color="{StaticResource Abbey}" />
+    <SolidColorBrush x:Key="BaseFontColor" Color="{StaticResource White}" />
+    <SolidColorBrush x:Key="AccentIconColor" Color="{StaticResource Malibu}" />
+    <SolidColorBrush x:Key="ScrollBarGlyphColor" Color="{StaticResource Bright Red}" />
+    <SolidColorBrush x:Key="StatusBarActiveColor" Color="{StaticResource Burnt Orange}" />
+
+    <!-- Pokemon Elemental Type Brushes -->
+    <SolidColorBrush x:Key="PokemonNormalColor" Color="{StaticResource Pokemon Normal}" />
+    <SolidColorBrush x:Key="PokemonFightingColor" Color="{StaticResource Pokemon Fighting}" />
+    <SolidColorBrush x:Key="PokemonFlyingColor" Color="{StaticResource Pokemon Flying}" />
+    <SolidColorBrush x:Key="PokemonPoisonColor" Color="{StaticResource Pokemon Poison}" />
+    <SolidColorBrush x:Key="PokemonGroundColor" Color="{StaticResource Pokemon Ground}" />
+    <SolidColorBrush x:Key="PokemonRockColor" Color="{StaticResource Pokemon Rock}" />
+    <SolidColorBrush x:Key="PokemonBugColor" Color="{StaticResource Pokemon Bug}" />
+    <SolidColorBrush x:Key="PokemonGhostColor" Color="{StaticResource Pokemon Ghost}" />
+    <SolidColorBrush x:Key="PokemonSteelColor" Color="{StaticResource Pokemon Steel}" />
+    <SolidColorBrush x:Key="PokemonFireColor" Color="{StaticResource Pokemon Fire}" />
+    <SolidColorBrush x:Key="PokemonWaterColor" Color="{StaticResource Pokemon Water}" />
+    <SolidColorBrush x:Key="PokemonGrassColor" Color="{StaticResource Pokemon Grass}" />
+    <SolidColorBrush x:Key="PokemonElectricColor" Color="{StaticResource Pokemon Electric}" />
+    <SolidColorBrush x:Key="PokemonPsychicColor" Color="{StaticResource Pokemon Psychic}" />
+    <SolidColorBrush x:Key="PokemonIceColor" Color="{StaticResource Pokemon Ice}" />
+    <SolidColorBrush x:Key="PokemonDragonColor" Color="{StaticResource Pokemon Dragon}" />
+    <SolidColorBrush x:Key="PokemonDarkColor" Color="{StaticResource Pokemon Dark}" />
+    <SolidColorBrush x:Key="PokemonFairyColor" Color="{StaticResource Pokemon Fairy}" />
+    <SolidColorBrush x:Key="PokemonNoneColor" Color="{StaticResource Pokemon None}" />
+
+    <!-- Pokemon Base Stat Colors -->
+    <SolidColorBrush x:Key="PokemonHPStatColor"    Color="{StaticResource Pokemon HP Stat}" />
+    <SolidColorBrush x:Key="PokemonAtkStatColor"   Color="{StaticResource Pokemon Atk Stat}" />
+    <SolidColorBrush x:Key="PokemonDefStatColor"   Color="{StaticResource Pokemon Def Stat}" />
+    <SolidColorBrush x:Key="PokemonSpAtkStatColor" Color="{StaticResource Pokemon SpAtk Stat}" />
+    <SolidColorBrush x:Key="PokemonSpDefStatColor" Color="{StaticResource Pokemon SpDef Stat}" />
+    <SolidColorBrush x:Key="PokemonSpeedStatColor" Color="{StaticResource Pokemon Speed Stat}" />
+</ResourceDictionary>

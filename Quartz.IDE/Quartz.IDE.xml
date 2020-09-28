@@ -1,0 +1,1127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Quartz.IDE</name>
+    </assembly>
+    <members>
+        <member name="T:Quartz.IDE.App">
+            <summary>
+            Houses global application data and the entry point of the application.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.App.Metadata">
+            <summary>
+            Gets the metadata for the application.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.App.Preferences">
+            <summary>
+            Gets the currently loaded preferences for the user.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.OnExit(System.Object,System.EventArgs)">
+            <summary>
+            When the application ends from anywhere, the log needs to be closed and flushed.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.AppStartup(System.Object,System.Windows.StartupEventArgs)">
+            <summary>
+            Serves as the application entry point.
+            </summary>
+            <param name="sender">
+            The source of the event.
+            </param>
+            <param name="args">
+            Contains the arguments pertaining to the application startup event.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.App.EnterProgram">
+            <summary>
+            Enters the program.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.InitializePreferences">
+            <summary>
+            Loads the Preferences from disk or creates default preferences if none exists.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.InitializeLogging">
+            <summary>
+            Initializes the logging manager and logs the welcome messages.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.DefineDebugFlag">
+            <summary>
+            Defines the flag that determines whether or not the program is running in debug mode.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Commands.NewProjectCommand">
+            <summary>
+            Creates a new project.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Commands.OpenProjectCommand">
+            <summary>
+            Opens a project.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Controls.BindableDataGridComboBoxColumn">
+            <summary>
+            Represents a bindable <see cref="T:System.Windows.Controls.DataGridColumn"/> that hosts a <see cref="T:System.Windows.Controls.ComboBox"/> in
+            its cells.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.BindableDataGridComboBoxColumn.GenerateEditingElement(System.Windows.Controls.DataGridCell,System.Object)">
+            <summary>
+            Gets a combo box control that is bound to the column's <see
+            cref="P:System.Windows.Controls.DataGridComboBoxColumn.SelectedItemBinding"/>, <see
+            cref="P:System.Windows.Controls.DataGridComboBoxColumn.SelectedValueBinding"/>, <see
+            cref="P:System.Windows.Controls.DataGridComboBoxColumn.TextBinding"/> values.
+            </summary>
+            <param name="cell">
+            The cell that will contain the generated element.
+            </param>
+            <param name="dataItem">
+            The data item represented by the row that contains
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Quartz.IDE.Controls.BindableDataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell,System.Object)">
+            <summary>
+            Gets a read-only combo box control that is bound to the column's <see
+            cref="P:System.Windows.Controls.DataGridComboBoxColumn.SelectedItemBinding"/>, <see
+            cref="P:System.Windows.Controls.DataGridComboBoxColumn.SelectedValueBinding"/>, <see
+            cref="P:System.Windows.Controls.DataGridComboBoxColumn.TextBinding"/> values.
+            </summary>
+            <param name="cell">
+            The cell that will contain the generated element.
+            </param>
+            <param name="dataItem">
+            The data item represented by the row that contains the intended cell.
+            </param>
+        </member>
+        <member name="T:Quartz.IDE.Controls.ElementsPage">
+            <summary>
+            Interaction logic for ElementsPage.xaml
+            </summary>
+            <summary>
+            ElementsPage
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.ElementsPage.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.Controls.ElementsPage"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.ElementsPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Controls.MainMenu">
+            <summary>
+            Interaction logic for MainMenu.xaml
+            </summary>
+            <summary>
+            MainMenu
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.MainMenu.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.Controls.MainMenu"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.MainMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Controls.MainStatusBar">
+            <summary>
+            Interaction logic for MainStatusBar.xaml
+            </summary>
+            <summary>
+            MainStatusBar
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.MainStatusBar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Controls.Workspace">
+            <summary>
+            Interaction logic for Workspace.xaml
+            </summary>
+            <summary>
+            Workspace
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.Workspace.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.Controls.Workspace"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.Workspace.ChangeActivePage(Quartz.IDE.ViewModels.Pages.PageViewModel)">
+            <summary>
+            Changes the currently focused page to the page provided.
+            </summary>
+            <param name="page">
+            The page to change focus to.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Controls.Workspace.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Converters.TextToFlowDocumentConverter.TryConvert(System.Object,System.Type,System.Object,System.Object@)">
+            <summary>
+            Tries to convert the text to a <see cref="T:System.Windows.Documents.FlowDocument"/>.
+            </summary>
+            <param name="from">
+            The text to convert from.
+            </param>
+            <param name="toType">
+            The type to convert to.
+            </param>
+            <param name="conversionHint">
+            The conversion hint.
+            </param>
+            <param name="result">
+            The result to out.
+            </param>
+        </member>
+        <member name="T:Quartz.IDE.Json.ProjectFile">
+            <summary>
+            Represents a Quartz project file on disk.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Json.TemplateFile">
+            <summary>
+            Represents a Quartz template file on disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Json.TemplateFile.Author">
+            <summary>
+            The template author's name or alias.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Json.TemplateFile.Description">
+            <summary>
+            The description of the template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Json.TemplateFile.Name">
+            <summary>
+            The name of the template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Json.TemplateFile.TemplateType">
+            <summary>
+            The type of the Quartz template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Json.TemplateFile.Version">
+            <summary>
+            The version of Quartz that the template was made with.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Json.TemplateFile.CreateModel">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ObjectModel.Template"/> model.
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Quartz.IDE.Json.TemplateFile.PopulateFile(Quartz.IDE.ObjectModel.Template)">
+            <summary>
+            Populates the <see cref="T:Librarium.Json.JFile"/> with the specified model's values.
+            </summary>
+            <param name="model">
+            The module to populate the <see cref="T:Librarium.Json.JFile"/> with.
+            </param>
+        </member>
+        <member name="T:Quartz.IDE.Meta">
+            <summary>
+            Houses the metadata for the application.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.AppDataDirectory">
+            <summary>
+            Gets the Directory for Quartz that lies inside of the user's AppData directory.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.AssemblyDirectory">
+            <summary>
+            Gets the root directory that the program is contained in.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.CurrentProject">
+            <summary>
+            Gets or sets the current project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.IsDebug">
+            <summary>
+            Gets whether the program is running in debug mode or not.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.IsRunning">
+            <summary>
+            Gets or sets whether a debugger instance is currently running or not.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.Pages">
+            <summary>
+            Gets or sets the open pages in the workspace.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.SelectedPage">
+            <summary>
+            Gets or sets the selected open page in the workspace.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.StatusBarColor">
+            <summary>
+            Gets or sets the color of the status bar.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.StatusBarMessage">
+            <summary>
+            Gets or sets the message displayed in the status bar.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.Version">
+            <summary>
+            Gets the assembly version of the entry assembly.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Meta.OpenPageAsync(System.Type)">
+            <summary>
+            Opens the specified page.
+            </summary>
+            <param name="type">
+            The page to open.
+            </param>
+        </member>
+        <member name="T:Quartz.IDE.ObjectModel.CoreTemplate">
+            <summary>
+            A core template is the foundation of a project.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ObjectModel.PackSelection">
+            <summary>
+            Represents a <see cref="T:Quartz.IDE.ObjectModel.PackTemplate"/> and whether or not its selected to be included in
+            the new project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.PackSelection.IsSelected">
+            <summary>
+            Gets or sets whether the <see cref="T:Quartz.IDE.ObjectModel.PackTemplate"/> is selected.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.PackSelection.Pack">
+            <summary>
+            Gets the <see cref="T:Quartz.IDE.ObjectModel.PackTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.PackSelection.#ctor(Quartz.IDE.ObjectModel.PackTemplate,System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ObjectModel.PackSelection"/> with a <see cref="T:Quartz.IDE.ObjectModel.PackTemplate"/> and an
+            initial selection value.
+            </summary>
+            <param name="pack">
+            The <see cref="T:Quartz.IDE.ObjectModel.PackTemplate"/>.
+            </param>
+            <param name="isSelected">
+            Sets whether the <see cref="T:Quartz.IDE.ObjectModel.PackTemplate"/> is initially selected or not.
+            </param>
+        </member>
+        <member name="T:Quartz.IDE.ObjectModel.PackTemplate">
+            <summary>
+            Represents an asset pack for Quartz.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ObjectModel.Preferences">
+            <summary>
+            Houses the options defined by the user.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Preferences.FileName">
+            <summary>
+            Gets or sets the name of the json file saved to disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Preferences.FilePath">
+            <summary>
+            Gets or sets the path of the json file saved to disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Preferences.OpenLastProjectOnStartup">
+            <summary>
+            Gets or sets whether to automatically open the most recently opened project when the
+            program starts.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Preferences.PreferMetric">
+            <summary>
+            Gets or sets whether to use the Metric system or the Imperial system for measurements.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Preferences.RecentlyOpenedProjects">
+            <summary>
+            Gets a list of most recently opened projects. The list will keep no more than 10
+            recently opened projects.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Preferences.Load">
+            <summary>
+            Loads Preferences from disk.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Preferences.GetCopy">
+            <summary>
+            Gets a memberwise copy of the <see cref="T:Quartz.IDE.ObjectModel.Preferences"/> object.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Preferences.Save">
+            <summary>
+            Saves the <see cref="T:Quartz.IDE.ObjectModel.Preferences"/> to disk.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ObjectModel.Project">
+            <summary>
+            Represents a Quartz project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.AreItemsSaved">
+            <summary>
+            Gets whether all project items are saved.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.Connection">
+            <summary>
+            Represents a connection to this project's database.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.ElementMatchups">
+            <summary>
+            A list of all <see cref="T:Quartz.Core.ObjectModel.ElementMatchup"/> s in the database.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.Elements">
+            <summary>
+            A list of all <see cref="T:Quartz.Core.ObjectModel.Element"/> s in the database.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.FileName">
+            <summary>
+            The name of the <see cref="T:Librarium.Json.JFile"/> on disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.FilePath">
+            <summary>
+            The path to the <see cref="T:Librarium.Json.JFile"/> on disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.Name">
+            <summary>
+            The name of the project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.Version">
+            <summary>
+            The version of Quartz that the project was made with.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Project.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ObjectModel.Project"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Project.Close(System.Boolean)">
+            <summary>
+            Closes the project with an option to save before closing.
+            </summary>
+            <param name="saveBeforeClosing">
+            Saves before closing if <see langword="true"/>.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Project.Load">
+            <summary>
+            Loads the project and all of its associated data objects.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Project.Save">
+            <summary>
+            Saves the <see cref="T:Librarium.Json.JFile"/> to disk.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Project.SaveAllAsync">
+            <summary>
+            Saves the project and all of its associated data objects.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Project.SaveAsync(PersistentEntity.Connection)">
+            <summary>
+            Saves the <see cref="T:Librarium.Json.JFile"/> to disk.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ObjectModel.Template">
+            <summary>
+            Represents a Quartz template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.Subclasses">
+            <summary>
+            Gets a list of all classes that derive from <see cref="T:Quartz.IDE.ObjectModel.Template"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.Author">
+            <summary>
+            The template author's name or alias.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.Description">
+            <summary>
+            The description of the template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.FileName">
+            <summary>
+            The name of the <see cref="T:Librarium.Json.JFile"/> on disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.FilePath">
+            <summary>
+            The path to the <see cref="T:Librarium.Json.JFile"/> on disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.Name">
+            <summary>
+            The name of the template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Template.Version">
+            <summary>
+            The version of Quartz that the template was made with.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Template.Save">
+            <summary>
+            Saves the <see cref="T:Librarium.Json.JFile"/> to disk.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.Template.SaveAsync(PersistentEntity.Connection)">
+            <summary>
+            Creates a new json data model, populates it with this project's data, and saves it to disk.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.TemplateManager.BlankTemplate">
+            <summary>
+            A basic blank template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.TemplateManager.TemplateDirectory">
+            <summary>
+            The directory where the user's templates are stored.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ObjectModel.TemplateManager.GetTemplates">
+            <summary>
+            Gets all templates defined in the user's AppData directory.
+            </summary>
+        </member>
+        <member name="F:Quartz.IDE.Parsing.Markdown.nestDepth">
+            <summary>
+            maximum nested depth of [] and () supported by the transform; implementation detail
+            </summary>
+        </member>
+        <member name="F:Quartz.IDE.Parsing.Markdown.tabWidth">
+            <summary>
+            Tabs are automatically converted to spaces as part of the transform this constant
+            determines how "wide" those tabs become in spaces
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Parsing.Markdown.StrictBoldItalic">
+            <summary>
+            when true, bold and italic require non-word characters on either side
+            WARNING: this is a significant deviation from the markdown spec
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.GetNestedBracketsPattern">
+            <summary>
+            Reusable pattern to match balanced [brackets]. See Friedl's "Mastering Regular
+            Expressions", 2nd Ed., pp. 328-331.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.GetNestedParensPattern">
+            <summary>
+            Reusable pattern to match balanced (parens). See Friedl's "Mastering Regular
+            Expressions", 2nd Ed., pp. 328-331.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.GetNestedParensPatternWithWhiteSpace">
+            <summary>
+            Reusable pattern to match balanced (parens), including whitespace. See Friedl's
+            "Mastering Regular Expressions", 2nd Ed., pp. 328-331.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.RepeatString(System.String,System.Int32)">
+            <summary>
+            this is to emulate what's available in PHP
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoAnchors(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Inline}})">
+            <summary>
+            Turn Markdown link shortcuts into hyperlinks
+            </summary>
+            <remarks>
+            [link text](url "title")
+            </remarks>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoCodeSpans(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Inline}})">
+            <summary>
+            Turn Markdown `code spans` into HTML code tags
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoHeaders(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Block}})">
+             <summary>
+             Turn Markdown headers into HTML header tags
+             </summary>
+             <remarks>
+             Header 1 ========
+            
+             Header 2 --------
+            
+             # Header 1 ## Header 2 ## Header 2 with closing hashes ## ... ###### Header 6
+             </remarks>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoHorizontalRules(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Block}})">
+            <summary>
+            Turn Markdown horizontal rules into HTML hr tags
+            </summary>
+            <remarks>
+            ***
+            * * * ---
+            - - -
+            </remarks>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoImages(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Inline}})">
+            <summary>
+            Turn Markdown images into images
+            </summary>
+            <remarks>
+            ![image alt](url)
+            </remarks>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoItalicsAndBold(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Inline}})">
+            <summary>
+            Turn Markdown *italics* and **bold** into HTML strong and em tags
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.DoLists(System.String,System.Func{System.String,System.Collections.Generic.IEnumerable{System.Windows.Documents.Block}})">
+            <summary>
+            Turn Markdown lists into HTML ul and ol and li tags
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.FormParagraphs(System.String)">
+            <summary>
+            splits on two or more newlines, to form "paragraphs";
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.Normalize(System.String)">
+            <summary>
+            convert all tabs to _tabWidth spaces; standardizes line endings from DOS (CR LF) or Mac
+            (CR) to UNIX (LF); makes sure text ends with a couple of newlines; removes any blank
+            lines (only spaces) in the text
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.Outdent(System.String)">
+            <summary>
+            Remove one level of line-leading spaces
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.ProcessListItems(System.String,System.String)">
+            <summary>
+            Process the contents of a single ordered or unordered list, splitting it into individual
+            list items.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.RunBlockGamut(System.String)">
+            <summary>
+            Perform transformations that form block-level tags like paragraphs, headers, and list items.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Parsing.Markdown.RunSpanGamut(System.String)">
+            <summary>
+            Perform transformations that occur *within* block-level tags like paragraphs, headers,
+            and list items.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.RecentItem">
+            <summary>
+            Represents a recently loaded project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.RecentItem.Header">
+            <summary>
+            The display header for menu items.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.RecentItem.Name">
+            <summary>
+            The name of the project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.RecentItem.Path">
+            <summary>
+            The path to the project file.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.RecentItem.Timestamp">
+            <summary>
+            The date the project was last accessed.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.UI.StatusBarColor">
+            <summary>
+            Represents the theming for the status bar.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Debugging">
+            <summary>
+            Used for when a test is running with an attached debugging process to it.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Error">
+            <summary>
+            Used for whenever something throws an error.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Idle">
+            <summary>
+            Used for whenever the program is idle or ready.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Processing">
+            <summary>
+            Used for whenever something is currently being processed.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Warning">
+            <summary>
+            Used for whenever something throws a warning.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Color">
+            <summary>
+            The background color for the status bar.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UI.StatusBarColor.Foreground">
+            <summary>
+            The font color for the status bar.
+            </summary>
+        </member>
+        <member name="F:Quartz.IDE.UpdateManager.applicationTitle">
+            <summary>
+            The title of the application.
+            </summary>
+        </member>
+        <member name="F:Quartz.IDE.UpdateManager.repositoryName">
+            <summary>
+            The name of the Github repository to pull updates from.
+            </summary>
+        </member>
+        <member name="F:Quartz.IDE.UpdateManager.repositoryOwner">
+            <summary>
+            The owner of the Github repository to pull updates from.
+            </summary>
+        </member>
+        <member name="F:Quartz.IDE.UpdateManager.updateFilename">
+            <summary>
+            The name of the update file to download.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UpdateManager.Client">
+            <summary>
+            The Github client that connects to the repository.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.UpdateManager.UpdateUrl">
+            <summary>
+            The url that points to the most recent release version in the Github repository.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.UpdateManager.GetPermissionToUpdate(System.String)">
+            <summary>
+            Prompts the user for permission to update the software.
+            </summary>
+            <param name="updateName">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Quartz.IDE.UpdateManager.NeedsUpdate(System.String[])">
+            <summary>
+            Determines if the current version of the program needs an update.
+            </summary>
+            <param name="version">
+            The version to check against.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.UpdateManager.CheckForUpdates(System.Boolean)">
+            <summary>
+            Checks to see if there are any available updates for the current running version of
+            Quartz IDE.
+            </summary>
+            <param name="silentMode">
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.UpdateManager.Initialize">
+            <summary>
+            Initializes the update manager.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.AboutWindowViewModel">
+            <summary>
+            View Model for the <see cref="T:Quartz.IDE.Windows.AboutWindow"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.AboutWindowViewModel.Changelog">
+            <summary>
+            Gets the changelog parsed as a string.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.AboutWindowViewModel.Version">
+            <summary>
+            Gets the version of the executing assembly as a string.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.MainMenuViewModel">
+            <summary>
+            The ViewModel for the <see cref="T:Quartz.IDE.Controls.MainMenu"/> control.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.Close">
+            <summary>
+            Closes the program.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.OpenElementsPage">
+            <summary>
+            Opens the elements page.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.RecentlyOpenedProjects">
+            <summary>
+            Gets a list of recently opened projects.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ViewModels.MainMenuViewModel.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ViewModels.MainMenuViewModel"/>.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.MainWindowViewModel">
+            <summary>
+            ViewModel for the Main Window.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainWindowViewModel.Close">
+            <summary>
+            Closes Quartz.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainWindowViewModel.Title">
+            <summary>
+            The title of the window.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ViewModels.MainWindowViewModel.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ViewModels.MainWindowViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.BrowseFolder">
+            <summary>
+            Opens a folder browse dialog.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.CoreTemplates">
+            <summary>
+            Gets the list of available core templates.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.CreateProject">
+            <summary>
+            Creates a new project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.IsCoreValid">
+            <summary>
+            Gets whether a core template was properly selected.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.IsUIValid">
+            <summary>
+            Gets whether a ui template was properly selected.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.IsValid">
+            <summary>
+            Gets whether all finalize selections are valid.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.Parent">
+            <summary>
+            The parent window.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.ProjectNameValidationText">
+            <summary>
+            The validation text for the project name input.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.ProjectPath">
+            <summary>
+            The path to the new project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.SelectedCoreTemplate">
+            <summary>
+            The selected core template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.SelectedPackTemplate">
+            <summary>
+            The selected pack template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.SelectedUITemplate">
+            <summary>
+            The selected UI template.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.Templates">
+            <summary>
+            Gets the list of available templates.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.UITemplates">
+            <summary>
+            Gets the list of available UI templates.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.NewProjectWindowViewModel.ValidationContext">
+            <summary>
+            Gets the validation context.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.Pages.ElementsViewModel">
+            <summary>
+            ViewModel for the <see cref="T:Quartz.IDE.Controls.ElementsPage"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.AreElementsSaved">
+            <summary>
+            Gets whether all elements are saved.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.AttackingMatchups">
+            <summary>
+            Matchups in which the selected element is the attacking element.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.CreateAttackingMatchup">
+            <summary>
+            Creates a new attacking matchup.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.CreateDefendingMatchup">
+            <summary>
+            Creates a new defending matchup.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.DefendingMatchups">
+            <summary>
+            Matchups in which the selected element is the defending element.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.DefensiveRating">
+            <summary>
+            Represents the defensive capability rating of the selected element.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.ElementMatchups">
+            <summary>
+            A list of all element matchups.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.Elements">
+            <summary>
+            A list of all elements.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.NewElement">
+            <summary>
+            Creates a new element.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.OffensiveRating">
+            <summary>
+            Represents the offensive capability rating of the selected element.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.ElementsViewModel.SelectedElement">
+            <summary>
+            The currently selected element.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ViewModels.Pages.ElementsViewModel.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ViewModels.Pages.ElementsViewModel"/>.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.Pages.PageTemplateSelector">
+            <summary>
+            Selects the <see cref="T:System.Windows.DataTemplate"/> for a page.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.CoreTemplatePage">
+            <summary>
+            The <see cref="T:System.Windows.DataTemplate"/> for a <see cref="T:Quartz.IDE.ViewModels.Pages.CoreTemplateViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.ElementsPage">
+            <summary>
+            The <see cref="T:System.Windows.DataTemplate"/> for an <see cref="T:Quartz.IDE.ViewModels.Pages.ElementsViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.PackTemplatePage">
+            <summary>
+            The <see cref="T:System.Windows.DataTemplate"/> for a <see cref="T:Quartz.IDE.ViewModels.Pages.PackTemplateViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.ProjectPage">
+            <summary>
+            The <see cref="T:System.Windows.DataTemplate"/> for a <see cref="T:Quartz.IDE.ViewModels.Pages.ProjectViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.UITemplatePage">
+            <summary>
+            The <see cref="T:System.Windows.DataTemplate"/> for a <see cref="T:Quartz.IDE.ViewModels.Pages.UITemplateViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ViewModels.Pages.PageTemplateSelector"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.SelectTemplate(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            Returns a <see cref="T:System.Windows.DataTemplate"/> based on the type of the object passed in.
+            </summary>
+            <param name="item">
+            The item to switch against.
+            </param>
+            <param name="container">
+            The container.
+            </param>
+            <returns>
+            A <see cref="T:System.Windows.DataTemplate"/>.
+            </returns>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.Pages.PageViewModel">
+            <summary>
+            Represents a ViewModel for a page.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageViewModel.Header">
+            <summary>
+            Determines whats displayed in the <see cref="T:Quartz.IDE.ViewModels.Pages.PageViewModel"/>'s tab header.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageViewModel.Identifier">
+            <summary>
+            A unique identifier which distinguishes it from other <see cref="T:Quartz.IDE.ViewModels.Pages.PageViewModel"/> s.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.Pages.UITemplateViewModel">
+            <summary>
+            ViewModel for the <see cref="!:UITemplatePage"/> control.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.WorkspaceViewModel">
+            <summary>
+            ViewModel for the <see cref="T:Quartz.IDE.Controls.Workspace"/> control.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.WorkspaceViewModel.Pages">
+            <summary>
+            Gets a list of open Pages.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Windows.AboutWindow">
+            <summary>
+            The <see cref="T:Quartz.IDE.Windows.AboutWindow"/> shows information about the program's version, copyright
+            information, and other credits.
+            </summary>
+            <summary>
+            AboutWindow
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Windows.AboutWindow.#ctor">
+            <summary>
+            Creates a ne <see cref="T:Quartz.IDE.Windows.AboutWindow"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Windows.AboutWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Windows.MainWindow">
+            <summary>
+            The main window for the program.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Windows.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Windows.NewProjectWindow">
+            <summary>
+            The <see cref="T:Quartz.IDE.Windows.NewProjectWindow"/> allows the user to create a new project from a template.
+            </summary>
+            <summary>
+            NewProjectWindow
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Windows.NewProjectWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
