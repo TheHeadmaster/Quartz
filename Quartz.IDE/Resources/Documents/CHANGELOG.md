@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="next"></a>
-## next
+<a name="1.2.2-alpha"></a>
+## 1.2.2-alpha (2020-09-30)
 
 
 

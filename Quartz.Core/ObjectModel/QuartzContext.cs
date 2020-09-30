@@ -9,9 +9,21 @@ namespace Quartz.Core.ObjectModel
 {
     public class QuartzContext : DatabaseContext
     {
-        public DbSet<ElementMatchup> ElementMatchups { get; set; }
+        public DbSet<CollisionMap> CollisionMaps { get; set; } = null!;
 
-        public DbSet<Element> Elements { get; set; }
+        public DbSet<DirectionMap> DirectionMaps { get; set; } = null!;
+
+        public DbSet<ElementMatchup> ElementMatchups { get; set; } = null!;
+
+        public DbSet<Element> Elements { get; set; } = null!;
+
+        public DbSet<MapLayer> MapLayers { get; set; } = null!;
+
+        public DbSet<TileBase> TileBases { get; set; } = null!;
+
+        public DbSet<TileMap> TileMaps { get; set; } = null!;
+
+        public DbSet<Tile> Tiles { get; set; } = null!;
 
         public QuartzContext(Connection connection) : base(connection) { }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using PersistentEntity;
 using Quartz.Core.ObjectModel.Attributes;
+using ReactiveUI.Fody.Helpers;
 
 namespace Quartz.Core.ObjectModel
 {
@@ -21,6 +22,7 @@ namespace Quartz.Core.ObjectModel
         /// The name of the element.
         /// </summary>
         [Memento]
+        [Reactive]
         public string? Name { get; set; }
     }
 }
