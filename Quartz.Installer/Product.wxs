@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-	<Product Id="*" Name="Quartz" Language="1033" Version="!(bind.fileVersion.Quartz.Exe)" Manufacturer="The Parable Group" UpgradeCode="6ca4d840-9568-438a-a7fb-38a824ef96ca">
+	<Product Id="*" Name="Quartz" Language="1033" Version="!(bind.fileVersion.Quartz.IDE.Exe)" Manufacturer="The Parable Group" UpgradeCode="6ca4d840-9568-438a-a7fb-38a824ef96ca">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -14,9 +14,9 @@
 			<Directory Id="DesktopFolder" Name="Desktop">
 				<Component Id="ApplicationShortcutDesktop">
 					<Shortcut Id="ApplicationDesktopShortcut"
-						Name="Quartz"
-						Description="Quartz editor."
-						Target="[INSTALLFOLDER]Quartz.exe"
+						Name="Quartz IDE"
+						Description="Quartz Integrated Development Environment."
+						Target="[INSTALLFOLDER]Quartz.IDE.exe"
 						WorkingDirectory="TARGETDIR" />
 					<RemoveFolder Id="DesktopFolder" On="uninstall" />
 					<RegistryValue
@@ -29,8 +29,10 @@
 				</Component>
 			</Directory>
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Quartz">
+				<Directory Id="INSTALLFOLDER" Name="Quartz" FileSource="Source">
+					<Directory Id="BlankTemplateFolder" Name="Blank Template" />
 					<Directory Id="XLCAESFolder" Name="ca-ES" />
+					<Directory Id="XLCSFolder" Name="cs" />
 					<Directory Id="XLCSCZFolder" Name="cs-CZ" />
 					<Directory Id="XLDEFolder" Name="de" />
 					<Directory Id="XLESFolder" Name="es" />
@@ -44,9 +46,13 @@
 					<Directory Id="XLPTBRFolder" Name="pt-BR" />
 					<Directory Id="XLROFolder" Name="ro" />
 					<Directory Id="XLRUFolder" Name="ru" />
+					<Directory Id="XLTRFolder" Name="tr" />
 					<Directory Id="XLSVFolder" Name="sv" />
 					<Directory Id="XLZHHANSFolder" Name="zh-HANS" />
 					<Directory Id="XLZHHANTFolder" Name="zh-HANT" />
+					<Component>
+						<File Id="Quartz.IDE.exe" KeyPath="yes" />
+					</Component>
 				</Directory>
 			</Directory>
 			<Directory Id="ProgramMenuFolder">
@@ -56,205 +62,789 @@
 
 		<DirectoryRef Id="ApplicationProgramsFolder">
 			<Component Id="ApplicationShortcut">
-				<Shortcut Id="ApplicationStartMenuShortcut"  Name="Quartz" Description="Quartz Editor" Target="[#Quartz.exe]" WorkingDirectory="INSTALLFOLDER">
+				<Shortcut Id="ApplicationStartMenuShortcut"  Name="Quartz" Description="Quartz Integrated Development Environment" Target="[#Quartz.IDE.exe]" WorkingDirectory="INSTALLFOLDER">
 					<ShortcutProperty Id="ShortcutProperty.QuartzExe" Key="System.AppUserModel.ID" Value="AppUserModelId" />
 				</Shortcut>
-				<Shortcut Id="UninstallProduct" Name="Uninstall Quartz" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="Uninstalls Quartz Editor." />
+				<Shortcut Id="UninstallProduct" Name="Uninstall Quartz IDE" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="Uninstalls Quartz IDE." />
 				<RemoveFolder Id="CleanupShortcut" Directory="ApplicationProgramsFolder" On="uninstall" />
 				<RegistryValue Root="HKCU" Key="Software\TheParableGroup\Quartz" Name="installed" Type="integer" Value="1" KeyPath="yes" />
-			</Component>
-		</DirectoryRef>
-
-		<DirectoryRef Id="INSTALLFOLDER">
-			<Component Id="Quartz.exe">
-				<File Id="Quartz.exe" Source="Source\Quartz.exe" KeyPath="yes" />
 			</Component>
 		</DirectoryRef>
 
 		<Feature Id="Complete" Title="Quartz" Display="expand" Level="1" ConfigurableDirectory="INSTALLFOLDER">
 			<Feature Id="ProductFeature" Title="Quartz" Level="1">
 				<ComponentGroupRef Id="ProductComponents" />
-				<ComponentGroupRef Id="LocalizationComponents" />
+				<ComponentGroupRef Id="TemplateComponents" />
+				<ComponentGroupRef Id="CAESLocalizationComponents" />
+				<ComponentGroupRef Id="CSLocalizationComponents" />
+				<ComponentGroupRef Id="CSCZLocalizationComponents" />
+				<ComponentGroupRef Id="DELocalizationComponents" />
+				<ComponentGroupRef Id="ESLocalizationComponents" />
+				<ComponentGroupRef Id="FRLocalizationComponents" />
+				<ComponentGroupRef Id="HULocalizationComponents" />
+				<ComponentGroupRef Id="ITLocalizationComponents" />
+				<ComponentGroupRef Id="JALocalizationComponents" />
+				<ComponentGroupRef Id="KOLocalizationComponents" />
+				<ComponentGroupRef Id="NLBELocalizationComponents" />
+				<ComponentGroupRef Id="PLLocalizationComponents" />
+				<ComponentGroupRef Id="PTBRLocalizationComponents" />
+				<ComponentGroupRef Id="ROLocalizationComponents" />
+				<ComponentGroupRef Id="RULocalizationComponents" />
+				<ComponentGroupRef Id="TRLocalizationComponents" />
+				<ComponentGroupRef Id="SVLocalizationComponents" />
+				<ComponentGroupRef Id="ZHHANSLocalizationComponents" />
+				<ComponentGroupRef Id="ZHHANTLocalizationComponents" />
 				<ComponentRef Id="ApplicationShortcut" />
 				<ComponentRef Id="ApplicationShortcutDesktop" />
-				<ComponentRef Id="Quartz.exe" />
+				<ComponentRef Id="Quartz.IDE.exe" />
 			</Feature>
 		</Feature>
 	</Product>
 
 	<Fragment>
 		<Icon Id="Quartz.ico" SourceFile="Quartz.ico" />
-		<Property Id="ARPPRODUCTICON" Value="Quartz.ico" />
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+		<Property Id="APPRODUCTICON" Value="Quartz.ico" />
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER" Source="Source">
 
 			<!-- Quartz Files -->
-			<Component Id="QuartzDll">
-				<File Id="QuartzDllFile" Name="Quartz.dll" Source="Source\Quartz.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Quartz.Core.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="QuartzPdb">
-				<File Id="QuartzPdbFile" Name="Quartz.pdb" Source="Source\Quartz.pdb" KeyPath="yes" />
+			<Component>
+				<File Name="Quartz.Core.pdb" KeyPath="yes" />
 			</Component>
-			<Component Id="QuartzRuntimeConfig">
-				<File Id="QuartzRuntimeConfigFile" Name="Quartz.runtimeconfig.json" Source="Source\Quartz.runtimeconfig.json" KeyPath="yes" />
+			<Component>
+				<File Name="Quartz.IDE.deps.json" KeyPath="yes" />
 			</Component>
-			<Component Id="QuartzDeps">
-				<File Id="QuartzDepsFile" Name="Quartz.deps.json" Source="Source\Quartz.deps.json" KeyPath="yes" />
+			<Component>
+				<File Name="Quartz.IDE.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Quartz.IDE.dll.config" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Quartz.IDE.pdb" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Quartz.IDE.runtimeconfig.json" KeyPath="yes" />
 			</Component>
 
 			<!-- Exceed Files -->
-			<Component Id="AvalonDockDll">
-				<File Id="AvalonDockDllFile" Name="AvalonDock.dll" Source="Source\AvalonDock.dll" KeyPath="yes" />
+			<Component>
+				<File Name="AvalonDock.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockThemesVS2013Dll">
-				<File Id="AvalonDockThemesVS2013DllFile" Name="AvalonDock.Themes.VS2013.dll" Source="Source\AvalonDock.Themes.VS2013.dll" KeyPath="yes" />
+			<Component>
+				<File Name="AvalonDock.Themes.VS2013.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="XceedWpfToolkitDll">
-				<File Id="XceedWpfToolkitDllFile" Name="DotNetProjects.Wpf.Extended.Toolkit.dll" Source="Source\DotNetProjects.Wpf.Extended.Toolkit.dll" KeyPath="yes" />
+			<Component>
+				<File Name="DotNetProjects.Wpf.Extended.Toolkit.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonEditDll">
-				<File Id="AvalonEditDllFile" Name="ICSharpCode.AvalonEdit.dll" Source="Source\ICSharpCode.AvalonEdit.dll" KeyPath="yes" />
+			<Component>
+				<File Name="ICSharpCode.AvalonEdit.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- Reactive Files -->
-			<Component Id="ReactiveUIDll">
-				<File Id="ReactiveUIDllFile" Name="ReactiveUI.dll" Source="Source\ReactiveUI.dll" KeyPath="yes" />
+			<Component>
+				<File Name="ReactiveUI.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="ReactiveUIEventsWPFDll">
-				<File Id="ReactiveUIEventsWPFDllFile" Name="ReactiveUI.Events.WPF.dll" Source="Source\ReactiveUI.Events.WPF.dll" KeyPath="yes" />
+			<Component>
+				<File Name="ReactiveUI.Events.WPF.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="ReactiveUIFodyHelpersDll">
-				<File Id="ReactiveUIFodyHelpersDllFile" Name="ReactiveUI.Fody.Helpers.dll" Source="Source\ReactiveUI.Fody.Helpers.dll" KeyPath="yes" />
+			<Component>
+				<File Name="ReactiveUI.Fody.Helpers.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="ReactiveUIValidationDll">
-				<File Id="ReactiveUIValidationDllFile" Name="ReactiveUI.Validation.dll" Source="Source\ReactiveUI.Validation.dll" KeyPath="yes" />
+			<Component>
+				<File Name="ReactiveUI.Validation.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="ReactiveUIWPFDll">
-				<File Id="ReactiveUIWPFDllFile" Name="ReactiveUI.WPF.dll" Source="Source\ReactiveUI.WPF.dll" KeyPath="yes" />
+			<Component>
+				<File Name="ReactiveUI.WPF.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="SplatDll">
-				<File Id="SplatDllFile" Name="Splat.dll" Source="Source\Splat.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Splat.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="SystemReactiveDll">
-				<File Id="SystemReactiveDllFile" Name="System.Reactive.dll" Source="Source\System.Reactive.dll" KeyPath="yes" />
+			<Component>
+				<File Name="System.Reactive.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="SystemReactiveXml">
-				<File Id="SystemReactiveXmlFile" Name="System.Reactive.xml" Source="Source\System.Reactive.xml" KeyPath="yes" />
+			<Component>
+				<File Name="System.Reactive.xml" KeyPath="yes" />
 			</Component>
-			<Component Id="DynamicDataDll">
-				<File Id="DynamicDataDllFile" Name="DynamicData.dll" Source="Source\DynamicData.dll" KeyPath="yes" />
+			<Component>
+				<File Name="DynamicData.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="PharmacistCommonDll">
-				<File Id="PharmacistCommonDllFile" Name="Pharmacist.Common.dll" Source="Source\Pharmacist.Common.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Pharmacist.Common.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="ReactiveUI.Testing.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Reactive.Testing.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- FluentValidation Files -->
-			<Component Id="FluentValidationDll">
-				<File Id="FluentValidationDllFile" Name="FluentValidation.dll" Source="Source\FluentValidation.dll" KeyPath="yes" />
+			<Component>
+				<File Name="FluentValidation.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- Fody Files -->
-			<Component Id="MethodBoundaryAspectDll">
-				<File Id="MethodBoundaryAspectDllFile" Name="MethodBoundaryAspect.dll" Source="Source\MethodBoundaryAspect.dll" KeyPath="yes" />
+			<Component>
+				<File Name="MethodBoundaryAspect.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="PropertyChangedDll">
-				<File Id="PropertyChangedDllFile" Name="PropertyChanged.dll" Source="Source\PropertyChanged.dll" KeyPath="yes" />
+
+			<!-- Nuget Files -->
+			<Component>
+				<File Name="Nuget.Versioning.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.Common.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.Configuration.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.DependencyResolver.Core.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.Frameworks.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.LibraryModel.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.Packaging.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.ProjectModel.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Nuget.Protocol.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- Newtonsoft Files -->
-			<Component Id="NewtonsoftDll">
-				<File Id="NewtonsoftDllFile" Name="Newtonsoft.Json.dll" Source="Source\Newtonsoft.Json.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Newtonsoft.Json.dll" KeyPath="yes" />
+			</Component>
+
+			<!-- Entity Files -->
+			<Component>
+				<File Name="sni.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.EntityFrameworkCore.Abstractions.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.EntityFrameworkCore.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.EntityFrameworkCore.Relational.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.EntityFrameworkCore.SqlServer.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Data.SqlClient.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="PersistentEntity.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Identity.Client.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.IdentityModel.JsonWebTokens.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.IdentityModel.Logging.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.IdentityModel.Protocols.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.IdentityModel.Tokens.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.IdentityModel.Tokens.Jwt.dll" KeyPath="yes" />
+			</Component>
+
+			<!--- Serilog Files -->
+
+			<Component>
+				<File Name="Serilog.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Exceptions.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Formatting.Compact.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Sinks.Console.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Sinks.Debug.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Sinks.File.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Sinks.PeriodicBatching.dll" KeyPath="yes" />
+			</Component>
+
+			<Component>
+				<File Name="Serilog.Sinks.Seq.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- UI Files -->
-			<Component Id="InteractivityDll">
-				<File Id="InteractivityDllFile" Name="Microsoft.Xaml.Behaviors.dll" Source="Source\Microsoft.Xaml.Behaviors.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Microsoft.WindowsAPICodePack.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="WindowsAPICodePackDll">
-				<File Id="WindowsAPICodePackDllFile" Name="Microsoft.WindowsAPICodePack.dll" Source="Source\Microsoft.WindowsAPICodePack.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Microsoft.WindowsAPICodePack.Shell.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="WindowsAPICodePackShellDll">
-				<File Id="WindowsAPICodePackShellDllFile" Name="Microsoft.WindowsAPICodePack.Shell.dll" Source="Source\Microsoft.WindowsAPICodePack.Shell.dll" KeyPath="yes" />
+			<Component>
+				<File Name="FontAwesome5.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="FontAwesome5Dll">
-				<File Id="FontAwesome5DllFile" Name="FontAwesome5.dll" Source="Source\FontAwesome5.dll" KeyPath="yes" />
-			</Component>
-			<Component Id="FontAwesome5NetDll">
-				<File Id="FontAwesome5NetDllFile" Name="FontAwesome5.Net.dll" Source="Source\FontAwesome5.Net.dll" KeyPath="yes" />
+			<Component>
+				<File Name="FontAwesome5.Net.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- Librarium Files -->
-			<Component Id="LibrariumDll">
-				<File Id="LibrariumDllFile" Name="Librarium.dll" Source="Source\Librarium.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Librarium.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="LibrariumPdb">
-				<File Id="LibrariumPdbFile" Name="Librarium.pdb" Source="Source\Librarium.pdb" KeyPath="yes" />
-			</Component>
-			<Component Id="LibrariumWPFDll">
-				<File Id="LibrariumWPFDllFile" Name="Librarium.WPF.dll" Source="Source\Librarium.WPF.dll" KeyPath="yes" />
-			</Component>
-			<Component Id="LibrariumWPFPdb">
-				<File Id="LibrariumWPFPdbFile" Name="Librarium.WPF.pdb" Source="Source\Librarium.WPF.pdb" KeyPath="yes" />
+			<Component>
+				<File Name="Librarium.WPF.dll" KeyPath="yes" />
 			</Component>
 
 			<!-- Octokit Github Files -->
-			<Component Id="OctokitDll">
-				<File Id="OctokitDllFile" Name="Octokit.dll" Source="Source\Octokit.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Octokit.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="OctokitReactiveDll">
-				<File Id="OctokitReactiveDllFile" Name="Octokit.Reactive.dll" Source="Source\Octokit.Reactive.dll" KeyPath="yes" />
+			<Component>
+				<File Name="Octokit.Reactive.dll" KeyPath="yes" />
+			</Component>
+
+			<!-- MSBuild Files -->
+			<Component>
+				<File Name="Humanizer.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Bcl.AsyncInterfaces.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Bcl.HashCode.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Build.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Build.Framework.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Build.Locator.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Build.Tasks.Core.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Build.Utilities.Core.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.CSharp.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.CSharp.Workspaces.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.VisualBasic.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.Workspaces.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.DotNet.PlatformAbstractions.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Caching.Abstractions.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Caching.Memory.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Configuration.Abstractions.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Configuration.Binder.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Configuration.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.DependencyInjection.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.DependencyModel.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Logging.Abstractions.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Logging.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Options.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.Extensions.Primitives.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="Microsoft.NET.Hostmodel.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Collections.Immutable.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Composition.AttributedModel.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Composition.Convention.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Composition.Hosting.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Composition.Runtime.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Composition.TypedParts.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Diagnostics.DiagnosticSource.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Runtime.Caching.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Security.Cryptography.Cng.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Security.Cryptography.Pkcs.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Name="System.Text.Json.dll" KeyPath="yes" />
 			</Component>
 		</ComponentGroup>
-		<ComponentGroup Id="LocalizationComponents">
-			<Component Id="AvalonDockResourcesLocalizationCaES" Directory="XLCAESFolder">
-				<File Id="AvalonDockResourcesLocalizationCaESFile" Source="Source\ca-ES\AvalonDock.resources.dll" KeyPath="yes" />
+		<ComponentGroup Id="TemplateComponents">
+			<Component Id="AppManifest" Directory="BlankTemplateFolder">
+				<File Id="AppManifestFile" Name="app.manifest" Source="Source\Blank Template\app.manifest" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationCsCZ" Directory="XLCSCZFolder">
-				<File Id="AvalonDockResourcesLocalizationCsCzFile" Source="Source\cs-CZ\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="FodyWeaversXml" Directory="BlankTemplateFolder">
+				<File Id="FodyWeaversXmlFile" Name="FodyWeavers.xml" Source="Source\Blank Template\FodyWeavers.xml" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationDe" Directory="XLDEFolder">
-				<File Id="AvalonDockResourcesLocalizationDeFile" Source="Source\de\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="FodyWeaversXsd" Directory="BlankTemplateFolder">
+				<File Id="FodyWeaversXsdFile" Name="FodyWeavers.xsd" Source="Source\Blank Template\FodyWeavers.xsd" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationEs" Directory="XLESFolder">
-				<File Id="AvalonDockResourcesLocalizationEsFile" Source="Source\es\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="GameCoreCs" Directory="BlankTemplateFolder">
+				<File Id="GameCoreCsFile" Name="GameCore.cs" Source="Source\Blank Template\GameCore.cs" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationFr" Directory="XLFRFolder">
-				<File Id="AvalonDockResourcesLocalizationFrFile" Source="Source\fr\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="IconBmp" Directory="BlankTemplateFolder">
+				<File Id="IconBmpFile" Name="Icon.bmp" Source="Source\Blank Template\Icon.bmp" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationHu" Directory="XLHUFolder">
-				<File Id="AvalonDockResourcesLocalizationHuFile" Source="Source\hu\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="ProgramCs" Directory="BlankTemplateFolder">
+				<File Id="ProgramCsFile" Name="Program.cs" Source="Source\Blank Template\Program.cs" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationIt" Directory="XLITFolder">
-				<File Id="AvalonDockResourcesLocalizationItFile" Source="Source\it\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="QuartzEngineCsproj" Directory="BlankTemplateFolder">
+				<File Id="QuartzEngineCsprojFile" Name="Quartz.Engine.csproj" Source="Source\Blank Template\Quartz.Engine.csproj" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationJa" Directory="XLJAFolder">
-				<File Id="AvalonDockResourcesLocalizationJaFile" Source="Source\ja\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="QuartzEngineXml" Directory="BlankTemplateFolder">
+				<File Id="QuartzEngineXmlFile" Name="Quartz.Engine.xml" Source="Source\Blank Template\Quartz.Engine.xml" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationKo" Directory="XLKOFolder">
-				<File Id="AvalonDockResourcesLocalizationKoFile" Source="Source\ko\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component Id="QuartzIco" Directory="BlankTemplateFolder">
+				<File Id="QuartzIcoFile" Name="Quartz.ico" Source="Source\Blank Template\Quartz.ico" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationNlBE" Directory="XLNLBEFolder">
-				<File Id="AvalonDockResourcesLocalizationNlBEFile" Source="Source\nl-BE\AvalonDock.resources.dll" KeyPath="yes" />
+		</ComponentGroup>
+
+		<ComponentGroup Id="CAESLocalizationComponents" Directory="XLCAESFolder" Source="Source\ca-ES">
+			<Component>
+				<File Id="CAES.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationPl" Directory="XLPLFolder">
-				<File Id="AvalonDockResourcesLocalizationPlFile" Source="Source\pl\AvalonDock.resources.dll" KeyPath="yes" />
+		</ComponentGroup>
+		<ComponentGroup Id="CSLocalizationComponents" Directory="XLCSFolder" Source="Source\cs">
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationPtBR" Directory="XLPTBRFolder">
-				<File Id="AvalonDockResourcesLocalizationPtBRFile" Source="Source\pt-BR\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationRo" Directory="XLROFolder">
-				<File Id="AvalonDockResourcesLocalizationRoFile" Source="Source\ro\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationRu" Directory="XLRUFolder">
-				<File Id="AvalonDockResourcesLocalizationRuFile" Source="Source\ru\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationSv" Directory="XLSVFolder">
-				<File Id="AvalonDockResourcesLocalizationSvFile" Source="Source\sv\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationZhHans" Directory="XLZHHANSFolder">
-				<File Id="AvalonDockResourcesLocalizationZhHansFile" Source="Source\zh-Hans\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
 			</Component>
-			<Component Id="AvalonDockResourcesLocalizationZhHant" Directory="XLZHHANTFolder">
-				<File Id="AvalonDockResourcesLocalizationZhHantFile" Source="Source\zh-Hant\AvalonDock.resources.dll" KeyPath="yes" />
+			<Component>
+				<File Id="CS.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="CSCZLocalizationComponents" Directory="XLCSCZFolder" Source="Source\cs-CZ">
+			<Component>
+				<File Id="CSCZ.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="DELocalizationComponents" Directory="XLDEFolder" Source="Source\de">
+			<Component>
+				<File Id="DE.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="DE.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="ESLocalizationComponents" Directory="XLESFolder" Source="Source\es">
+			<Component>
+				<File Id="ES.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ES.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="FRLocalizationComponents" Directory="XLFRFolder" Source="Source\fr">
+			<Component>
+				<File Id="FR.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="FR.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="HULocalizationComponents" Directory="XLHUFolder" Source="Source\hu">
+			<Component>
+				<File Id="HU.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="ITLocalizationComponents" Directory="XLITFolder" Source="Source\it">
+			<Component>
+				<File Id="IT.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="IT.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="JALocalizationComponents" Directory="XLJAFolder" Source="Source\ja">
+			<Component>
+				<File Id="JA.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="JA.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="KOLocalizationComponents" Directory="XLKOFolder" Source="Source\ko">
+			<Component>
+				<File Id="KO.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="KO.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="NLBELocalizationComponents" Directory="XLNLBEFolder" Source="Source\nl-BE">
+			<Component>
+				<File Id="NLBE.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="PLLocalizationComponents" Directory="XLPLFolder" Source="Source\pl">
+			<Component>
+				<File Id="PL.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PL.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="PTBRLocalizationComponents" Directory="XLPTBRFolder" Source="Source\pt-BR">
+			<Component>
+				<File Id="PTBR.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="PTBR.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="ROLocalizationComponents" Directory="XLROFolder" Source="Source\ro">
+			<Component>
+				<File Id="RO.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="RULocalizationComponents" Directory="XLRUFolder" Source="Source\ru">
+			<Component>
+				<File Id="RU.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="RU.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="SVLocalizationComponents" Directory="XLSVFolder" Source="Source\sv">
+			<Component>
+				<File Id="SV.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="TRLocalizationComponents" Directory="XLTRFolder" Source="Source\tr">
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="TR.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="ZHHANSLocalizationComponents" Directory="XLZHHANSFolder" Source="Source\zh-Hans">
+			<Component>
+				<File Id="ZHHANS.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANS.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+		<ComponentGroup Id="ZHHANTLocalizationComponents" Directory="XLZHHANTFolder" Source="Source\zh-Hant">
+			<Component>
+				<File Id="ZHHANT.AvalonDock.resources.dll" Name="AvalonDock.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.CSharp.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.resources.dll" Name="Microsoft.CodeAnalysis.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.VisualBasic.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll" KeyPath="yes" />
+			</Component>
+			<Component>
+				<File Id="ZHHANT.Microsoft.CodeAnalysis.Workspaces.resources.dll" Name="Microsoft.CodeAnalysis.Workspaces.resources.dll" KeyPath="yes" />
 			</Component>
 		</ComponentGroup>
 	</Fragment>

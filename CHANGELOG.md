@@ -1,5 +1,11 @@
 # Changelog
 
+<a name="next"></a>
+## next
+
+
+
+
 <a name="1.2.1-alpha"></a>
 ## 1.2.1-alpha (2020-09-28)
 
@@ -27,7 +33,7 @@
 
 ### New Features
 
-- ✨ Add calculated Element offensive and defensive ratings [[a73bf94](https://github.com/TheHeadmaster/Quartz/commit/a73bf94d86ed8e503072bf79bb338fbdeb51f896)]
+- ✨ Add Element configuration feature [[a73bf94](https://github.com/TheHeadmaster/Quartz/commit/a73bf94d86ed8e503072bf79bb338fbdeb51f896)]
 - ✨ Add the Changelog to the About window [[9b8d52c](https://github.com/TheHeadmaster/Quartz/commit/9b8d52ce89fcb393b3f17dca50b1b57b996f0a21)]
 - ✨ Add elements and definable strengths, weaknesses, and immunities [[5e5bcd2](https://github.com/TheHeadmaster/Quartz/commit/5e5bcd27d40b1b867e7b939d331c18cd6e25bc5b)]
 - ✨ Add backwards compatibility check for older projects, and versioning for projects moving forward [[03b4966](https://github.com/TheHeadmaster/Quartz/commit/03b4966b2d30ac6139d5602ac518228d2c222722)]
@@ -77,6 +83,9 @@
 - ➕ Add Serilog Debug Sink Library [[49a95ba](https://github.com/TheHeadmaster/Quartz/commit/49a95ba462761db9ce5101b9426d4bd35fd659f3)]
 - ➕ Add Serilog Logging Library [[48b5bcf](https://github.com/TheHeadmaster/Quartz/commit/48b5bcf6780bd0d3c4f9e2c7c33f755765094e21)]
 - ⬆️ Upgrade Librarium and Librarium.WPF to Nuget package [[4b82008](https://github.com/TheHeadmaster/Quartz/commit/4b82008d5f40c0ad3f0f74c9dc17846b17d42ffe)]
+
+
+
 
 <a name="1.1.6-alpha"></a>
 ## 1.1.6-alpha (2020-09-20)
