@@ -16,6 +16,7 @@ using System.Reactive.Linq;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Quartz.IDE.ObjectModel
 {
@@ -72,6 +73,11 @@ namespace Quartz.IDE.ObjectModel
         public string? Name { get; set; } = "";
 
         /// <summary>
+        /// A list of all <see cref="TileBase"/> s in the database.
+        /// </summary>
+        public SourceCache<TileBase, int> Tiles { get; set; } = new SourceCache<TileBase, int>(x => x.ID);
+
+        /// <summary>
         /// The version of Quartz that the project was made with.
         /// </summary>
         [Reactive]
@@ -85,11 +91,13 @@ namespace Quartz.IDE.ObjectModel
         {
             this.Elements.Connect()
                 .WhenValueChanged(x => x.IsSaved)
-                .Select(x =>
-                {
-                    return this.Elements.Items.All(x => x.IsSaved);
-                })
-                .ToPropertyEx(this, x => x.AreItemsSaved);
+                .Select(x => this.Elements.Items.All(x => x.IsSaved))
+                .ToPropertyEx(this, x => x.AreItemsSaved, true);
+
+            this.Tiles.Connect()
+                .WhenValueChanged(x => x.IsSaved)
+                .Select(x => this.Tiles.Items.All(x => x.IsSaved))
+                .ToPropertyEx(this, x => x.AreItemsSaved, true);
         }
 
         /// <summary>
@@ -117,11 +125,15 @@ namespace Quartz.IDE.ObjectModel
             {
                 this.Elements.AddOrUpdate(transaction.GetAll<Element>());
                 this.ElementMatchups.AddOrUpdate(transaction.GetAll<ElementMatchup>());
+                this.Tiles.AddOrUpdate(transaction.GetAll<TileBase>());
             }
             Directory.CreateDirectory(Path.Combine(this.FilePath, "Images"));
             App.Preferences.RecentlyOpenedProjects.AddOrUpdate(new RecentItem(this.Name ?? "", this.FilePath, DateTime.Now));
             App.Preferences.Save();
-            this.IsSaved = true;
+            foreach (SaveableObject loadedObject in SaveableObjects.Items)
+            {
+                loadedObject.IsSaved = true;
+            }
         }
 
         /// <summary>

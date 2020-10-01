@@ -36,6 +36,11 @@ namespace Quartz.IDE.ViewModels
         public ReactiveCommand<Unit, Unit> OpenElementsPage { get; }
 
         /// <summary>
+        /// Opens the tiles page.
+        /// </summary>
+        public ReactiveCommand<Unit, Unit> OpenTilesPage { get; }
+
+        /// <summary>
         /// Gets a list of recently opened projects.
         /// </summary>
         public ReadOnlyObservableCollection<RecentItem> RecentlyOpenedProjects => this.recentlyOpenedProjects;
@@ -53,16 +58,10 @@ namespace Quartz.IDE.ViewModels
                 .Subscribe();
 
             IObservable<bool> canOpenPage = App.Metadata.WhenAnyValue(x => x.IsRunning, x => x.CurrentProject, (x, y) => x)
-                .Select(isRunning =>
-                {
-                    Log.Information("Reevaluating CanExecute for OpenPageAsync");
-                    Log.Information("IsRunning = {IsRunning}, CurrentProject = {CurrentProject}", isRunning, App.Metadata.CurrentProject is { });
-                    Log.Information("CanExecute: {CanExecute}", !isRunning && App.Metadata.CurrentProject is { });
-                    return !isRunning && App.Metadata.CurrentProject is { };
-                });
+                .Select(isRunning => !isRunning && App.Metadata.CurrentProject is { });
 
-            this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)),
-                canOpenPage);
+            this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)), canOpenPage);
+            this.OpenTilesPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(TilesViewModel)), canOpenPage);
         }
     }
 }

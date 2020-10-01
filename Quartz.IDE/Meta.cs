@@ -79,6 +79,19 @@ namespace Quartz.IDE
         public Version Version => Assembly.GetEntryAssembly()!.GetName()!.Version!;
 
         /// <summary>
+        /// Creates a new <see cref="Meta"/>.
+        /// </summary>
+        public Meta()
+        {
+            this.WhenAnyValue(x => x.CurrentProject)
+                .Subscribe(x =>
+                {
+                    if (x is null) { return; }
+                    Environment.CurrentDirectory = x.FilePath;
+                });
+        }
+
+        /// <summary>
         /// Opens the specified page.
         /// </summary>
         /// <param name="type">

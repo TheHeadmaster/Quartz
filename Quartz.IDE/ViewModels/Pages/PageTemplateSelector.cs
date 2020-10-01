@@ -37,6 +37,11 @@ namespace Quartz.IDE.ViewModels.Pages
         public DataTemplate UITemplatePage { get; set; } = null!;
 
         /// <summary>
+        /// The <see cref="DataTemplate"/> for a <see cref="TilesViewModel"/>.
+        /// </summary>
+        public DataTemplate TilesPage { get; set; } = null!;
+
+        /// <summary>
         /// Creates a new <see cref="PageTemplateSelector"/>.
         /// </summary>
         public PageTemplateSelector() { }
@@ -60,6 +65,7 @@ namespace Quartz.IDE.ViewModels.Pages
             CoreTemplateViewModel _ => this.CoreTemplatePage,
             UITemplateViewModel _ => this.UITemplatePage,
             PackTemplateViewModel _ => this.PackTemplatePage,
+            TilesViewModel _ => this.TilesPage,
             _ => base.SelectTemplate(item, container),
         };
     }

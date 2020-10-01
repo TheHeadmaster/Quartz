@@ -178,5 +178,36 @@
             An optional connection to pass in.
             </param>
         </member>
+        <member name="P:Quartz.Core.ObjectModel.TileMap.GridSize">
+            <summary>
+            Gets or sets the width and height of tiles on the map. Tiles will be resized to fit this size.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.TileMap.Height">
+            <summary>
+            Gets or sets the height in tiles of the map.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.TileMap.Layers">
+            <summary>
+            Gets or sets the layers of the map.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.TileMap.Name">
+            <summary>
+            The name of the map. Must be unique.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.TileMap.Title">
+            <summary>
+            The title is what displays on world maps and entering the map. Multiple maps can have
+            the same title. the same title.
+            </summary>
+        </member>
+        <member name="P:Quartz.Core.ObjectModel.TileMap.Width">
+            <summary>
+            Gets or sets the width in tiles of the map.
+            </summary>
+        </member>
     </members>
 </doc>

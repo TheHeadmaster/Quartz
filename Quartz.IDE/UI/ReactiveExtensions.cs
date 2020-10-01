@@ -8,14 +8,41 @@ using ReactiveUI;
 
 namespace Quartz.IDE.UI
 {
+    /// <summary>
+    /// Extension methods for Reactive.
+    /// </summary>
     public static class ReactiveExtensions
     {
-        public static void BindHotkey<TViewModel, TView, TVMCmd>(this TView view, TViewModel viewModel, Expression<Func<TViewModel, TVMCmd>> vmProperty, InputGesture gesture)
+        /// <summary>
+        /// Binds a Command to an Input Binding.
+        /// </summary>
+        /// <typeparam name="TViewModel">
+        /// The ViewModel that the command is in.
+        /// </typeparam>
+        /// <typeparam name="TView">
+        /// The view that the input binding is in.
+        /// </typeparam>
+        /// <typeparam name="TVMCmd">
+        /// The Command.
+        /// </typeparam>
+        /// <param name="view">
+        /// The view that the input binding is in.
+        /// </param>
+        /// <param name="viewModel">
+        /// The ViewModel that the command is in.
+        /// </param>
+        /// <param name="vmCmd">
+        /// The command that fires when the hotkey is pressed.
+        /// </param>
+        /// <param name="gesture">
+        /// The hotkey input gesture that activates the command.
+        /// </param>
+        public static void BindHotkey<TViewModel, TView, TVMCmd>(this TView view, TViewModel viewModel, Expression<Func<TViewModel, TVMCmd>> vmCmd, InputGesture gesture)
             where TViewModel : class
             where TView : UIElement, IViewFor
             where TVMCmd : class, ICommand
         {
-            TVMCmd command = vmProperty.Compile().Invoke(viewModel);
+            TVMCmd command = vmCmd.Compile().Invoke(viewModel);
 
             switch (gesture)
             {

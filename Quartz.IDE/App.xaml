@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Quartz.IDE"
              xmlns:l="clr-namespace:Librarium.WPF.UI;assembly=Librarium.WPF"
+             xmlns:c="clr-namespace:Quartz.IDE.Converters"
              Startup="AppStartup"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
@@ -14,8 +15,7 @@
             </ResourceDictionary.MergedDictionaries>
             <l:EnumToStringConverter x:Key="DefaultEnumToStringConverter" />
             <l:BoolToVisibilityConverter x:Key="DefaultBoolToVisibilityConverter" />
-            <!--<ui:IconSourceStringToImageSourceConverter x:Key="IconSourceStringToImageSourceConverter" />
-            <ui:ImageSourceStringToImageSourceConverter x:Key="ImageSourceStringToImageSourceConverter" />-->
+            <c:ImageSourceStringToImageSourceConverter x:Key="ImageSourceStringToImageSourceConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -42,6 +42,11 @@
                         <local:ElementsPage DataContext="{Binding}" />
                     </DataTemplate>
                 </p:PageTemplateSelector.ElementsPage>
+                <p:PageTemplateSelector.TilesPage>
+                    <DataTemplate>
+                        <local:TilesPage DataContext="{Binding}" />
+                    </DataTemplate>
+                </p:PageTemplateSelector.TilesPage>
             </p:PageTemplateSelector>
         </xcad:DockingManager.LayoutItemTemplateSelector>
         <xcad:LayoutRoot x:Name="_layoutRoot">

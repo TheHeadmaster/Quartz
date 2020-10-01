@@ -231,7 +231,7 @@ namespace Quartz.IDE.ViewModels.Pages
             Element element = new Element
             {
                 Name = newElementName,
-                ID = this.Elements.Max(x => x.ID) + 1,
+                ID = this.Elements.Select(x => x.ID).DefaultIfEmpty().Max() + 1,
                 IsSaved = false
             };
             App.Metadata.CurrentProject?.Elements.AddOrUpdate(element);
