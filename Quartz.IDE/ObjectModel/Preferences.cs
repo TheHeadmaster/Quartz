@@ -8,6 +8,7 @@ using System.Windows;
 using System.Linq;
 using Quartz.IDE.Json;
 using ReactiveUI.Fody.Helpers;
+using System.Threading.Tasks;
 
 namespace Quartz.IDE.ObjectModel
 {
@@ -56,7 +57,7 @@ namespace Quartz.IDE.ObjectModel
         /// <summary>
         /// Loads Preferences from disk.
         /// </summary>
-        public static void Load()
+        public static async Task Load()
         {
             RecentItem firstItem = App.Preferences.RecentlyOpenedProjects.Items.FirstOrDefault();
             if (App.Preferences.OpenLastProjectOnStartup && firstItem is { })
@@ -68,9 +69,9 @@ namespace Quartz.IDE.ObjectModel
                 }
                 else
                 {
-                    App.Metadata.CurrentProject = projectFile.CreateModel();
+                    await App.Metadata.ChangeCurrentProject(projectFile.CreateModel());
 
-                    App.Metadata.CurrentProject.Load();
+                    await App.Metadata.CurrentProject.Load();
                 }
             }
         }

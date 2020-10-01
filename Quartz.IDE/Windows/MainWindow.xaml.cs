@@ -43,6 +43,10 @@ namespace Quartz.IDE.Windows
                 this.BindHotkey(this.ViewModel,
                     vm => vm.Close,
                     new KeyGesture(Key.F4, ModifierKeys.Alt));
+
+                this.BindHotkey(this.ViewModel,
+                    vm => vm.OpenProject,
+                    new KeyGesture(Key.O, ModifierKeys.Control | ModifierKeys.Shift));
             });
         }
 

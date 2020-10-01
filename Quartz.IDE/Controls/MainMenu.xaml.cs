@@ -49,6 +49,11 @@ namespace Quartz.IDE.Controls
                     vm => vm.OpenTilesPage,
                     view => view.OpenTilesPage)
                 .DisposeWith(dispose);
+
+                this.BindCommand(this.ViewModel,
+                    vm => vm.OpenProject,
+                    view => view.OpenProjectMenuItem)
+                .DisposeWith(dispose);
             });
         }
     }

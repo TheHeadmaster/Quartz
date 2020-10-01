@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 using DynamicData;
 using DynamicData.Binding;
 using Librarium.Core;
+using Librarium.Json;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Quartz.IDE.Controls;
+using Quartz.IDE.Json;
 using Quartz.IDE.ObjectModel;
 using Quartz.IDE.UI;
 using Quartz.IDE.ViewModels;
 using Quartz.IDE.ViewModels.Pages;
+using Quartz.IDE.Windows;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -37,7 +46,7 @@ namespace Quartz.IDE
         /// Gets or sets the current project.
         /// </summary>
         [Reactive]
-        public Project? CurrentProject { get; set; }
+        public Project? CurrentProject { get; private set; }
 
         /// <summary>
         /// Gets whether the program is running in debug mode or not.
@@ -54,6 +63,18 @@ namespace Quartz.IDE
         /// Gets or sets the open pages in the workspace.
         /// </summary>
         public ObservableCollectionExtended<PageViewModel> Pages { get; } = new ObservableCollectionExtended<PageViewModel>();
+
+        /// <summary>
+        /// Gets whether or not a task has a known completion percentage.
+        /// </summary>
+        [Reactive]
+        public bool ProgressIsIndeterminate { get; set; } = true;
+
+        /// <summary>
+        /// Gets the percentage progress that a task has made towards completing.
+        /// </summary>
+        [Reactive]
+        public double ProgressPercentage { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the selected open page in the workspace.
@@ -86,10 +107,175 @@ namespace Quartz.IDE
             this.WhenAnyValue(x => x.CurrentProject)
                 .Subscribe(x =>
                 {
-                    if (x is null) { return; }
+                    if (x is null || x.FilePath.IsNullOrWhiteSpace()) { return; }
                     Environment.CurrentDirectory = x.FilePath;
                 });
         }
+
+        /// <summary>
+        /// Opens a common file dialog.
+        /// </summary>
+        /// <returns>
+        /// The path selected by the user.
+        /// </returns>
+        private string? CommonFileDialog()
+        {
+            CommonOpenFileDialog dlg = new CommonOpenFileDialog
+            {
+                Title = "Select a project file to open...",
+                IsFolderPicker = false,
+                InitialDirectory = @"C:\",
+                AddToMostRecentlyUsedList = false,
+                AllowNonFileSystemItems = false,
+                DefaultDirectory = @"C:\",
+                EnsureFileExists = true,
+                EnsurePathExists = true,
+                EnsureReadOnly = false,
+                EnsureValidNames = true,
+                Multiselect = false,
+                ShowPlacesList = true
+            };
+
+            dlg.Filters.Add(new CommonFileDialogFilter("JSON Project Files", "*.json"));
+
+            return dlg.ShowDialog() == CommonFileDialogResult.Ok ? dlg.FileName : null;
+        }
+
+        /// <summary>
+        /// Opens the project froma dialog.
+        /// </summary>
+        /// <returns>
+        /// 0 if successful. Any other number indicates a problem occurred.
+        /// </returns>
+        private async Task<int> OpenFromDialog()
+        {
+            string? path = this.CommonFileDialog();
+            return path.IsNullOrWhiteSpace() ? 1 : await this.OpenFromPath(path!);
+        }
+
+        private async Task<int> OpenFromPath(string path)
+        {
+            bool? saveBeforeClosing = true;
+            if (App.Metadata.CurrentProject is { } && !App.Metadata.CurrentProject.IsSaved && !App.Metadata.CurrentProject.AreItemsSaved)
+            {
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show(
+                    $"Changes have been made to {App.Metadata.CurrentProject.Name}. Would you like to save these changes before closing the project?",
+                    "Save Changes?", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+                saveBeforeClosing = result switch
+                {
+                    MessageBoxResult.Yes => true,
+                    MessageBoxResult.No => false,
+                    _ => null,
+                };
+                if (saveBeforeClosing is null) { return 1; }
+            }
+            Task<int>? prepareProject = await Observable.Start(() => this.PrepareProject(Path.Combine(path, "Project.json"), saveBeforeClosing), RxApp.TaskpoolScheduler);
+            return await prepareProject;
+        }
+
+        private async Task<int> PrepareProject(string path, bool? saveBeforeClosing = true)
+        {
+            await this.ChangeToWaitingStatus($"Loading project file from {path}...", StatusBarColor.Processing);
+            if (path is null)
+            {
+                await this.ChangeToSimpleStatus("No project to open. Path was null.", StatusBarColor.Error);
+                return 1;
+            }
+            ProjectFile file = JFile.Load<ProjectFile>(path);
+            if (file is null)
+            {
+                await this.ChangeToSimpleStatus("No project to open. File does not exist.", StatusBarColor.Error);
+                return 1;
+            }
+            if (file.Version is null)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show($"This project file was made using 1.1, and is not compatible with the current release ({AppMeta.CurrentVersion}). Your project will not be harmed, but if you want to open it, you will have to revert back to 1.1.", "Incompatible Project", MessageBoxButton.OK);
+                await this.ClearStatus();
+                return 1;
+            }
+            if (App.Metadata.CurrentProject is { }) { await App.Metadata.CurrentProject.Close(saveBeforeClosing ?? true); }
+            Project project = file.CreateModel();
+            await this.ChangeCurrentProject(project);
+            await project.Load();
+            App.Preferences.Save();
+            await this.ClearStatus();
+            return 0;
+        }
+
+        public async Task ChangeCurrentProject(Project project)
+        => await Observable.Start(() =>
+        {
+            this.CurrentProject = project;
+            App.Preferences.RecentlyOpenedProjects.AddOrUpdate(new RecentItem(project.Name ?? "", project.FilePath, DateTime.Now));
+        }, RxApp.MainThreadScheduler);
+
+        /// <summary>
+        /// Changes the status information.
+        /// </summary>
+        /// <param name="statusMessage">
+        /// The status message to change to.
+        /// </param>
+        /// <param name="progressPercentage">
+        /// The progress completion percentage.
+        /// </param>
+        /// <param name="IsIndeterminate">
+        /// Whether the progress bar is indeterminate or not.
+        /// </param>
+        /// <param name="color">
+        /// The status bar color to change to.
+        /// </param>
+        public async Task ChangeStatus(string statusMessage, double progressPercentage, bool IsIndeterminate, StatusBarColor color)
+        => await Observable.Start(() =>
+        {
+            App.Metadata.StatusBarMessage = statusMessage;
+            App.Metadata.StatusBarColor = color;
+            App.Metadata.ProgressIsIndeterminate = IsIndeterminate;
+            App.Metadata.ProgressPercentage = progressPercentage;
+        }, RxApp.MainThreadScheduler);
+
+        /// <summary>
+        /// Changes the status to a determinate progress status.
+        /// </summary>
+        /// <param name="statusMessage">
+        /// The message to display.
+        /// </param>
+        /// <param name="color">
+        /// The status bar color to change to.
+        /// </param>
+        public async Task ChangeToProgressStatus(string statusMessage, StatusBarColor color) => await this.ChangeStatus(statusMessage, 1, false, color);
+
+        /// <summary>
+        /// Changes the status to a non-progress status.
+        /// </summary>
+        /// <param name="statusMessage">
+        /// The message to display.
+        /// </param>
+        /// <param name="color">
+        /// The status bar color to change to.
+        /// </param>
+        public async Task ChangeToSimpleStatus(string statusMessage, StatusBarColor color) => await this.ChangeStatus(statusMessage, 0, false, color);
+
+        /// <summary>
+        /// Changes the status to an indeterminate waiting status.
+        /// </summary>
+        /// <param name="statusMessage">
+        /// The message to display.
+        /// </param>
+        /// <param name="color">
+        /// The status bar color to change to.
+        /// </param>
+        public async Task ChangeToWaitingStatus(string statusMessage, StatusBarColor color) => await this.ChangeStatus(statusMessage, 1, true, color);
+
+        public async Task ClearCurrentProject() => await Observable.Start(() =>
+        {
+            this.CurrentProject = null;
+        }, RxApp.MainThreadScheduler);
+
+        /// <summary>
+        /// Clears any ongoing status messages.
+        /// </summary>
+        public async Task ClearStatus() => await this.ChangeStatus("Ready", 0, false, StatusBarColor.Idle);
 
         /// <summary>
         /// Opens the specified page.
@@ -109,6 +295,22 @@ namespace Quartz.IDE
 
             this.SelectedPage = newViewModel;
             return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Opens a project from a path. If no path is specified, or the path is null or whitespace,
+        /// a file dialog is opened to select a project.
+        /// </summary>
+        /// <param name="path">
+        /// The optional path to the project.
+        /// </param>
+        public async Task OpenProject(string? path = null)
+        {
+            int success = path.IsNullOrWhiteSpace() ? await this.OpenFromDialog() : await this.OpenFromPath(path!);
+            if (success == 0)
+            {
+                App.Metadata.CurrentProject!.IsSaved = true;
+            }
         }
     }
 }

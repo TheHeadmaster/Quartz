@@ -61,20 +61,20 @@ namespace Quartz.IDE
 
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnExit);
 
-            EnterProgram();
+            EnterProgram().GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Enters the program.
         /// </summary>
         [Log("Starting...", "Quartz is now running.", "An unhandled exception has occurred.")]
-        private static void EnterProgram()
+        private static async Task EnterProgram()
         {
             UpdateManager.Initialize();
 
             MSBuildLocator.RegisterDefaults();
 
-            InitializePreferences();
+            await InitializePreferences();
 
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 
@@ -88,7 +88,7 @@ namespace Quartz.IDE
         /// Loads the Preferences from disk or creates default preferences if none exists.
         /// </summary>
         [Log("Initializing Preferences...", "Preferences initialization complete.")]
-        private static void InitializePreferences()
+        private static async Task InitializePreferences()
         {
             if (!Directory.Exists(Metadata.AppDataDirectory))
             {
@@ -97,7 +97,7 @@ namespace Quartz.IDE
 
             Preferences = JFile.Load<PreferencesFile>(Metadata.AppDataDirectory, "preferences.json").CreateModel();
             Preferences.Save();
-            Preferences.Load();
+            await Preferences.Load();
         }
 
         /// <summary>

@@ -19,7 +19,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Open..." Style="{DynamicResource BlackMenuItem}">
-                <MenuItem Header="Project" InputGestureText="Ctrl+Shift+O" Command="commands:OpenProjectCommand.Instance" Style="{DynamicResource BlackMenuItem}">
+                <MenuItem x:Name="OpenProjectMenuItem" Header="Project" InputGestureText="Ctrl+Shift+O" Style="{DynamicResource BlackMenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/UI/Open Project.png" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
                     </MenuItem.Icon>
@@ -29,7 +29,7 @@
             <MenuItem x:Name="RecentlyOpenedProjectsMenuItem" Style="{DynamicResource BlackMenuItem}" Header="Recent Projects...">
                 <MenuItem.ItemTemplate>
                     <DataTemplate>
-                        <MenuItem Command="commands:OpenProjectCommand.Instance"  CommandParameter="{Binding Path}" Style="{DynamicResource BlackMenuItem}" Header="{Binding Header}" />
+                        <MenuItem Command="{Binding ViewModel.OpenProject, RelativeSource={RelativeSource AncestorType=local:MainMenu}}" CommandParameter="{Binding Path}" Style="{DynamicResource BlackMenuItem}" Header="{Binding Header}" />
                     </DataTemplate>
                 </MenuItem.ItemTemplate>
             </MenuItem>

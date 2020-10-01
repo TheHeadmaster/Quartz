@@ -1,7 +1,11 @@
 # Changelog
 
 <a name="1.2.2-alpha"></a>
-## 1.2.2-alpha (2020-09-30)
+## 1.2.2-alpha (2020-10-01)
+
+### Bug Fixes
+
+- 🐛 Opening a project causes the project to be shown as unsaved [[3b0c1ed](https://github.com/TheHeadmaster/Quartz/commit/3b0c1ed64e1968c65d9dcb4773feab782d9146e6)]
 
 ### New Features
 

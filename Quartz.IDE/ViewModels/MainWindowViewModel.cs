@@ -21,6 +21,11 @@ namespace Quartz.IDE.ViewModels
         Application.Current.Shutdown());
 
         /// <summary>
+        /// Opens a project.
+        /// </summary>
+        public ReactiveCommand<string, Unit> OpenProject { get; }
+
+        /// <summary>
         /// The title of the window.
         /// </summary>
         public string Title { [ObservableAsProperty] get; } = "";
@@ -33,6 +38,8 @@ namespace Quartz.IDE.ViewModels
             App.Metadata.WhenAnyValue(x => x.CurrentProject, x => x.CurrentProject!.IsSaved, x => x.CurrentProject!.AreItemsSaved, (x, y, z) => x)
                .Select(x => x is null ? "Quartz IDE" : $"Quartz IDE - {x.Name}{(!x.IsSaved || !x.AreItemsSaved ? "*" : null)}")
                .ToPropertyEx(this, x => x.Title, "Quartz IDE");
+
+            this.OpenProject = ReactiveCommand.CreateFromTask<string>(x => App.Metadata.OpenProject(x));
         }
     }
 }

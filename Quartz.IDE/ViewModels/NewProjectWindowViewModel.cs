@@ -204,16 +204,15 @@ namespace Quartz.IDE.ViewModels
             return Task.CompletedTask;
         }
 
-        public Task CreateProjectAsync()
+        public async Task CreateProjectAsync()
         {
             List<PackTemplate> packTemplates = this.PackTemplates.Where(x => x.IsSelected).Select(x => x.Pack).ToList();
 
             Project project = TemplateManager.CreateFromTemplates(
                 this.SelectedCoreTemplate!, this.SelectedUITemplate!, packTemplates, this.ProjectPath, this.ProjectName);
-            project.Load();
+            await project.Load();
             project.Save();
-            App.Metadata.CurrentProject = project;
-            return Task.CompletedTask;
+            await App.Metadata.ChangeCurrentProject(project);
         }
     }
 }

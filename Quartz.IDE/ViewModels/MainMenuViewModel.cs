@@ -11,6 +11,7 @@ using AvalonDock.Layout;
 using DynamicData;
 using DynamicData.Binding;
 using Quartz.IDE.Controls;
+using Quartz.IDE.UI;
 using Quartz.IDE.ViewModels.Pages;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -25,6 +26,8 @@ namespace Quartz.IDE.ViewModels
     {
         private readonly ReadOnlyObservableCollection<RecentItem> recentlyOpenedProjects;
 
+        private string openingPath;
+
         /// <summary>
         /// Closes the program.
         /// </summary>
@@ -36,6 +39,11 @@ namespace Quartz.IDE.ViewModels
         public ReactiveCommand<Unit, Unit> OpenElementsPage { get; }
 
         /// <summary>
+        /// Opens a project.
+        /// </summary>
+        public ReactiveCommand<string, Unit> OpenProject { get; }
+
+        /// <summary>
         /// Opens the tiles page.
         /// </summary>
         public ReactiveCommand<Unit, Unit> OpenTilesPage { get; }
@@ -44,6 +52,11 @@ namespace Quartz.IDE.ViewModels
         /// Gets a list of recently opened projects.
         /// </summary>
         public ReadOnlyObservableCollection<RecentItem> RecentlyOpenedProjects => this.recentlyOpenedProjects;
+
+        /// <summary>
+        /// Updates the status.
+        /// </summary>
+        public ReactiveCommand<Unit, Unit> UpdateStatus { get; }
 
         /// <summary>
         /// Creates a new <see cref="MainMenuViewModel"/>.
@@ -62,6 +75,7 @@ namespace Quartz.IDE.ViewModels
 
             this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)), canOpenPage);
             this.OpenTilesPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(TilesViewModel)), canOpenPage);
+            this.OpenProject = ReactiveCommand.CreateFromTask<string>(x => App.Metadata.OpenProject(x));
         }
     }
 }
