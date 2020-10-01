@@ -1,5 +1,20 @@
 # Changelog
 
+<a name="1.2.2-alpha"></a>
+## 1.2.2-alpha (2020-10-01)
+
+### Bug Fixes
+
+- 🐛 Doing any work that should operate on a separate thread still blocks the UI thread [[7c732cb](https://github.com/TheHeadmaster/Quartz/commit/7c732cbe8b05e6e8a6e07c7e135c781ab1b2ea1f)]
+- 🐛 Opening a project causes the project to be shown as unsaved [[3b0c1ed](https://github.com/TheHeadmaster/Quartz/commit/3b0c1ed64e1968c65d9dcb4773feab782d9146e6)]
+
+### New Features
+
+- ✨ Add TileMap data objects [[a3d2596](https://github.com/TheHeadmaster/Quartz/commit/a3d2596cf187ee65e0943bbc94c86a9f9716531a)]
+
+
+
+
 <a name="1.2.1-alpha"></a>
 ## 1.2.1-alpha (2020-09-28)
 
@@ -7,13 +22,13 @@
 
 - ♻️ Change synchronous RelayCommands to asynchronous ReactiveCommands [[f69858d](https://github.com/TheHeadmaster/Quartz/commit/f69858dddda73b01796c0fe04a49a44dcf68b15e)]
 - ♻️ Remove and refactor a metric shit-ton of boilerplate code [[69f7e03](https://github.com/TheHeadmaster/Quartz/commit/69f7e031df2d2e90c584ce510abbbd96549cc7f2)]
-- ♻️ Preferences now save to the user&#x27;s AppData directory instead of directly inside the Program Files folder [[609d511](https://github.com/TheHeadmaster/Quartz/commit/609d511f626c70ab2d7946ff75e4dfb2961d09ca)]
+- ♻️ Preferences now save to the user's AppData directory instead of directly inside the Program Files folder [[609d511](https://github.com/TheHeadmaster/Quartz/commit/609d511f626c70ab2d7946ff75e4dfb2961d09ca)]
 - ♻️ Move Logs output directory from Program Files to AppData [[7dc0c43](https://github.com/TheHeadmaster/Quartz/commit/7dc0c43e3ca19f4d4997224a42cef9cc6ac9c099)]
 - ♻️ Common functionality between Quartz.IDE and Quartz.Engine moved to Quartz.Core [[be3afff](https://github.com/TheHeadmaster/Quartz/commit/be3afff9a840c2c8663ab2039691c4674fd83e95)]
 
 ### Breaking and Major Changes
 
-- 🏗️ Templates are finally here. Now you can create and use Core, UI, and Pack templates to build a project from so you don&#x27;t have to start from scratch. [[f7075f7](https://github.com/TheHeadmaster/Quartz/commit/f7075f7dc2219f3ded8b4b35f26fe17120fff284)]
+- 🏗️ Templates are finally here. Now you can create and use Core, UI, and Pack templates to build a project from so you don't have to start from scratch. [[f7075f7](https://github.com/TheHeadmaster/Quartz/commit/f7075f7dc2219f3ded8b4b35f26fe17120fff284)]
 - 🏗️ Add ability to compile and run Mono projects [[87c4356](https://github.com/TheHeadmaster/Quartz/commit/87c43566024c793bd0dcaad57c748b49279e075a)]
 - 💥 Project files are now in Database format instead of Json file format [[764803c](https://github.com/TheHeadmaster/Quartz/commit/764803cd13508fdbf1c89a5ae1b9419eb5228a5c)]
 - 💥 Previous projects are now incompatible moving forward, starting with 1.2.1 [[6fafdf3](https://github.com/TheHeadmaster/Quartz/commit/6fafdf35d357ef65683dd6c16e97b9a1e112430d)]
@@ -23,11 +38,11 @@
 
 ### Bug Fixes
 
-- 🐛 Selecting No to opening a new project while an existing unsaved project was open still opened the project and didn&#x27;t save. Press F to pay respects [[46dba05](https://github.com/TheHeadmaster/Quartz/commit/46dba05e9d7c4a9bfc1c79ae66cf9dd5e307a3b2)]
+- 🐛 Selecting No to opening a new project while an existing unsaved project was open still opened the project and didn't save. Press F to pay respects [[46dba05](https://github.com/TheHeadmaster/Quartz/commit/46dba05e9d7c4a9bfc1c79ae66cf9dd5e307a3b2)]
 
 ### New Features
 
-- ✨ Add calculated Element offensive and defensive ratings [[a73bf94](https://github.com/TheHeadmaster/Quartz/commit/a73bf94d86ed8e503072bf79bb338fbdeb51f896)]
+- ✨ Add Element configuration feature [[a73bf94](https://github.com/TheHeadmaster/Quartz/commit/a73bf94d86ed8e503072bf79bb338fbdeb51f896)]
 - ✨ Add the Changelog to the About window [[9b8d52c](https://github.com/TheHeadmaster/Quartz/commit/9b8d52ce89fcb393b3f17dca50b1b57b996f0a21)]
 - ✨ Add elements and definable strengths, weaknesses, and immunities [[5e5bcd2](https://github.com/TheHeadmaster/Quartz/commit/5e5bcd27d40b1b867e7b939d331c18cd6e25bc5b)]
 - ✨ Add backwards compatibility check for older projects, and versioning for projects moving forward [[03b4966](https://github.com/TheHeadmaster/Quartz/commit/03b4966b2d30ac6139d5602ac518228d2c222722)]
@@ -58,7 +73,6 @@
 - ➕ Add Microsoft.Build.Locator Compiler Library [[7a10c60](https://github.com/TheHeadmaster/Quartz/commit/7a10c608ced68ff2e40f6743ef19254807de8683)]
 - ➕ Add Microsoft.Build.Framework Compiler Library [[376c473](https://github.com/TheHeadmaster/Quartz/commit/376c4732c627cbcde6ed34c6957cdbca92411f49)]
 - ➕ Add Microsoft.Build.Runtime Compiler Library [[51efa89](https://github.com/TheHeadmaster/Quartz/commit/51efa8993dbe3b1bef5f22f96939f82c312956ba)]
-- ➕ Add Microsoft.Build.Engine Compiler Library [[7c72459](https://github.com/TheHeadmaster/Quartz/commit/7c724592a0fe3cd0a6c886e1f125c7a4cefb1d56)]
 - ➕ Add Microsoft.Build Compiler Library [[29d06f6](https://github.com/TheHeadmaster/Quartz/commit/29d06f678ec5271a88c9d211a69012e517b58c76)]
 - ⬆️ Update Librarium 1.0.2 ➡️ 1.0.3 [[27e4ffc](https://github.com/TheHeadmaster/Quartz/commit/27e4ffcc71830e594aa5a2529ce5dd3dee1a12b6)]
 - ➕ Add PersistentEntity Database Library [[f16ceb7](https://github.com/TheHeadmaster/Quartz/commit/f16ceb7bde0954c33f627831c16f6c87ba151b88)]

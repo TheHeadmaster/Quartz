@@ -11,6 +11,7 @@ using AvalonDock.Layout;
 using DynamicData;
 using DynamicData.Binding;
 using Quartz.IDE.Controls;
+using Quartz.IDE.UI;
 using Quartz.IDE.ViewModels.Pages;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -36,6 +37,16 @@ namespace Quartz.IDE.ViewModels
         public ReactiveCommand<Unit, Unit> OpenElementsPage { get; }
 
         /// <summary>
+        /// Opens a project.
+        /// </summary>
+        public ReactiveCommand<string, Unit> OpenProject { get; }
+
+        /// <summary>
+        /// Opens the tiles page.
+        /// </summary>
+        public ReactiveCommand<Unit, Unit> OpenTilesPage { get; }
+
+        /// <summary>
         /// Gets a list of recently opened projects.
         /// </summary>
         public ReadOnlyObservableCollection<RecentItem> RecentlyOpenedProjects => this.recentlyOpenedProjects;
@@ -53,16 +64,12 @@ namespace Quartz.IDE.ViewModels
                 .Subscribe();
 
             IObservable<bool> canOpenPage = App.Metadata.WhenAnyValue(x => x.IsRunning, x => x.CurrentProject, (x, y) => x)
-                .Select(isRunning =>
-                {
-                    Log.Information("Reevaluating CanExecute for OpenPageAsync");
-                    Log.Information("IsRunning = {IsRunning}, CurrentProject = {CurrentProject}", isRunning, App.Metadata.CurrentProject is { });
-                    Log.Information("CanExecute: {CanExecute}", !isRunning && App.Metadata.CurrentProject is { });
-                    return !isRunning && App.Metadata.CurrentProject is { };
-                });
+                .Select(isRunning => !isRunning && App.Metadata.CurrentProject is { });
 
-            this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)),
-                canOpenPage);
+            this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)), canOpenPage);
+            this.OpenTilesPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(TilesViewModel)), canOpenPage);
+            this.OpenProject = ReactiveCommand.CreateFromTask<string>(x => App.Metadata.OpenProject(x));
+            this.Close = ReactiveCommand.CreateFromTask(x => App.Metadata.Close());
         }
     }
 }

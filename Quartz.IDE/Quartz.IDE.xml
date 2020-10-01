@@ -73,11 +73,6 @@
             Creates a new project.
             </summary>
         </member>
-        <member name="T:Quartz.IDE.Commands.OpenProjectCommand">
-            <summary>
-            Opens a project.
-            </summary>
-        </member>
         <member name="T:Quartz.IDE.Controls.BindableDataGridComboBoxColumn">
             <summary>
             Represents a bindable <see cref="T:System.Windows.Controls.DataGridColumn"/> that hosts a <see cref="T:System.Windows.Controls.ComboBox"/> in
@@ -158,7 +153,30 @@
             MainStatusBar
             </summary>
         </member>
+        <member name="M:Quartz.IDE.Controls.MainStatusBar.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.Controls.MainStatusBar"/>.
+            </summary>
+        </member>
         <member name="M:Quartz.IDE.Controls.MainStatusBar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.Controls.TilesPage">
+            <summary>
+            Interaction logic for TilesPage.xaml
+            </summary>
+            <summary>
+            TilesPage
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.TilesPage.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.Controls.TilesPage"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Controls.TilesPage.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -188,6 +206,41 @@
             <summary>
             InitializeComponent
             </summary>
+        </member>
+        <member name="T:Quartz.IDE.Converters.ImageSourceStringToImageSourceConverter">
+            <summary>
+            Converts string path to Image Source and back.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Converters.ImageSourceStringToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts string path to Image Source.
+            </summary>
+            <param name="value">
+            The string path.
+            </param>
+            <param name="targetType">
+            </param>
+            <param name="parameter">
+            </param>
+            <param name="culture">
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Converters.ImageSourceStringToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts Image Source to string.
+            </summary>
+            <param name="value">
+            ///
+            </param>
+            <param name="targetType">
+            </param>
+            <param name="parameter">
+            </param>
+            <param name="culture">
+            </param>
+            <returns>
+            </returns>
         </member>
         <member name="M:Quartz.IDE.Converters.TextToFlowDocumentConverter.TryConvert(System.Object,System.Type,System.Object,System.Object@)">
             <summary>
@@ -291,6 +344,16 @@
             Gets or sets the open pages in the workspace.
             </summary>
         </member>
+        <member name="P:Quartz.IDE.Meta.ProgressIsIndeterminate">
+            <summary>
+            Gets whether or not a task has a known completion percentage.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.Meta.ProgressPercentage">
+            <summary>
+            Gets the percentage progress that a task has made towards completing.
+            </summary>
+        </member>
         <member name="P:Quartz.IDE.Meta.SelectedPage">
             <summary>
             Gets or sets the selected open page in the workspace.
@@ -311,12 +374,97 @@
             Gets the assembly version of the entry assembly.
             </summary>
         </member>
+        <member name="M:Quartz.IDE.Meta.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.Meta"/>.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.Meta.CommonFileDialog">
+            <summary>
+            Opens a common file dialog.
+            </summary>
+            <returns>
+            The path selected by the user.
+            </returns>
+        </member>
+        <member name="M:Quartz.IDE.Meta.OpenFromDialog">
+            <summary>
+            Opens the project froma dialog.
+            </summary>
+            <returns>
+            0 if successful. Any other number indicates a problem occurred.
+            </returns>
+        </member>
+        <member name="M:Quartz.IDE.Meta.ChangeStatus(System.String,System.Double,System.Boolean,Quartz.IDE.UI.StatusBarColor)">
+            <summary>
+            Changes the status information.
+            </summary>
+            <param name="statusMessage">
+            The status message to change to.
+            </param>
+            <param name="progressPercentage">
+            The progress completion percentage.
+            </param>
+            <param name="IsIndeterminate">
+            Whether the progress bar is indeterminate or not.
+            </param>
+            <param name="color">
+            The status bar color to change to.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Meta.ChangeToProgressStatus(System.String,Quartz.IDE.UI.StatusBarColor)">
+            <summary>
+            Changes the status to a determinate progress status.
+            </summary>
+            <param name="statusMessage">
+            The message to display.
+            </param>
+            <param name="color">
+            The status bar color to change to.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Meta.ChangeToSimpleStatus(System.String,Quartz.IDE.UI.StatusBarColor)">
+            <summary>
+            Changes the status to a non-progress status.
+            </summary>
+            <param name="statusMessage">
+            The message to display.
+            </param>
+            <param name="color">
+            The status bar color to change to.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Meta.ChangeToWaitingStatus(System.String,Quartz.IDE.UI.StatusBarColor)">
+            <summary>
+            Changes the status to an indeterminate waiting status.
+            </summary>
+            <param name="statusMessage">
+            The message to display.
+            </param>
+            <param name="color">
+            The status bar color to change to.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Meta.ClearStatus">
+            <summary>
+            Clears any ongoing status messages.
+            </summary>
+        </member>
         <member name="M:Quartz.IDE.Meta.OpenPageAsync(System.Type)">
             <summary>
             Opens the specified page.
             </summary>
             <param name="type">
             The page to open.
+            </param>
+        </member>
+        <member name="M:Quartz.IDE.Meta.OpenProject(System.String)">
+            <summary>
+            Opens a project from a path. If no path is specified, or the path is null or whitespace,
+            a file dialog is opened to select a project.
+            </summary>
+            <param name="path">
+            The optional path to the project.
             </param>
         </member>
         <member name="T:Quartz.IDE.ObjectModel.CoreTemplate">
@@ -442,6 +590,11 @@
         <member name="P:Quartz.IDE.ObjectModel.Project.Name">
             <summary>
             The name of the project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ObjectModel.Project.Tiles">
+            <summary>
+            A list of all <see cref="T:Quartz.Core.ObjectModel.TileBase"/> s in the database.
             </summary>
         </member>
         <member name="P:Quartz.IDE.ObjectModel.Project.Version">
@@ -696,8 +849,53 @@
         </member>
         <member name="P:Quartz.IDE.RecentItem.Timestamp">
             <summary>
-            The date the project was last accessed.
+            The date and time the project was last accessed.
             </summary>
+        </member>
+        <member name="M:Quartz.IDE.RecentItem.#ctor(System.String,System.String,System.DateTime)">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.RecentItem"/>.
+            </summary>
+            <param name="name">
+            The name of the project.
+            </param>
+            <param name="path">
+            The path to the project file.
+            </param>
+            <param name="timestamp">
+            The date and time the project was last accessed.
+            </param>
+        </member>
+        <member name="T:Quartz.IDE.UI.ReactiveExtensions">
+            <summary>
+            Extension methods for Reactive.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.UI.ReactiveExtensions.BindHotkey``3(``1,``0,System.Linq.Expressions.Expression{System.Func{``0,``2}},System.Windows.Input.InputGesture)">
+            <summary>
+            Binds a Command to an Input Binding.
+            </summary>
+            <typeparam name="TViewModel">
+            The ViewModel that the command is in.
+            </typeparam>
+            <typeparam name="TView">
+            The view that the input binding is in.
+            </typeparam>
+            <typeparam name="TVMCmd">
+            The Command.
+            </typeparam>
+            <param name="view">
+            The view that the input binding is in.
+            </param>
+            <param name="viewModel">
+            The ViewModel that the command is in.
+            </param>
+            <param name="vmCmd">
+            The command that fires when the hotkey is pressed.
+            </param>
+            <param name="gesture">
+            The hotkey input gesture that activates the command.
+            </param>
         </member>
         <member name="T:Quartz.IDE.UI.StatusBarColor">
             <summary>
@@ -829,14 +1027,39 @@
             Opens the elements page.
             </summary>
         </member>
+        <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.OpenProject">
+            <summary>
+            Opens a project.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.OpenTilesPage">
+            <summary>
+            Opens the tiles page.
+            </summary>
+        </member>
         <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.RecentlyOpenedProjects">
             <summary>
             Gets a list of recently opened projects.
             </summary>
         </member>
+        <member name="P:Quartz.IDE.ViewModels.MainMenuViewModel.UpdateStatus">
+            <summary>
+            Updates the status.
+            </summary>
+        </member>
         <member name="M:Quartz.IDE.ViewModels.MainMenuViewModel.#ctor">
             <summary>
             Creates a new <see cref="T:Quartz.IDE.ViewModels.MainMenuViewModel"/>.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.MainStatusBarViewModel">
+            <summary>
+            The ViewModel for the <see cref="T:Quartz.IDE.Controls.MainStatusBar"/>.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainStatusBarViewModel.Metadata">
+            <summary>
+            Gets the app meta.
             </summary>
         </member>
         <member name="T:Quartz.IDE.ViewModels.MainWindowViewModel">
@@ -847,6 +1070,11 @@
         <member name="P:Quartz.IDE.ViewModels.MainWindowViewModel.Close">
             <summary>
             Closes Quartz.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.MainWindowViewModel.OpenProject">
+            <summary>
+            Opens a project.
             </summary>
         </member>
         <member name="P:Quartz.IDE.ViewModels.MainWindowViewModel.Title">
@@ -1029,6 +1257,11 @@
             The <see cref="T:System.Windows.DataTemplate"/> for a <see cref="T:Quartz.IDE.ViewModels.Pages.UITemplateViewModel"/>.
             </summary>
         </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.TilesPage">
+            <summary>
+            The <see cref="T:System.Windows.DataTemplate"/> for a <see cref="T:Quartz.IDE.ViewModels.Pages.TilesViewModel"/>.
+            </summary>
+        </member>
         <member name="M:Quartz.IDE.ViewModels.Pages.PageTemplateSelector.#ctor">
             <summary>
             Creates a new <see cref="T:Quartz.IDE.ViewModels.Pages.PageTemplateSelector"/>.
@@ -1061,6 +1294,36 @@
         <member name="P:Quartz.IDE.ViewModels.Pages.PageViewModel.Identifier">
             <summary>
             A unique identifier which distinguishes it from other <see cref="T:Quartz.IDE.ViewModels.Pages.PageViewModel"/> s.
+            </summary>
+        </member>
+        <member name="T:Quartz.IDE.ViewModels.Pages.TilesViewModel">
+            <summary>
+            The ViewModel for the <see cref="T:Quartz.IDE.Controls.TilesPage"/> control
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.TilesViewModel.AreTilesSaved">
+            <summary>
+            Gets whether all tiles are saved.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.TilesViewModel.CreateTile">
+            <summary>
+            Creates a new tile.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.TilesViewModel.SelectedTile">
+            <summary>
+            The currently selected tile.
+            </summary>
+        </member>
+        <member name="P:Quartz.IDE.ViewModels.Pages.TilesViewModel.Tiles">
+            <summary>
+            A list of all tiles.
+            </summary>
+        </member>
+        <member name="M:Quartz.IDE.ViewModels.Pages.TilesViewModel.#ctor">
+            <summary>
+            Creates a new <see cref="T:Quartz.IDE.ViewModels.Pages.TilesViewModel"/>.
             </summary>
         </member>
         <member name="T:Quartz.IDE.ViewModels.Pages.UITemplateViewModel">

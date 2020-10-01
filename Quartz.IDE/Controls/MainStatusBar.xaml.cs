@@ -23,6 +23,9 @@ namespace Quartz.IDE.Controls
     /// </summary>
     public partial class MainStatusBar : ReactiveUserControl<MainStatusBarViewModel>
     {
+        /// <summary>
+        /// Creates a new <see cref="MainStatusBar"/>.
+        /// </summary>
         public MainStatusBar()
         {
             this.InitializeComponent();
@@ -32,18 +35,28 @@ namespace Quartz.IDE.Controls
             this.WhenActivated(dispose =>
             {
                 this.OneWayBind(this.ViewModel,
-                    vm => vm.Metadata.StatusBarMessage,
+                    vm => vm.StatusBarMessage,
                     view => view.StatusBarMessage.Text)
                 .DisposeWith(dispose);
 
                 this.OneWayBind(this.ViewModel,
-                    vm => vm.Metadata.StatusBarColor.Color,
+                    vm => vm.Color.Color,
                     view => view.StatusBarBorder.Background)
                 .DisposeWith(dispose);
 
                 this.OneWayBind(this.ViewModel,
-                    vm => vm.Metadata.StatusBarColor.Foreground,
+                    vm => vm.Color.Foreground,
                     view => view.StatusBarMessage.Foreground)
+                .DisposeWith(dispose);
+
+                this.OneWayBind(this.ViewModel,
+                    vm => vm.ProgressPercentage,
+                    view => view.StatusBarProgress.Value)
+                .DisposeWith(dispose);
+
+                this.OneWayBind(this.ViewModel,
+                    vm => vm.IsIndeterminate,
+                    view => view.StatusBarProgress.IsIndeterminate)
                 .DisposeWith(dispose);
             });
         }

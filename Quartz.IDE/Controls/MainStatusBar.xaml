@@ -18,6 +18,46 @@
                 <Image Width="16" Height="16" Margin="4,0,0,0" Source="/Resources/Images/Quartz.png" />
                 <TextBlock x:Name="StatusBarMessage" FontSize="14" VerticalAlignment="Center" LineHeight="20" Margin="8,0,0,0" />
             </StackPanel>
+            <ProgressBar x:Name="StatusBarProgress" Grid.Column="2" Width="300" Margin="4" Foreground="#aa00aa" Background="{StaticResource BaseHighlightColor}" Maximum="100" Minimum="0">
+                <ProgressBar.Style>
+                    <Style TargetType="{x:Type ProgressBar}">
+                        <Style.Triggers>
+                            <Trigger Property="Value" Value="0">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="Value" Value="100">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ProgressBar.Style>
+            </ProgressBar>
         </Grid>
     </Border>
 </rui:ReactiveUserControl>

@@ -17,7 +17,7 @@ namespace Quartz.Core.ObjectModel
         /// </summary>
         [Memento]
         [Reactive]
-        public Element AttackingElement { get; set; }
+        public Element AttackingElement { get; set; } = null!;
 
         /// <summary>
         /// The ID of the attacking element.
@@ -31,7 +31,7 @@ namespace Quartz.Core.ObjectModel
         /// </summary>
         [Memento]
         [Reactive]
-        public Element DefendingElement { get; set; }
+        public Element DefendingElement { get; set; } = null!;
 
         /// <summary>
         /// The ID of the defending element.

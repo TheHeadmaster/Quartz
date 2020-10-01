@@ -25,10 +25,22 @@ namespace Quartz.IDE
         public string Path { get; }
 
         /// <summary>
-        /// The date the project was last accessed.
+        /// The date and time the project was last accessed.
         /// </summary>
         public DateTime Timestamp { get; }
 
+        /// <summary>
+        /// Creates a new <see cref="RecentItem"/>.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the project.
+        /// </param>
+        /// <param name="path">
+        /// The path to the project file.
+        /// </param>
+        /// <param name="timestamp">
+        /// The date and time the project was last accessed.
+        /// </param>
         public RecentItem(string name, string path, DateTime timestamp)
         {
             this.Name = name;

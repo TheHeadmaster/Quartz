@@ -19,6 +19,68 @@ namespace Quartz.Core.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Quartz.Core.ObjectModel.CollisionMap", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CanEnterFromID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CanExitToID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsBush")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLadder")
+                        .HasColumnType("bit");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CanEnterFromID");
+
+                    b.HasIndex("CanExitToID");
+
+                    b.ToTable("CollisionMaps");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.DirectionMap", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("East")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("North")
+                        .HasColumnType("bit");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<bool>("South")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("West")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DirectionMaps");
+                });
+
             modelBuilder.Entity("Quartz.Core.ObjectModel.Element", b =>
                 {
                     b.Property<int>("ID")
@@ -69,6 +131,140 @@ namespace Quartz.Core.Migrations
                     b.ToTable("ElementMatchups");
                 });
 
+            modelBuilder.Entity("Quartz.Core.ObjectModel.MapLayer", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<int?>("TileMapID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ZOrder")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TileMapID");
+
+                    b.ToTable("MapLayers");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.Tile", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BasedOnID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CollisionMapID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MapLayerID")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("BasedOnID");
+
+                    b.HasIndex("CollisionMapID");
+
+                    b.HasIndex("MapLayerID");
+
+                    b.ToTable("Tiles");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.TileBase", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CollisionMapID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CollisionMapID");
+
+                    b.ToTable("TileBases");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.TileMap", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GridSize")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Width")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TileMaps");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.CollisionMap", b =>
+                {
+                    b.HasOne("Quartz.Core.ObjectModel.DirectionMap", "CanEnterFrom")
+                        .WithMany()
+                        .HasForeignKey("CanEnterFromID");
+
+                    b.HasOne("Quartz.Core.ObjectModel.DirectionMap", "CanExitTo")
+                        .WithMany()
+                        .HasForeignKey("CanExitToID");
+                });
+
             modelBuilder.Entity("Quartz.Core.ObjectModel.ElementMatchup", b =>
                 {
                     b.HasOne("Quartz.Core.ObjectModel.Element", "AttackingElement")
@@ -82,6 +278,37 @@ namespace Quartz.Core.Migrations
                         .HasForeignKey("DefendingElementID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.MapLayer", b =>
+                {
+                    b.HasOne("Quartz.Core.ObjectModel.TileMap", null)
+                        .WithMany("Layers")
+                        .HasForeignKey("TileMapID");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.Tile", b =>
+                {
+                    b.HasOne("Quartz.Core.ObjectModel.TileBase", "BasedOn")
+                        .WithMany()
+                        .HasForeignKey("BasedOnID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Quartz.Core.ObjectModel.CollisionMap", "CollisionMap")
+                        .WithMany()
+                        .HasForeignKey("CollisionMapID");
+
+                    b.HasOne("Quartz.Core.ObjectModel.MapLayer", null)
+                        .WithMany("Tiles")
+                        .HasForeignKey("MapLayerID");
+                });
+
+            modelBuilder.Entity("Quartz.Core.ObjectModel.TileBase", b =>
+                {
+                    b.HasOne("Quartz.Core.ObjectModel.CollisionMap", "CollisionMap")
+                        .WithMany()
+                        .HasForeignKey("CollisionMapID");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,6 +16,8 @@ using System.Reactive.Linq;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Serilog;
+using Quartz.Core.Diagnostics;
 
 namespace Quartz.IDE.ObjectModel
 {
@@ -72,6 +74,11 @@ namespace Quartz.IDE.ObjectModel
         public string? Name { get; set; } = "";
 
         /// <summary>
+        /// A list of all <see cref="TileBase"/> s in the database.
+        /// </summary>
+        public SourceCache<TileBase, int> Tiles { get; set; } = new SourceCache<TileBase, int>(x => x.ID);
+
+        /// <summary>
         /// The version of Quartz that the project was made with.
         /// </summary>
         [Reactive]
@@ -85,11 +92,13 @@ namespace Quartz.IDE.ObjectModel
         {
             this.Elements.Connect()
                 .WhenValueChanged(x => x.IsSaved)
-                .Select(x =>
-                {
-                    return this.Elements.Items.All(x => x.IsSaved);
-                })
-                .ToPropertyEx(this, x => x.AreItemsSaved);
+                .Select(x => this.Elements.Items.All(x => x.IsSaved))
+                .ToPropertyEx(this, x => x.AreItemsSaved, true);
+
+            this.Tiles.Connect()
+                .WhenValueChanged(x => x.IsSaved)
+                .Select(x => this.Tiles.Items.All(x => x.IsSaved))
+                .ToPropertyEx(this, x => x.AreItemsSaved, true);
         }
 
         /// <summary>
@@ -105,23 +114,35 @@ namespace Quartz.IDE.ObjectModel
                 await this.SaveAllAsync();
             }
             SaveableObjects.Clear();
-            App.Metadata.CurrentProject = null;
+            await App.Metadata.ClearCurrentProject();
         }
 
         /// <summary>
         /// Loads the project and all of its associated data objects.
         /// </summary>
-        public void Load()
+        [Log("Loading Project...", "Project loaded successfully.", "Loading project failed.")]
+        public async Task Load()
         {
+            Log.Information("Connecting to database...");
             using (DatabaseTransaction<QuartzContext> transaction = new DatabaseTransaction<QuartzContext>(this.Connection))
             {
-                this.Elements.AddOrUpdate(transaction.GetAll<Element>());
-                this.ElementMatchups.AddOrUpdate(transaction.GetAll<ElementMatchup>());
+                this.Elements.AddOrUpdate(await transaction.GetAllAsync<Element>());
+                this.ElementMatchups.AddOrUpdate(await transaction.GetAllAsync<ElementMatchup>());
+                this.Tiles.AddOrUpdate(await transaction.GetAllAsync<TileBase>());
             }
+            Log.Information("Database objects loaded into memory.");
+
             Directory.CreateDirectory(Path.Combine(this.FilePath, "Images"));
+            Log.Information("Ensured project directories were created.");
+
             App.Preferences.RecentlyOpenedProjects.AddOrUpdate(new RecentItem(this.Name ?? "", this.FilePath, DateTime.Now));
+            Log.Information("Project updated in recently opened items list.");
+
             App.Preferences.Save();
-            this.IsSaved = true;
+            foreach (SaveableObject loadedObject in SaveableObjects.Items)
+            {
+                loadedObject.IsSaved = true;
+            }
         }
 
         /// <summary>
