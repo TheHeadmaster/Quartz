@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.2.2.76</AssemblyVersion>
-    <FileVersion>1.2.2.76</FileVersion>
+    <AssemblyVersion>1.2.2.78</AssemblyVersion>
+    <FileVersion>1.2.2.78</FileVersion>
 	  <LangVersion>8.0</LangVersion>
 	  <ApplicationIcon>Resources\Images\Quartz.ico</ApplicationIcon>
 	  <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>

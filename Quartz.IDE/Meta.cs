@@ -1,27 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Threading;
 using DynamicData;
 using DynamicData.Binding;
 using Librarium.Core;
 using Librarium.Json;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using Quartz.IDE.Controls;
 using Quartz.IDE.Json;
 using Quartz.IDE.ObjectModel;
 using Quartz.IDE.UI;
-using Quartz.IDE.ViewModels;
 using Quartz.IDE.ViewModels.Pages;
-using Quartz.IDE.Windows;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -142,34 +134,25 @@ namespace Quartz.IDE
         }
 
         /// <summary>
-        /// Opens the project froma dialog.
+        /// Opens the project from a dialog.
         /// </summary>
         /// <returns>
         /// 0 if successful. Any other number indicates a problem occurred.
         /// </returns>
-        private async Task<int> OpenFromDialog()
+        private async Task<int> OpenFromDialog(bool? saveBeforeClosing)
         {
             string? path = this.CommonFileDialog();
-            return path.IsNullOrWhiteSpace() ? 1 : await this.OpenFromPath(path!);
+            return path.IsNullOrWhiteSpace() ? 1 : await this.OpenFromPath(path!, saveBeforeClosing);
         }
 
-        private async Task<int> OpenFromPath(string path)
+        /// <summary>
+        /// Opens the project from a path.
+        /// </summary>
+        /// <returns>
+        /// 0 if successful. Any other number indicates a problem occurred.
+        /// </returns>
+        private async Task<int> OpenFromPath(string path, bool? saveBeforeClosing)
         {
-            bool? saveBeforeClosing = true;
-            if (App.Metadata.CurrentProject is { } && !App.Metadata.CurrentProject.IsSaved && !App.Metadata.CurrentProject.AreItemsSaved)
-            {
-                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show(
-                    $"Changes have been made to {App.Metadata.CurrentProject.Name}. Would you like to save these changes before closing the project?",
-                    "Save Changes?", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-                saveBeforeClosing = result switch
-                {
-                    MessageBoxResult.Yes => true,
-                    MessageBoxResult.No => false,
-                    _ => null,
-                };
-                if (saveBeforeClosing is null) { return 1; }
-            }
             Task<int>? prepareProject = await Observable.Start(() => this.PrepareProject(Path.Combine(path, "Project.json"), saveBeforeClosing), RxApp.TaskpoolScheduler);
             return await prepareProject;
         }
@@ -203,6 +186,12 @@ namespace Quartz.IDE
             return 0;
         }
 
+        /// <summary>
+        /// Changes the current project to the project specified.
+        /// </summary>
+        /// <param name="project">
+        /// The project to change to.
+        /// </param>
         public async Task ChangeCurrentProject(Project project)
         => await Observable.Start(() =>
         {
@@ -267,6 +256,9 @@ namespace Quartz.IDE
         /// </param>
         public async Task ChangeToWaitingStatus(string statusMessage, StatusBarColor color) => await this.ChangeStatus(statusMessage, 1, true, color);
 
+        /// <summary>
+        /// Clears the current project.
+        /// </summary>
         public async Task ClearCurrentProject() => await Observable.Start(() =>
         {
             this.CurrentProject = null;
@@ -276,6 +268,23 @@ namespace Quartz.IDE
         /// Clears any ongoing status messages.
         /// </summary>
         public async Task ClearStatus() => await this.ChangeStatus("Ready", 0, false, StatusBarColor.Idle);
+
+        /// <summary>
+        /// Closes the program.
+        /// </summary>
+        public async Task Close()
+        {
+            bool? saveResult = await this.PromptToSave();
+            if (saveResult is null)
+            {
+                return;
+            }
+            else if (saveResult is true)
+            {
+                this.CurrentProject!.Save();
+            }
+            Application.Current.Shutdown();
+        }
 
         /// <summary>
         /// Opens the specified page.
@@ -306,10 +315,38 @@ namespace Quartz.IDE
         /// </param>
         public async Task OpenProject(string? path = null)
         {
-            int success = path.IsNullOrWhiteSpace() ? await this.OpenFromDialog() : await this.OpenFromPath(path!);
+            bool? saveResult = await this.PromptToSave();
+            int success = path.IsNullOrWhiteSpace() ? await this.OpenFromDialog(saveResult) : await this.OpenFromPath(path!, saveResult);
             if (success == 0)
             {
                 App.Metadata.CurrentProject!.IsSaved = true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if a project is open, then prompts the user to save any unsaved changes.
+        /// </summary>
+        /// <returns>
+        /// True if the user wants to save, or false if they don't. Returns null if the user cancels.
+        /// </returns>
+        public Task<bool?> PromptToSave()
+        {
+            if (App.Metadata.CurrentProject is { } && !App.Metadata.CurrentProject.IsSaved && !App.Metadata.CurrentProject.AreItemsSaved)
+            {
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show(
+                    $"Changes have been made to {App.Metadata.CurrentProject.Name}. Would you like to save these changes before closing the project?",
+                    "Save Changes?", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+                return result switch
+                {
+                    MessageBoxResult.Yes => Task.FromResult<bool?>(true),
+                    MessageBoxResult.No => Task.FromResult<bool?>(false),
+                    _ => Task.FromResult<bool?>(null),
+                };
+            }
+            else
+            {
+                return Task.FromResult<bool?>(false);
             }
         }
     }

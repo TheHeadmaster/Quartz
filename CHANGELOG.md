@@ -5,6 +5,7 @@
 
 ### Bug Fixes
 
+- 🐛 Doing any work that should operate on a separate thread still blocks the UI thread [[7c732cb](https://github.com/TheHeadmaster/Quartz/commit/7c732cbe8b05e6e8a6e07c7e135c781ab1b2ea1f)]
 - 🐛 Opening a project causes the project to be shown as unsaved [[3b0c1ed](https://github.com/TheHeadmaster/Quartz/commit/3b0c1ed64e1968c65d9dcb4773feab782d9146e6)]
 
 ### New Features

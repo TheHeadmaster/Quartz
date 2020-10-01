@@ -26,8 +26,6 @@ namespace Quartz.IDE.ViewModels
     {
         private readonly ReadOnlyObservableCollection<RecentItem> recentlyOpenedProjects;
 
-        private string openingPath;
-
         /// <summary>
         /// Closes the program.
         /// </summary>
@@ -54,11 +52,6 @@ namespace Quartz.IDE.ViewModels
         public ReadOnlyObservableCollection<RecentItem> RecentlyOpenedProjects => this.recentlyOpenedProjects;
 
         /// <summary>
-        /// Updates the status.
-        /// </summary>
-        public ReactiveCommand<Unit, Unit> UpdateStatus { get; }
-
-        /// <summary>
         /// Creates a new <see cref="MainMenuViewModel"/>.
         /// </summary>
         public MainMenuViewModel()
@@ -76,6 +69,7 @@ namespace Quartz.IDE.ViewModels
             this.OpenElementsPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(ElementsViewModel)), canOpenPage);
             this.OpenTilesPage = ReactiveCommand.CreateFromTask(x => App.Metadata.OpenPageAsync(typeof(TilesViewModel)), canOpenPage);
             this.OpenProject = ReactiveCommand.CreateFromTask<string>(x => App.Metadata.OpenProject(x));
+            this.Close = ReactiveCommand.CreateFromTask(x => App.Metadata.Close());
         }
     }
 }
